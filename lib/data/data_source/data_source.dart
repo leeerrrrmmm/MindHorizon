@@ -338,3 +338,133 @@ final List<CategoryModel> meditationCategory = [
     ],
   ),
 ];
+
+final List<CategoryModel> myCourseCategory = [
+  CategoryModel(
+    title: 'My course',
+    categoryFields: [
+      CategoryFields(
+        id: 0,
+        title: 'Anxiety',
+        description: '',
+        imagePath: 'asset/img/secanxiety.png',
+        steps: [
+          StepsModel(id: 0, title: 'Sleep cpace'),
+          StepsModel(id: 1, title: 'Time for sweet dreams'),
+          StepsModel(id: 2, title: 'Melody for the soul'),
+          StepsModel(id: 3, title: 'Tranquil sleep'),
+          StepsModel(id: 4, title: 'Magical garden'),
+          StepsModel(id: 5, title: 'Gentle flute'),
+        ],
+      ),
+      CategoryFields(
+        id: 1,
+        title: 'Happines',
+        description: '',
+        imagePath: 'asset/img/happiness.png',
+        steps: [
+          StepsModel(id: 0, title: 'Sleep cpace'),
+          StepsModel(id: 1, title: 'Time for sweet dreams'),
+          StepsModel(id: 2, title: 'Melody for the soul'),
+          StepsModel(id: 3, title: 'Tranquil sleep'),
+          StepsModel(id: 4, title: 'Magical garden'),
+          StepsModel(id: 5, title: 'Gentle flute'),
+        ],
+      ),
+      CategoryFields(
+        id: 2,
+        title: 'Stress relief',
+        description: '',
+        imagePath: 'asset/img/stres.png',
+        steps: [
+          StepsModel(id: 0, title: 'Sleep cpace'),
+          StepsModel(id: 1, title: 'Time for sweet dreams'),
+          StepsModel(id: 2, title: 'Melody for the soul'),
+          StepsModel(id: 3, title: 'Tranquil sleep'),
+          StepsModel(id: 4, title: 'Magical garden'),
+          StepsModel(id: 5, title: 'Gentle flute'),
+        ],
+      ),
+    ],
+  ),
+  CategoryModel(
+    title: 'ASMR-video',
+    categoryFields: [
+      CategoryFields(
+        id: 0,
+        title: '',
+        description: '',
+        imagePath: 'asset/img/dis.png',
+        steps: [
+          StepsModel(id: 0, title: 'Sleep cpace'),
+          StepsModel(id: 1, title: 'Time for sweet dreams'),
+          StepsModel(id: 2, title: 'Melody for the soul'),
+          StepsModel(id: 3, title: 'Tranquil sleep'),
+          StepsModel(id: 4, title: 'Magical garden'),
+          StepsModel(id: 5, title: 'Gentle flute'),
+        ],
+      ),
+      CategoryFields(
+        id: 1,
+        title: '',
+        description: '',
+        imagePath: 'asset/img/souns.png',
+        steps: [
+          StepsModel(id: 0, title: 'Sleep cpace'),
+          StepsModel(id: 1, title: 'Time for sweet dreams'),
+          StepsModel(id: 2, title: 'Melody for the soul'),
+          StepsModel(id: 3, title: 'Tranquil sleep'),
+          StepsModel(id: 4, title: 'Magical garden'),
+          StepsModel(id: 5, title: 'Gentle flute'),
+        ],
+      ),
+      CategoryFields(
+        id: 2,
+        title: '',
+        description: '',
+        imagePath: 'asset/img/cake.png',
+        steps: [
+          StepsModel(id: 0, title: 'Sleep cpace'),
+          StepsModel(id: 1, title: 'Time for sweet dreams'),
+          StepsModel(id: 2, title: 'Melody for the soul'),
+          StepsModel(id: 3, title: 'Tranquil sleep'),
+          StepsModel(id: 4, title: 'Magical garden'),
+          StepsModel(id: 5, title: 'Gentle flute'),
+        ],
+      ),
+      CategoryFields(
+        id: 3,
+        title: '',
+        description: '',
+        imagePath: 'asset/img/paws.png',
+        steps: [
+          StepsModel(id: 0, title: 'Sleep cpace'),
+          StepsModel(id: 1, title: 'Time for sweet dreams'),
+          StepsModel(id: 2, title: 'Melody for the soul'),
+          StepsModel(id: 3, title: 'Tranquil sleep'),
+          StepsModel(id: 4, title: 'Magical garden'),
+          StepsModel(id: 5, title: 'Gentle flute'),
+        ],
+      ),
+    ],
+  ),
+  CategoryModel(
+    title: 'Sound of the day',
+    categoryFields: [
+      CategoryFields(
+        id: 0,
+        title: 'Touch of silence',
+        description: 'Relaxation',
+        imagePath: 'asset/img/two.png',
+        steps: [
+          StepsModel(id: 0, title: 'Sleep cpace'),
+          StepsModel(id: 1, title: 'Time for sweet dreams'),
+          StepsModel(id: 2, title: 'Melody for the soul'),
+          StepsModel(id: 3, title: 'Tranquil sleep'),
+          StepsModel(id: 4, title: 'Magical garden'),
+          StepsModel(id: 5, title: 'Gentle flute'),
+        ],
+      ),
+    ],
+  ),
+];

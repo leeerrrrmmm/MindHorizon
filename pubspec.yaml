@@ -99,6 +99,14 @@ flutter:
     - asset/img/oo.png
     - asset/img/ooo.png
     - asset/img/oooo.png
+    - asset/img/secanxiety.png
+    - asset/img/stres.png
+    - asset/img/happiness.png
+    - asset/img/dis.png
+    - asset/img/souns.png
+    - asset/img/cake.png
+    - asset/img/paws.png
+    - asset/img/two.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
