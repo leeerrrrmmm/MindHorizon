@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
+import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/home/detail_home_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -16,7 +18,7 @@ class MainScreen extends StatelessWidget {
           Align(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 15),
+              padding: const EdgeInsets.only(left: 15, right: 15),
               child: ListView.builder(
                 itemCount: myCourseCategory.length,
                 itemBuilder: (context, index) {
@@ -51,110 +53,154 @@ class MainScreen extends StatelessWidget {
                                     left: 10.0,
                                     right: 10.0,
                                   ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset(secondItem.imagePath),
+                                  // ASMR DETAIL SCREEN
+                                  child: GestureDetector(
+                                    onTap:
+                                        () => Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                            builder:
+                                                (context) => DetailHomeScreen(
+                                                  index: index,
+                                                  title: myCategory.title,
+                                                  secondIndex: secIndex,
+                                                  secondeItems: secondItem,
+                                                  imagePath:
+                                                      secondItem.imagePath,
+                                                ),
+                                          ),
+                                        ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.asset(secondItem.imagePath),
+                                    ),
                                   ),
                                 )
-                                : Container(
-                                  margin: const EdgeInsets.only(left: 10.0),
-                                  width:
-                                      myCategory.categoryFields.length > 1
-                                          ? 175
-                                          : 400,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color:
-                                        myCategory.categoryFields.length > 1
-                                            ? secIndex == 0
-                                                ? Color(0xffa3fdbd)
-                                                : secIndex == 1
-                                                ? Color(0xfffea386)
-                                                : Color(0xffead2ef)
-                                            : Color(0xfffbe7c3),
-                                  ),
-                                  child:
-                                      myCategory.categoryFields.length > 1
-                                          ? Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Image.asset(
-                                                secondItem.imagePath,
-                                                scale: 1.1,
+                                // My Course
+                                : GestureDetector(
+                                  onTap:
+                                      () => Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                          builder:
+                                              (context) => DetailHomeScreen(
+                                                index: index,
+                                                title: myCategory.title,
+                                                secondIndex: secIndex,
+                                                secondeItems: secondItem,
                                               ),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(10),
-                                                        bottomRight:
-                                                            Radius.circular(10),
-                                                      ),
-                                                  color:
-                                                      secIndex == 0
-                                                          ? Color(0xff92e3a9)
-                                                          : secIndex == 1
-                                                          ? Color(0xffff725e)
-                                                          : Color(0xff9f59ab),
+                                        ),
+                                      ),
+                                  child: Container(
+                                    margin: const EdgeInsets.only(left: 10.0),
+                                    width:
+                                        myCategory.categoryFields.length > 1
+                                            ? 175
+                                            : 400,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color:
+                                          myCategory.categoryFields.length > 1
+                                              ? secIndex == 0
+                                                  ? Color(0xffa3fdbd)
+                                                  : secIndex == 1
+                                                  ? Color(0xfffea386)
+                                                  : Color(0xffead2ef)
+                                              : Color(0xfffbe7c3),
+                                    ),
+                                    child:
+                                        myCategory.categoryFields.length > 1
+                                            ? Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Image.asset(
+                                                  secondItem.imagePath,
+                                                  scale: 1.1,
                                                 ),
-                                                width: double.infinity,
-                                                height: 38,
-                                                child: Center(
-                                                  child: BuildText(
-                                                    text: secondItem.title,
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w400,
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                10,
+                                                              ),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                10,
+                                                              ),
+                                                        ),
                                                     color:
                                                         secIndex == 0
-                                                            ? Colors.black
+                                                            ? Color(0xff92e3a9)
                                                             : secIndex == 1
-                                                            ? Colors.white
-                                                            : Colors.black,
+                                                            ? Color(0xffff725e)
+                                                            : Color(0xff9f59ab),
                                                   ),
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                          : Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Image.asset(
-                                                secondItem.imagePath,
-                                                width: 130,
-                                                height: 130,
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                  right: 55.0,
-                                                ),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    BuildText(
+                                                  width: double.infinity,
+                                                  height: 38,
+                                                  child: Center(
+                                                    child: BuildText(
                                                       text: secondItem.title,
                                                       fontSize: 20,
                                                       fontWeight:
-                                                          FontWeight.w600,
+                                                          FontWeight.w400,
+                                                      color:
+                                                          secIndex == 0
+                                                              ? Colors.black
+                                                              : secIndex == 1
+                                                              ? Colors.white
+                                                              : Colors.black,
                                                     ),
-                                                    BuildText(
-                                                      text:
-                                                          secondItem
-                                                              .description,
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
+                                              ],
+                                            )
+                                            : Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Image.asset(
+                                                  secondItem.imagePath,
+                                                  width: 130,
+                                                  height: 130,
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                        right: 55.0,
+                                                      ),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      BuildText(
+                                                        text: secondItem.title,
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                      BuildText(
+                                                        text:
+                                                            secondItem
+                                                                .description,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                  ),
                                 );
                           },
                         ),

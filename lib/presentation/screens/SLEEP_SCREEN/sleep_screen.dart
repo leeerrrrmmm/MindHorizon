@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
 
 class SleepScreen extends StatelessWidget {
@@ -13,22 +14,23 @@ class SleepScreen extends StatelessWidget {
           Positioned(left: 0, child: Image.asset('asset/img/lvec.png')),
           Positioned(right: 0, child: Image.asset('asset/img/rvec.png')),
           Align(
-            alignment: Alignment.topCenter,
+            alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 15),
+              padding: const EdgeInsets.only(left: 15, right: 15),
               child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: sleepCategory.length,
                 itemBuilder: (context, index) {
                   final category = sleepCategory[index];
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        category.title,
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      SizedBox(height: 30),
+                      BuildText(
+                        text: category.title,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xfffea386),
                       ),
                       SizedBox(height: 10),
                       SizedBox(

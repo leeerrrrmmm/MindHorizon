@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/models/steps_model.dart';
-import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/detail_music_screen.dart';
+import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/music/detail_music_screen.dart';
 
 class DetailScreen extends StatefulWidget {
   final String title;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
-import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/detail_screen.dart';
+import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/music/detail_screen.dart';
 
 class MusicScreen extends StatelessWidget {
   const MusicScreen({super.key});
