@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
+import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
+import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/sleep/first_detail_sleep_screen.dart';
 
 class SleepScreen extends StatelessWidget {
   const SleepScreen({super.key});
@@ -40,122 +43,148 @@ class SleepScreen extends StatelessWidget {
                           itemCount: category.categoryFields.length,
                           itemBuilder: (context, categoryIndex) {
                             final item = category.categoryFields[categoryIndex];
-                            return Container(
-                              margin: EdgeInsets.only(right: 10),
-                              width: index == 0 ? 175 : 287,
-                              decoration: BoxDecoration(
-                                color:
-                                    category.categoryFields[categoryIndex].id ==
-                                            0
-                                        ? Color(0xffa3fdbd)
-                                        : category.categoryFields.length > 2
-                                        ? category
-                                                    .categoryFields[categoryIndex]
-                                                    .id ==
-                                                1
-                                            ? Color(0xfffea386)
-                                            : Color(0xffead2ef)
-                                        : Color(0xffead2ef),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset(item.imagePath),
-                                  Container(
-                                    height:
-                                        category.categoryFields[index].id == 0
-                                            ? 36
-                                            : 91,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          category
-                                                      .categoryFields[categoryIndex]
-                                                      .id ==
-                                                  0
-                                              ? Color(0xff92e3a9)
-                                              : category.categoryFields.length >
-                                                  2
-                                              ? category
-                                                          .categoryFields[categoryIndex]
-                                                          .id ==
-                                                      1
-                                                  ? Color(0xffff725e)
-                                                  : Color(0xff9f59ab)
-                                              : Color(0xff9f59ab),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10),
-                                        bottomRight: Radius.circular(10),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 3,
-                                        left: 12.0,
-                                        bottom: 3,
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            item.title,
-                                            style: TextStyle(
-                                              color:
-                                                  category
-                                                              .categoryFields[categoryIndex]
-                                                              .id ==
-                                                          0
-                                                      ? Colors.black
-                                                      : category
-                                                              .categoryFields
-                                                              .length >
-                                                          2
-                                                      ? category
-                                                                  .categoryFields[categoryIndex]
-                                                                  .id ==
-                                                              1
-                                                          ? Colors.white
-                                                          : Colors.black
-                                                      : Colors.black,
-                                              fontSize:
-                                                  category
-                                                              .categoryFields[index]
-                                                              .id ==
-                                                          0
-                                                      ? 20
-                                                      : 25,
-                                              fontFamily: 'Poppins',
-                                              fontWeight:
-                                                  category
-                                                              .categoryFields[index]
-                                                              .id ==
-                                                          0
-                                                      ? FontWeight.w300
-                                                      : FontWeight.w600,
+                            return GestureDetector(
+                              onTap: () {
+                                index == 0
+                                    ? Navigator.push(
+                                      context,
+                                      PageRouteBuilder(
+                                        transitionDuration: Duration(
+                                          milliseconds: 300,
+                                        ),
+                                        pageBuilder:
+                                            (
+                                              context,
+                                              animation,
+                                              secondaryAnimation,
+                                            ) => FirstDetailSleepScreen(
+                                              title: item.title,
+                                              description: item.description,
+                                              largestImagepath:
+                                                  item.largestImagepath ?? '',
+                                              sounds: item.sounds,
+                                              indexEl: index,
+                                              itemColors: item.colors,
                                             ),
-                                          ),
-                                          category
-                                                      .categoryFields[index]
-                                                      .description !=
-                                                  ''
-                                              ? Text(
-                                                item.description,
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 12,
-                                                  fontFamily: 'Poppins',
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              )
-                                              : SizedBox(),
-                                        ],
+                                        transitionsBuilder: (
+                                          context,
+                                          animation,
+                                          secondaryAnimation,
+                                          child,
+                                        ) {
+                                          return SlideTransition(
+                                            position: Tween<Offset>(
+                                              begin: Offset(0.0, 1.0),
+                                              end: Offset.zero,
+                                            ).animate(animation),
+                                            child: child,
+                                          );
+                                        },
+                                      ),
+                                    )
+                                    : Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                        builder:
+                                            (context) => MeditationDetailScreen(
+                                              colors: item.colors,
+                                              steps: item.steps,
+                                            ),
+                                      ),
+                                    );
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(right: 10),
+                                width: index == 0 ? 175 : 287,
+                                decoration: BoxDecoration(
+                                  color: item.colors?[0],
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Image.asset(item.imagePath),
+                                    Container(
+                                      height:
+                                          category.categoryFields[index].id == 0
+                                              ? 36
+                                              : 91,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: item.colors?[1],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10),
+                                          bottomRight: Radius.circular(10),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                          top: 3,
+                                          left: 12.0,
+                                          bottom: 3,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              item.title,
+                                              style: TextStyle(
+                                                color:
+                                                    category
+                                                                .categoryFields[categoryIndex]
+                                                                .id ==
+                                                            0
+                                                        ? Colors.black
+                                                        : category
+                                                                .categoryFields
+                                                                .length >
+                                                            2
+                                                        ? category
+                                                                    .categoryFields[categoryIndex]
+                                                                    .id ==
+                                                                1
+                                                            ? Colors.white
+                                                            : Colors.black
+                                                        : Colors.black,
+                                                fontSize:
+                                                    category
+                                                                .categoryFields[index]
+                                                                .id ==
+                                                            0
+                                                        ? 20
+                                                        : 25,
+                                                fontFamily: 'Poppins',
+                                                fontWeight:
+                                                    category
+                                                                .categoryFields[index]
+                                                                .id ==
+                                                            0
+                                                        ? FontWeight.w300
+                                                        : FontWeight.w600,
+                                              ),
+                                            ),
+                                            category
+                                                        .categoryFields[index]
+                                                        .description !=
+                                                    ''
+                                                ? Text(
+                                                  item.description,
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 12,
+                                                    fontFamily: 'Poppins',
+                                                    fontWeight: FontWeight.w300,
+                                                  ),
+                                                )
+                                                : SizedBox(),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             );
                           },

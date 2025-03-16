@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
-import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/music/detail_screen.dart';
+import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/music/first_detail_music_screen.dart';
 
 class MusicScreen extends StatelessWidget {
   const MusicScreen({super.key});
@@ -16,7 +16,7 @@ class MusicScreen extends StatelessWidget {
           Align(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(10.0),
               child: ListView.builder(
                 itemCount: musiscCategory.length,
                 itemBuilder: (context, categoryIndex) {
@@ -58,7 +58,7 @@ class MusicScreen extends StatelessWidget {
                                         title: item.title,
                                         description: item.description,
                                         imagePath: item.imagePath,
-                                        steps: item.steps,
+                                        sounds: item.sounds,
                                         indexEl: index,
                                       ),
                                   transitionsBuilder: (

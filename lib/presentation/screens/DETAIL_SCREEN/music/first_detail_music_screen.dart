@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/build_text.dart';
-import 'package:mind_horizon/data/models/steps_model.dart';
-import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/music/detail_music_screen.dart';
+import 'package:mind_horizon/data/models/sounds_model.dart';
+import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/music/second_detail_music_screen.dart';
 
 class DetailScreen extends StatefulWidget {
   final String title;
   final String description;
   final String imagePath;
-  final List<StepsModel> steps;
+  final List<SoundsModel>? sounds;
   final int indexEl;
   const DetailScreen({
     super.key,
     required this.title,
     required this.description,
     required this.imagePath,
-    required this.steps,
+    required this.sounds,
     required this.indexEl,
   });
 
@@ -112,9 +112,9 @@ class _DetailScreenState extends State<DetailScreen> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: widget.steps.length,
+              itemCount: widget.sounds?.length,
               itemBuilder: (context, index) {
-                final steps = widget.steps[index];
+                final sounds = widget.sounds?[index];
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -125,7 +125,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             (context, animation, secondaryAnimation) =>
                                 DetailMusicScreen(
                                   categoryTitle: widget.title,
-                                  stepTitle: steps.title,
+                                  soundsTitle: widget.sounds?[index].title,
                                 ),
                         transitionsBuilder: (
                           context,
@@ -171,7 +171,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               ),
                             ),
                             BuildText(
-                              text: steps.title,
+                              text: sounds!.title,
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                               color: Color(0xff455a64),

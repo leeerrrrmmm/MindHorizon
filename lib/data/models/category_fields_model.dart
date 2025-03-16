@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:mind_horizon/data/models/sounds_model.dart';
 import 'package:mind_horizon/data/models/steps_model.dart';
 
 class CategoryFields {
@@ -5,13 +8,19 @@ class CategoryFields {
   final String title;
   final String description;
   final String imagePath;
-  final List<StepsModel> steps;
+  final String? largestImagepath;
+  final List<StepsModel>? steps;
+  final List<SoundsModel>? sounds;
+  List<Color>? colors;
 
   CategoryFields({
     required this.id,
     required this.title,
     required this.description,
     required this.imagePath,
-    required this.steps,
+    this.steps,
+    this.sounds,
+    this.colors,
+    this.largestImagepath,
   });
 }

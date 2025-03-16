@@ -3,11 +3,11 @@ import 'package:mind_horizon/components/build_text.dart';
 
 class DetailMusicScreen extends StatefulWidget {
   final String categoryTitle;
-  final String stepTitle;
+  final String? soundsTitle;
   const DetailMusicScreen({
     super.key,
     required this.categoryTitle,
-    required this.stepTitle,
+    required this.soundsTitle,
   });
 
   @override
@@ -103,7 +103,7 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
                           color: Color(0xfffea386),
                         ),
                         BuildText(
-                          text: widget.stepTitle,
+                          text: widget.soundsTitle!,
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: Color(0xfffea386),

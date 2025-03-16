@@ -67,6 +67,7 @@ class MainScreen extends StatelessWidget {
                                                   secondeItems: secondItem,
                                                   imagePath:
                                                       secondItem.imagePath,
+                                                  colors: secondItem.colors,
                                                 ),
                                           ),
                                         ),
@@ -88,6 +89,7 @@ class MainScreen extends StatelessWidget {
                                                 title: myCategory.title,
                                                 secondIndex: secIndex,
                                                 secondeItems: secondItem,
+                                                colors: secondItem.colors,
                                               ),
                                         ),
                                       ),
@@ -99,14 +101,7 @@ class MainScreen extends StatelessWidget {
                                             : 400,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      color:
-                                          myCategory.categoryFields.length > 1
-                                              ? secIndex == 0
-                                                  ? Color(0xffa3fdbd)
-                                                  : secIndex == 1
-                                                  ? Color(0xfffea386)
-                                                  : Color(0xffead2ef)
-                                              : Color(0xfffbe7c3),
+                                      color: secondItem.colors?[0],
                                     ),
                                     child:
                                         myCategory.categoryFields.length > 1
@@ -117,7 +112,7 @@ class MainScreen extends StatelessWidget {
                                               children: [
                                                 Image.asset(
                                                   secondItem.imagePath,
-                                                  scale: 1.1,
+                                                  scale: 1,
                                                 ),
                                                 Container(
                                                   decoration: BoxDecoration(
@@ -133,11 +128,7 @@ class MainScreen extends StatelessWidget {
                                                               ),
                                                         ),
                                                     color:
-                                                        secIndex == 0
-                                                            ? Color(0xff92e3a9)
-                                                            : secIndex == 1
-                                                            ? Color(0xffff725e)
-                                                            : Color(0xff9f59ab),
+                                                        secondItem.colors?[1],
                                                   ),
                                                   width: double.infinity,
                                                   height: 38,
