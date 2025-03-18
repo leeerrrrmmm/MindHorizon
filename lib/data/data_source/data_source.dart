@@ -324,12 +324,40 @@ final List<CategoryModel> meditationCategory = [
         description: 'Relax and fall asleep',
         imagePath: 'asset/img/sleep.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Step 1'),
+          StepsModel(id: 1, title: 'Step 2'),
+          StepsModel(id: 2, title: 'Step 3'),
+          StepsModel(id: 3, title: 'Step 4'),
+          StepsModel(id: 4, title: 'Step 5'),
+          StepsModel(id: 5, title: 'Step 6'),
+          StepsModel(id: 6, title: 'Step 7'),
+          StepsModel(id: 7, title: 'Step 8'),
+        ],
+        colors: [
+          // fCOlor
+          Color(0xffa3fdbd),
+          //sColor
+          Color(0xff92e3a9),
+          //text&btnColor
+          Color(0xff263238),
+          //backImg Color
+          Color(0xffa3fdbd),
+          //category title Color
+          Color(0xff92e3a9).withValues(alpha: 0.77),
+          //list color == 2
+          Color.fromRGBO(146, 227, 169, 0.6),
+          //list color != 2
+          Color(0xff92e3a9),
+          //backgroundColor
+          Color(0xffe3fce8),
+          //flowerElem AT secondScreen Color
+          Color(0xffd6f4de),
+          //steptTitleColor
+          Color(0xff263238).withValues(alpha: 0.6),
+          //secondScreenBackgroundColor
+          Color(0xffe3fce8),
+          // SHADOW ON SECOND  SLEEP SCREEN
+          Color(0xff314b4b).withValues(alpha: 1.8),
         ],
       ),
       CategoryFields(
@@ -338,12 +366,37 @@ final List<CategoryModel> meditationCategory = [
         description: 'Fall asleep faster and easier',
         imagePath: 'asset/img/sleepp.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Step 1'),
+          StepsModel(id: 1, title: 'Step 2'),
+          StepsModel(id: 2, title: 'Step 3'),
+          StepsModel(id: 3, title: 'Step 4'),
+          StepsModel(id: 4, title: 'Step 5'),
+        ],
+        colors: [
+          // fCOlor
+          Color(0xffead2ef),
+          //sColor
+          Color(0xff9f59ab),
+          //text&btn&backImg Color
+          Color(0xff9f0fbe),
+          //backImg Color
+          Color(0xff9f0fbe),
+          //category title Color
+          Color(0xffcf95d9).withValues(alpha: 0.77),
+          //list color == 2
+          Color(0xffcf96d9).withValues(alpha: 0.77),
+          //list color != 2
+          Color(0xffc886d3),
+          //backgroundColor
+          Color(0xfff7d6f8),
+          //flowerElem AT secondScreen Color
+          Color(0xfff6c3ff),
+          //steptTitleColor
+          Color(0xffaa2abf).withValues(alpha: 0.6),
+          //secondScreenBackgroundColor
+          Color(0xfff7d6f8),
+          // SHADOW ON SECOND  SLEEP SCREEN
+          Color(0xffca86fe).withValues(alpha: 0.5),
         ],
       ),
     ],
@@ -357,12 +410,40 @@ final List<CategoryModel> meditationCategory = [
         description: 'Unleash your individuality',
         imagePath: 'asset/img/love.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Step 1'),
+          StepsModel(id: 1, title: 'Step 2'),
+          StepsModel(id: 2, title: 'Step 3'),
+          StepsModel(id: 3, title: 'Step 4'),
+          StepsModel(id: 4, title: 'Step 5'),
+          StepsModel(id: 5, title: 'Step 6'),
+          StepsModel(id: 6, title: 'Step 7'),
+          StepsModel(id: 7, title: 'Step 8'),
+        ],
+        colors: [
+          // fCOlor
+          Color(0xffead2ef),
+          //sColor
+          Color(0xff9f59ab),
+          //text&btn&backImg Color
+          Color(0xff9f0fbe),
+          //backImg Color
+          Color(0xff9f0fbe),
+          //category title Color
+          Color(0xffcf95d9).withValues(alpha: 0.77),
+          //list color == 2
+          Color(0xffcf96d9).withValues(alpha: 0.77),
+          //list color != 2
+          Color(0xffc886d3),
+          //backgroundColor
+          Color(0xfff7d6f8),
+          //flowerElem AT secondScreen Color
+          Color(0xfff6c3ff),
+          //steptTitleColor
+          Color(0xffaa2abf).withValues(alpha: 0.6),
+          //secondScreenBackgroundColor
+          Color(0xfff7d6f8),
+          // SHADOW ON SECOND  SLEEP SCREEN
+          Color(0xffca86fe).withValues(alpha: 0.5),
         ],
       ),
       CategoryFields(
@@ -371,12 +452,40 @@ final List<CategoryModel> meditationCategory = [
         description: 'Get your body in shape',
         imagePath: 'asset/img/shape.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Step 1'),
+          StepsModel(id: 1, title: 'Step 2'),
+          StepsModel(id: 2, title: 'Step 3'),
+          StepsModel(id: 3, title: 'Step 4'),
+          StepsModel(id: 4, title: 'Step 5'),
+          StepsModel(id: 5, title: 'Step 6'),
+          StepsModel(id: 6, title: 'Step 7'),
+          StepsModel(id: 7, title: 'Step 8'),
+        ],
+        colors: [
+          // fCOlor
+          Color(0xffead2ef),
+          //sColor
+          Color(0xff9f59ab),
+          //text&btn&backImg Color
+          Color(0xff9f0fbe),
+          //backImg Color
+          Color(0xff9f0fbe),
+          //category title Color
+          Color(0xffcf95d9).withValues(alpha: 0.77),
+          //list color == 2
+          Color(0xffcf96d9).withValues(alpha: 0.77),
+          //list color != 2
+          Color(0xffc886d3),
+          //backgroundColor
+          Color(0xfff7d6f8),
+          //flowerElem AT secondScreen Color
+          Color(0xfff6c3ff),
+          //steptTitleColor
+          Color(0xffaa2abf).withValues(alpha: 0.6),
+          //secondScreenBackgroundColor
+          Color(0xfff7d6f8),
+          // SHADOW ON SECOND  SLEEP SCREEN
+          Color(0xffca86fe).withValues(alpha: 0.5),
         ],
       ),
     ],
@@ -390,12 +499,36 @@ final List<CategoryModel> meditationCategory = [
         description: 'Become more successful and productive',
         imagePath: 'asset/img/prod.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Step 1'),
+          StepsModel(id: 1, title: 'Step 2'),
+          StepsModel(id: 2, title: 'Step 3'),
+          StepsModel(id: 3, title: 'Step 4'),
+        ],
+        colors: [
+          // fCOlor
+          Color(0xffff725e),
+          //sColor
+          Color(0xffff725e),
+          //text&btn&backImg Color
+          Color(0xffcc5b4b),
+          //backImg Color
+          Color(0xffcc5b4b),
+          //category title Color
+          Colors.transparent,
+          //list color == 2
+          Colors.transparent,
+          //list color != 2
+          Colors.transparent,
+          //backgroundColor
+          Color(0xfffce3e3),
+          //flowerElem AT secondScreen Color
+          Color(0xfff4d6d6),
+          //steptTitleColor
+          Color(0xffcc5b4b),
+          //secondScreenBackgroundColor
+          Color(0xfff4d6d6),
+          // SHADOW ON SECOND  SLEEP SCREEN
+          Color(0xfff4d6d6),
         ],
       ),
       CategoryFields(
@@ -404,12 +537,36 @@ final List<CategoryModel> meditationCategory = [
         description: 'Complete tasks quckly and efficientle',
         imagePath: 'asset/img/procr.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Step 1'),
+          StepsModel(id: 1, title: 'Step 2'),
+          StepsModel(id: 2, title: 'Step 3'),
+          StepsModel(id: 3, title: 'Step 4'),
+        ],
+        colors: [
+          // fCOlor
+          Color(0xff84a8fa),
+          //sColor
+          Color(0xff407bff),
+          //text&btn&backImg Color
+          Color(0xff2d57b3),
+          //backImg Color
+          Color(0xff2d57b3),
+          //category title Color
+          Colors.transparent,
+          //list color == 2
+          Colors.transparent,
+          //list color != 2
+          Colors.transparent,
+          //backgroundColor
+          Color(0xffe3e4fc),
+          //flowerElem AT secondScreen Color
+          Color(0xffd9d6f4),
+          //steptTitleColor
+          Color(0xff2d57b3),
+          //secondScreenBackgroundColor
+          Color(0xfff4d6d6),
+          // SHADOW ON SECOND  SLEEP SCREEN
+          Color(0xfff4d6d6),
         ],
       ),
     ],
@@ -423,12 +580,38 @@ final List<CategoryModel> meditationCategory = [
         description: 'Get rid of fear and worries',
         imagePath: 'asset/img/anxi.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Step 1'),
+          StepsModel(id: 1, title: 'Step 2'),
+          StepsModel(id: 2, title: 'Step 3'),
+          StepsModel(id: 3, title: 'Step 4'),
+          StepsModel(id: 4, title: 'Step 5'),
+          StepsModel(id: 5, title: 'Step 6'),
+        ],
+        colors: [
+          // fCOlor
+          Color(0xfffff0c6),
+          //sColor
+          Color(0xffffd252),
+          //text&btnColor
+          Color(0xffffc727),
+          //backImg Color
+          Color(0xffffc727),
+          //category title Color
+          Color(0xffffc727),
+          //list color == 2
+          Colors.transparent,
+          //list color != 2
+          Colors.transparent,
+          //backgroundColor
+          Color(0xfffafce3),
+          //flowerElem AT secondScreen Color
+          Color(0xfff1f4d6),
+          //steptTitleColor
+          Color(0xffffc727),
+          //secondScreenBackgroundColor
+          Color(0xfffafce3),
+          // SHADOW ON SECOND  SLEEP SCREEN
+          Color(0xff314b4b).withValues(alpha: 1.8),
         ],
       ),
       CategoryFields(
@@ -436,7 +619,39 @@ final List<CategoryModel> meditationCategory = [
         title: 'Stress relief',
         description: 'Release tension and stress',
         imagePath: 'asset/img/stress.png',
-        steps: [],
+        steps: [
+          StepsModel(id: 0, title: 'Step 1'),
+          StepsModel(id: 1, title: 'Step 2'),
+          StepsModel(id: 2, title: 'Step 3'),
+          StepsModel(id: 3, title: 'Step 4'),
+          StepsModel(id: 4, title: 'Step 5'),
+        ],
+        colors: [
+          // fCOlor
+          Color(0xffa3fdbd),
+          //sColor
+          Color(0xff92e3a9),
+          //text&btnColor
+          Color(0xff263238),
+          //backImg Color
+          Color(0xffa3fdbd),
+          //category title Color
+          Color(0xff92e3a9).withValues(alpha: 0.77),
+          //list color == 2
+          Color.fromRGBO(146, 227, 169, 0.6),
+          //list color != 2
+          Color(0xff92e3a9),
+          //backgroundColor
+          Color(0xffe3fce8),
+          //flowerElem AT secondScreen Color
+          Color(0xffd6f4de),
+          //steptTitleColor
+          Color(0xff263238).withValues(alpha: 0.6),
+          //secondScreenBackgroundColor
+          Color(0xffe3fce8),
+          // SHADOW ON SECOND  SLEEP SCREEN
+          Color(0xff314b4b).withValues(alpha: 1.8),
+        ],
       ),
     ],
   ),
@@ -449,26 +664,78 @@ final List<CategoryModel> meditationCategory = [
         description: 'Learn to accept and forgive',
         imagePath: 'asset/img/sun.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Step 1'),
+          StepsModel(id: 1, title: 'Step 2'),
+          StepsModel(id: 2, title: 'Step 3'),
+          StepsModel(id: 3, title: 'Step 4'),
+          StepsModel(id: 4, title: 'Step 5'),
+          StepsModel(id: 5, title: 'Step 6'),
+        ],
+        colors: [
+          // fCOlor
+          Color(0xffa3fdbd),
+          //sColor
+          Color(0xff92e3a9),
+          //text&btnColor
+          Color(0xff263238),
+          //backImg Color
+          Color(0xffa3fdbd),
+          //category title Color
+          Color(0xff92e3a9).withValues(alpha: 0.77),
+          //list color == 2
+          Color.fromRGBO(146, 227, 169, 0.6),
+          //list color != 2
+          Color(0xff92e3a9),
+          //backgroundColor
+          Color(0xffe3fce8),
+          //flowerElem AT secondScreen Color
+          Color(0xffd6f4de),
+          //steptTitleColor
+          Color(0xff263238).withValues(alpha: 0.6),
+          //secondScreenBackgroundColor
+          Color(0xffe3fce8),
+          // SHADOW ON SECOND  SLEEP SCREEN
+          Color(0xff314b4b).withValues(alpha: 1.8),
         ],
       ),
       CategoryFields(
         id: 0,
-        title: 'Stress relief',
+        title: 'After a breakup',
         description: 'Rise like a phoenix',
         imagePath: 'asset/img/rise.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Step 1'),
+          StepsModel(id: 1, title: 'Step 2'),
+          StepsModel(id: 2, title: 'Step 3'),
+          StepsModel(id: 3, title: 'Step 4'),
+          StepsModel(id: 4, title: 'Step 5'),
+          StepsModel(id: 5, title: 'Step 6'),
+        ],
+        colors: [
+          // fCOlor
+          Color(0xffa3fdbd),
+          //sColor
+          Color(0xff92e3a9),
+          //text&btnColor
+          Color(0xff263238),
+          //backImg Color
+          Color(0xffa3fdbd),
+          //category title Color
+          Color(0xff92e3a9).withValues(alpha: 0.77),
+          //list color == 2
+          Color.fromRGBO(146, 227, 169, 0.6),
+          //list color != 2
+          Color(0xff92e3a9),
+          //backgroundColor
+          Color(0xffe3fce8),
+          //flowerElem AT secondScreen Color
+          Color(0xffd6f4de),
+          //steptTitleColor
+          Color(0xff263238).withValues(alpha: 0.6),
+          //secondScreenBackgroundColor
+          Color(0xffe3fce8),
+          // SHADOW ON SECOND  SLEEP SCREEN
+          Color(0xff314b4b).withValues(alpha: 1.8),
         ],
       ),
     ],

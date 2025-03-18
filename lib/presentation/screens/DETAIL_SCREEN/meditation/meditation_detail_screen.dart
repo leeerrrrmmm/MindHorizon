@@ -59,7 +59,7 @@ class _MeditationDetailScreenState extends State<MeditationDetailScreen>
                 animationController: _animationController,
                 isPaused: _isPaused,
                 colors: widget.colors!,
-                steps: widget.steps,
+                steps: widget.steps!,
               ),
     );
   }

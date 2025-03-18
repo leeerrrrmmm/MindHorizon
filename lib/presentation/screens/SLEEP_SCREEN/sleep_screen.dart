@@ -179,6 +179,14 @@ class SleepScreen extends StatelessWidget {
                                                   ),
                                                 )
                                                 : SizedBox(),
+                                            category
+                                                        .categoryFields[index]
+                                                        .description !=
+                                                    ''
+                                                ? Text(
+                                                  '0  / ${item.steps?.length}',
+                                                )
+                                                : const SizedBox(),
                                           ],
                                         ),
                                       ),

@@ -24,11 +24,18 @@ class _PlayMeditaionScreenState extends State<PlayMeditaionScreen> {
   int _curPage = 0;
   late bool _isPaused;
   final PageController _pageController = PageController();
+  late List<bool> _isUnlocked;
 
   @override
   void initState() {
     super.initState();
     _isPaused = widget.isPaused;
+    _isUnlocked = List.generate(widget.steps!.length, (index) => index == 0);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   void _togglePause() {
@@ -65,7 +72,7 @@ class _PlayMeditaionScreenState extends State<PlayMeditaionScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ///top button
+                  // Верхняя кнопка
                   _curPage == 0
                       ? const SizedBox()
                       : GestureDetector(
@@ -78,7 +85,10 @@ class _PlayMeditaionScreenState extends State<PlayMeditaionScreen> {
                             );
                           });
                         },
-                        child: Image.asset('asset/img/topArrow.png'),
+                        child: Image.asset(
+                          'asset/img/topArrow.png',
+                          color: widget.colors[2],
+                        ),
                       ),
                   const SizedBox(height: 40),
                   Column(
@@ -87,6 +97,7 @@ class _PlayMeditaionScreenState extends State<PlayMeditaionScreen> {
                         text: widget.steps![index].title,
                         fontSize: 25,
                         fontWeight: FontWeight.w500,
+                        color: widget.colors[9],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 40.0),
@@ -102,23 +113,28 @@ class _PlayMeditaionScreenState extends State<PlayMeditaionScreen> {
                                   return CircularProgressIndicator(
                                     backgroundColor: widget.colors[1],
                                     color: widget.colors[2],
-                                    value: widget.animationController.value,
+                                    value:
+                                        _isUnlocked[index] == false
+                                            ? 0
+                                            : widget.animationController.value,
                                     strokeWidth: 40,
                                   );
                                 },
                               ),
                             ),
                             GestureDetector(
-                              onTap: _togglePause,
+                              onTap: _isUnlocked[index] ? _togglePause : null,
                               behavior: HitTestBehavior.translucent,
                               child: CircleAvatar(
                                 radius: 60,
                                 backgroundColor: widget.colors[2],
                                 child: Icon(
-                                  _isPaused
-                                      ? Icons.play_arrow_rounded
-                                      : Icons.pause_rounded,
-                                  size: 30,
+                                  _isUnlocked[index]
+                                      ? (_isPaused
+                                          ? Icons.play_arrow_rounded
+                                          : Icons.pause_rounded)
+                                      : Icons.lock,
+                                  size: 50,
                                   color: Colors.white,
                                 ),
                               ),
@@ -129,7 +145,7 @@ class _PlayMeditaionScreenState extends State<PlayMeditaionScreen> {
                     ],
                   ),
                   const SizedBox(height: 40),
-                  //bottom button
+                  // Нижняя кнопка
                   GestureDetector(
                     onTap: () {
                       setState(() {
@@ -140,7 +156,10 @@ class _PlayMeditaionScreenState extends State<PlayMeditaionScreen> {
                         );
                       });
                     },
-                    child: Image.asset('asset/img/bottomArow.png'),
+                    child: Image.asset(
+                      'asset/img/bottomArow.png',
+                      color: widget.colors[2],
+                    ),
                   ),
                 ],
               ),
