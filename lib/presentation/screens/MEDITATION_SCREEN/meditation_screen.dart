@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
+import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
+import 'package:mind_horizon/presentation/bloc/bloc/steps_event.dart';
+import 'package:mind_horizon/presentation/bloc/bloc/steps_state.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
 
 class MeditationScreen extends StatelessWidget {
@@ -49,17 +53,25 @@ class MeditationScreen extends StatelessWidget {
                           itemBuilder: (context, secIndex) {
                             final secItem = item.categoryFields[secIndex];
                             return GestureDetector(
-                              onTap:
-                                  () => Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder:
-                                          (context) => MeditationDetailScreen(
-                                            steps: secItem.steps,
-                                            colors: secItem.colors,
-                                          ),
-                                    ),
+                              onTap: () async {
+                                final result = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (context) => MeditationDetailScreen(
+                                          steps: secItem.steps,
+                                          colors: secItem.colors,
+                                          secItemId: secItem.id,
+                                        ),
                                   ),
+                                );
+                                // Если результат не null, обновляем состояние
+                                if (result != null) {
+                                  context.read<ButtonBloc>().add(
+                                    IncrementButtonEvent(),
+                                  );
+                                }
+                              },
                               child: Container(
                                 margin: const EdgeInsets.all(10.0),
                                 width: 297,
@@ -143,6 +155,16 @@ class MeditationScreen extends StatelessWidget {
                                                 fontSize: 13,
                                                 fontFamily: 'Poppins',
                                               ),
+                                            ),
+                                            BlocBuilder<
+                                              ButtonBloc,
+                                              ButtonState
+                                            >(
+                                              builder: (context, state) {
+                                                return Text(
+                                                  'Прослушано ${state.unlockedButtons}/ ${secItem.steps?.length}',
+                                                );
+                                              },
                                             ),
                                           ],
                                         ),

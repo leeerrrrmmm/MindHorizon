@@ -89,6 +89,7 @@ class SleepScreen extends StatelessWidget {
                                             (context) => MeditationDetailScreen(
                                               colors: item.colors,
                                               steps: item.steps,
+                                              secItemId: item.id,
                                             ),
                                       ),
                                     );
