@@ -925,10 +925,3 @@ final List<CategoryModel> myCourseCategory = [
     ],
   ),
 ];
-
-final List<List<CategoryModel>> allCategories = [
-  musiscCategory,
-  sleepCategory,
-  meditationCategory,
-  myCourseCategory,
-];

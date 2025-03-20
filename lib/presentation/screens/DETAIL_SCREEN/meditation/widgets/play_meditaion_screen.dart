@@ -84,7 +84,6 @@ class _PlayMeditaionScreenState extends State<PlayMeditaionScreen> {
 
                 return isButtonActive
                     ? SizedBox(
-                      key: ValueKey(index),
                       height: MediaQuery.of(context).size.height,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,

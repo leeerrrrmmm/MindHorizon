@@ -35,7 +35,7 @@ class _MeditationDetailScreenState extends State<MeditationDetailScreen>
     _animationControllers = List.generate(
       widget.steps!.length,
       (index) =>
-          AnimationController(vsync: this, duration: const Duration(seconds: 4))
+          AnimationController(vsync: this, duration: const Duration(seconds: 2))
             ..addStatusListener((status) {
               if (status == AnimationStatus.completed) {
                 setState(() {
