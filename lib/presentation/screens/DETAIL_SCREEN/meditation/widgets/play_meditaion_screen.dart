@@ -80,7 +80,7 @@ class _PlayMeditaionScreenState extends State<PlayMeditaionScreen> {
               controller: _pageController,
               itemCount: widget.steps!.length,
               itemBuilder: (context, index) {
-                bool isButtonActive = index < state.unlockedButtons + 1;
+                bool isButtonActive = index <= state.unlockedButtons;
 
                 return isButtonActive
                     ? SizedBox(

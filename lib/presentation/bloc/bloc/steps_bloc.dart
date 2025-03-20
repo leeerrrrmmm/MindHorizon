@@ -3,10 +3,16 @@ import 'package:mind_horizon/presentation/bloc/bloc/steps_event.dart';
 import 'package:mind_horizon/presentation/bloc/bloc/steps_state.dart';
 
 class ButtonBloc extends Bloc<ButtonEvent, ButtonState> {
-  ButtonBloc() : super(ButtonState(0)) {
+  ButtonBloc() : super(ButtonState(unlockedButtons: 0, lastCompletedStep: 0)) {
     on<IncrementButtonEvent>((event, emit) {
-      final newState = ButtonState(state.unlockedButtons + 1);
-      emit(newState);
+      if (event.completedStep == state.lastCompletedStep) {
+        emit(
+          ButtonState(
+            unlockedButtons: state.unlockedButtons + 1,
+            lastCompletedStep: event.completedStep + 1,
+          ),
+        );
+      }
     });
   }
 }

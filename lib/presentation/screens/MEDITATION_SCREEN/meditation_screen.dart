@@ -68,7 +68,7 @@ class MeditationScreen extends StatelessWidget {
                                 // Если результат не null, обновляем состояние
                                 if (result != null) {
                                   context.read<ButtonBloc>().add(
-                                    IncrementButtonEvent(),
+                                    IncrementButtonEvent(secIndex),
                                   );
                                 }
                               },

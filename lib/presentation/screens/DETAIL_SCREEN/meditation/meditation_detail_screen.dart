@@ -41,7 +41,7 @@ class _MeditationDetailScreenState extends State<MeditationDetailScreen>
                 setState(() {
                   _isEnded = true;
                   _isPaused = true;
-                  context.read<ButtonBloc>().add(IncrementButtonEvent());
+                  context.read<ButtonBloc>().add(IncrementButtonEvent(index));
                 });
               }
             }),
