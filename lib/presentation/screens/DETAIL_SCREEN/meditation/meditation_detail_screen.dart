@@ -70,7 +70,7 @@ class _MeditationDetailScreenState extends State<MeditationDetailScreen>
                 colors: widget.colors,
                 animationController: _animationControllers,
                 isPaused: _isPaused,
-                currentStep: widget.curListenedEl, // Текущий шаг
+                currentStep: widget.curListenedEl,
                 curElement: widget.secItemId,
               ),
     );

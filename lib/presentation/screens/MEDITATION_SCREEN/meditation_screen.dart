@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
-import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
-import 'package:mind_horizon/presentation/bloc/bloc/steps_event.dart';
-import 'package:mind_horizon/presentation/bloc/bloc/steps_state.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
 import 'package:mind_horizon/testt/a.dart';
 
