@@ -2,211 +2,164 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/models/steps_model.dart';
-import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
-import 'package:mind_horizon/presentation/bloc/bloc/steps_state.dart';
+import 'package:mind_horizon/testt/a.dart';
 
-class PlayMeditaionScreen extends StatefulWidget {
-  final List<AnimationController> animationControllers; // Список контроллеров
-  final bool isPaused;
-  final List<Color> colors;
+class PlayMeditationScreen extends StatefulWidget {
   final List<StepsModel>? steps;
+  final List<Color>? colors;
+  final List<AnimationController> animationController;
+  late bool isPaused;
+  final int currentStep; // Текущий шаг
+  final int curElement;
 
-  const PlayMeditaionScreen({
+  PlayMeditationScreen({
     super.key,
-    required this.animationControllers,
-    required this.isPaused,
-    required this.colors,
     required this.steps,
+    required this.colors,
+    required this.animationController,
+    required this.isPaused,
+    required this.currentStep, // Инициализация текущего шага
+    required this.curElement,
   });
 
   @override
-  State<PlayMeditaionScreen> createState() => _PlayMeditaionScreenState();
+  State<PlayMeditationScreen> createState() => _PlayMeditationScreenState();
 }
 
-class _PlayMeditaionScreenState extends State<PlayMeditaionScreen> {
-  int _curPage = 0;
-  final PageController _pageController = PageController();
-  late List<bool> _isUnlocked;
-  late List<bool> _isPlaying;
+class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
+  late int stepCount; // Локальный счетчик шагов
+  late int listenedStepsCount; // Количество прослушанных шагов
 
   @override
   void initState() {
     super.initState();
-    widget.isPaused;
-    _isUnlocked = List.generate(
-      widget.steps!.length,
-      (index) => index <= widget.steps!.length,
-    );
-    _isPlaying = List.generate(
-      widget.steps!.length,
-      (index) => false,
-    ); // Изначально все элементы не проигрываются
+    stepCount = widget.currentStep;
+    listenedStepsCount = widget.currentStep; // Инициализируем с текущего шага
   }
 
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
-  void _togglePause(int index) {
+  // Функция для обработки старта и паузы анимации
+  void toggleAnimation(int step) {
     setState(() {
-      if (_isPlaying[index]) {
-        widget.animationControllers[index].stop();
+      if (widget.isPaused) {
+        widget.animationController[step]
+            .forward(); // Запуск анимации для конкретного шага
       } else {
-        widget.animationControllers[index].forward();
+        widget.animationController[step]
+            .stop(); // Остановка анимации для текущего шага
       }
-      _isPlaying[index] = !_isPlaying[index];
+      widget.isPaused = !widget.isPaused; // Переключение состояния паузы
+    });
+
+    // После завершения анимации обновляем состояние
+    widget.animationController[step].addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        context.read<MeditationBloc>().add(
+          UpdateStepCount(
+            id: widget.curElement,
+            stepCount: listenedStepsCount + 1,
+          ),
+        );
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-          left: 0,
-          child: Image.asset('asset/img/lvec.png', color: widget.colors[8]),
-        ),
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: Image.asset('asset/img/rvec.png', color: widget.colors[8]),
-        ),
-        BlocBuilder<ButtonBloc, ButtonState>(
-          builder: (context, state) {
-            return PageView.builder(
+    return Scaffold(
+      backgroundColor: widget.colors?[7],
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              'Прослушано шагов: $listenedStepsCount / ${widget.steps?.length}',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          Expanded(
+            child: PageView.builder(
               scrollDirection: Axis.vertical,
-              controller: _pageController,
-              itemCount: widget.steps!.length,
+              itemCount: listenedStepsCount + 1,
+              onPageChanged: (page) {
+                setState(() {
+                  stepCount = page; // Обновление текущего шага
+                });
+              },
               itemBuilder: (context, index) {
-                bool isButtonActive = index <= state.unlockedButtons;
-
-                return isButtonActive
-                    ? SizedBox(
-                      height: MediaQuery.of(context).size.height,
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Step: ${index + 1} / ${widget.steps?.length}',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.5,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // Верхняя кнопка
-                          _curPage == 0
-                              ? const SizedBox()
-                              : GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _curPage--;
-                                    _pageController.previousPage(
-                                      duration: Duration(milliseconds: 600),
-                                      curve: Curves.easeIn,
-                                    );
-                                  });
-                                },
-                                child: Image.asset(
-                                  'asset/img/topArrow.png',
-                                  color: widget.colors[2],
-                                ),
-                              ),
-                          const SizedBox(height: 40),
-                          Column(
-                            children: [
-                              BuildText(
-                                text: widget.steps![index].title,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w500,
-                                color: widget.colors[9],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 40.0),
-                                child: Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    SizedBox(
-                                      height: 155,
-                                      width: 155,
-                                      child: AnimatedBuilder(
-                                        animation:
-                                            widget.animationControllers[index],
-                                        builder: (context, child) {
-                                          return CircularProgressIndicator(
-                                            backgroundColor: widget.colors[1],
-                                            color: widget.colors[2],
-                                            value:
-                                                _isUnlocked[index] == false
-                                                    ? 0
-                                                    : widget
-                                                        .animationControllers[index]
-                                                        .value,
-                                            strokeWidth: 40,
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap:
-                                          _isUnlocked[index]
-                                              ? () {
-                                                setState(() {
-                                                  for (
-                                                    int i = 0;
-                                                    i < _isPlaying.length;
-                                                    i++
-                                                  ) {
-                                                    if (i != index) {
-                                                      _isPlaying[i] = false;
-                                                    }
-                                                  }
-                                                  _togglePause(
-                                                    index,
-                                                  ); // Запуск/пауза для текущего шага
-                                                });
-                                              }
-                                              : null,
-                                      behavior: HitTestBehavior.translucent,
-                                      child: CircleAvatar(
-                                        radius: 60,
-                                        backgroundColor: widget.colors[2],
-                                        child: Icon(
-                                          _isUnlocked[index]
-                                              ? (_isPlaying[index]
-                                                  ? Icons.pause_rounded
-                                                  : Icons.play_arrow_rounded)
-                                              : Icons.lock,
-                                          size: 50,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                          BuildText(
+                            text: widget.steps![index].title,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w500,
+                            color: widget.colors?[9],
                           ),
-                          const SizedBox(height: 40),
-                          // Нижняя кнопка
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _curPage++;
-                                _pageController.nextPage(
-                                  duration: Duration(milliseconds: 600),
-                                  curve: Curves.easeIn,
-                                );
-                              });
-                            },
-                            child: Image.asset(
-                              'asset/img/bottomArow.png',
-                              color: widget.colors[2],
+                          Padding(
+                            padding: const EdgeInsets.only(top: 40.0),
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 155,
+                                  width: 155,
+                                  child: AnimatedBuilder(
+                                    animation:
+                                        widget.animationController[index],
+                                    builder: (context, child) {
+                                      return CircularProgressIndicator(
+                                        backgroundColor: widget.colors?[1],
+                                        color: widget.colors?[2],
+                                        value:
+                                            widget
+                                                .animationController[index]
+                                                .value,
+                                        strokeWidth: 40,
+                                      );
+                                    },
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    toggleAnimation(
+                                      index,
+                                    ); // Старт или пауза анимации
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 60,
+                                    backgroundColor: widget.colors?[2],
+                                    child: Icon(
+                                      widget.isPaused
+                                          ? Icons.play_arrow_rounded
+                                          : Icons.pause_rounded,
+                                      size: 50,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                    )
-                    : null;
+                    ),
+                  ],
+                );
               },
-            );
-          },
-        ),
-      ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

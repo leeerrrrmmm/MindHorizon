@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mind_horizon/data/models/steps_model.dart';
-import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
-import 'package:mind_horizon/presentation/bloc/bloc/steps_event.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/widgets/end_meditation_screen.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/widgets/play_meditaion_screen.dart';
 
@@ -10,12 +7,16 @@ class MeditationDetailScreen extends StatefulWidget {
   final List<StepsModel>? steps;
   final List<Color>? colors;
   final int secItemId;
+  final int stepCounter;
+  final int curListenedEl;
 
   const MeditationDetailScreen({
     super.key,
     required this.steps,
     required this.colors,
     required this.secItemId,
+    required this.stepCounter,
+    required this.curListenedEl,
   });
 
   @override
@@ -41,7 +42,7 @@ class _MeditationDetailScreenState extends State<MeditationDetailScreen>
                 setState(() {
                   _isEnded = true;
                   _isPaused = true;
-                  context.read<ButtonBloc>().add(IncrementButtonEvent(index));
+                  // Обновляем количество шагов в состоянии
                 });
               }
             }),
@@ -64,12 +65,13 @@ class _MeditationDetailScreenState extends State<MeditationDetailScreen>
       body:
           _isEnded
               ? EndMeditationScreen(colors: widget.colors)
-              : PlayMeditaionScreen(
-                animationControllers:
-                    _animationControllers, // Передаем контроллеры
+              : PlayMeditationScreen(
+                steps: widget.steps,
+                colors: widget.colors,
+                animationController: _animationControllers,
                 isPaused: _isPaused,
-                colors: widget.colors!,
-                steps: widget.steps!,
+                currentStep: widget.curListenedEl, // Текущий шаг
+                curElement: widget.secItemId,
               ),
     );
   }

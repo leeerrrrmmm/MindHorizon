@@ -319,7 +319,7 @@ final List<CategoryModel> meditationCategory = [
     title: 'Sleep Music',
     categoryFields: [
       CategoryFields(
-        id: 0,
+        id: 2,
         title: 'Sleep',
         description: 'Relax and fall asleep',
         imagePath: 'asset/img/sleep.png',
@@ -361,7 +361,7 @@ final List<CategoryModel> meditationCategory = [
         ],
       ),
       CategoryFields(
-        id: 1,
+        id: 3,
         title: 'Sleep - Part 2',
         description: 'Fall asleep faster and easier',
         imagePath: 'asset/img/sleepp.png',
@@ -405,7 +405,7 @@ final List<CategoryModel> meditationCategory = [
     title: 'Self-esteem',
     categoryFields: [
       CategoryFields(
-        id: 0,
+        id: 4,
         title: 'Self-love',
         description: 'Unleash your individuality',
         imagePath: 'asset/img/love.png',
@@ -447,7 +447,7 @@ final List<CategoryModel> meditationCategory = [
         ],
       ),
       CategoryFields(
-        id: 0,
+        id: 5,
         title: 'Weight loass',
         description: 'Get your body in shape',
         imagePath: 'asset/img/shape.png',
@@ -494,7 +494,7 @@ final List<CategoryModel> meditationCategory = [
     title: 'Productivity',
     categoryFields: [
       CategoryFields(
-        id: 0,
+        id: 6,
         title: 'Productivity',
         description: 'Become more successful and productive',
         imagePath: 'asset/img/prod.png',
@@ -532,7 +532,7 @@ final List<CategoryModel> meditationCategory = [
         ],
       ),
       CategoryFields(
-        id: 0,
+        id: 7,
         title: 'Procrastination',
         description: 'Complete tasks quckly and efficientle',
         imagePath: 'asset/img/procr.png',
@@ -575,7 +575,7 @@ final List<CategoryModel> meditationCategory = [
     title: 'Anxiety',
     categoryFields: [
       CategoryFields(
-        id: 0,
+        id: 8,
         title: 'Anxiety',
         description: 'Get rid of fear and worries',
         imagePath: 'asset/img/anxi.png',
@@ -615,7 +615,7 @@ final List<CategoryModel> meditationCategory = [
         ],
       ),
       CategoryFields(
-        id: 0,
+        id: 9,
         title: 'Stress relief',
         description: 'Release tension and stress',
         imagePath: 'asset/img/stress.png',
@@ -659,7 +659,7 @@ final List<CategoryModel> meditationCategory = [
     title: 'RelationShips',
     categoryFields: [
       CategoryFields(
-        id: 0,
+        id: 10,
         title: 'The ability to forgive',
         description: 'Learn to accept and forgive',
         imagePath: 'asset/img/sun.png',
@@ -699,7 +699,7 @@ final List<CategoryModel> meditationCategory = [
         ],
       ),
       CategoryFields(
-        id: 0,
+        id: 11,
         title: 'After a breakup',
         description: 'Rise like a phoenix',
         imagePath: 'asset/img/rise.png',
@@ -886,7 +886,7 @@ final List<CategoryModel> myCourseCategory = [
         ],
       ),
       CategoryFields(
-        id: 1,
+        id: 10,
         title: '',
         description: '',
         imagePath: 'asset/img/souns.png',

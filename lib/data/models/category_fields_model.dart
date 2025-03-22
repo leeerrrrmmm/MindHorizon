@@ -12,6 +12,7 @@ class CategoryFields {
   final List<StepsModel>? steps;
   final List<SoundsModel>? sounds;
   List<Color>? colors;
+  late int? curStepListened;
 
   CategoryFields({
     required this.id,
@@ -22,5 +23,6 @@ class CategoryFields {
     this.sounds,
     this.colors,
     this.largestImagepath,
-  });
+    int? curStepListened,
+  }) : curStepListened = curStepListened ?? 0;
 }
