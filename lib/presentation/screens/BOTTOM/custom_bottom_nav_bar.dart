@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mind_horizon/components/app_bar.dart';
 import 'package:mind_horizon/presentation/screens/MAIN/main_screen.dart';
 import 'package:mind_horizon/presentation/screens/MEDITATION_SCREEN/meditation_screen.dart';
 import 'package:mind_horizon/presentation/screens/MUSIC_SCREEN/music_screen.dart';
@@ -25,12 +23,12 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     ProfileScreen(),
   ];
 
-  static const List<IconData> icons = [
-    Icons.home_filled,
-    CupertinoIcons.moon,
-    CupertinoIcons.wind,
-    Icons.music_note,
-    CupertinoIcons.person,
+  static const List<String> img = [
+    'asset/img/home.png',
+    'asset/img/moo.png',
+    'asset/img/meditaion.png',
+    'asset/img/note.png',
+    'asset/img/prof.png',
   ];
 
   static const List<String> titles = [
@@ -44,11 +42,11 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      // appBar: CustomAppBar(),
       backgroundColor: Color(0xfff8ecd6),
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
-        height: 120,
+        height: 100,
         decoration: const BoxDecoration(
           color: Color(0xfffea386),
           borderRadius: BorderRadius.only(
@@ -84,9 +82,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                                   : Color(0xfffea386),
                           borderRadius: BorderRadius.circular(49),
                         ),
-                        child: Icon(
-                          icons[index],
-                          size: 25,
+                        child: Image.asset(
+                          img[index],
                           color:
                               isSelected
                                   ? const Color(0xfffea386)

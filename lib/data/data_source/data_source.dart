@@ -921,6 +921,7 @@ final List<CategoryModel> myCourseCategory = [
         title: 'Touch of silence',
         description: 'Relaxation',
         imagePath: 'asset/img/two.png',
+        colors: [Color(0xfffbe7c3)],
       ),
     ],
   ),

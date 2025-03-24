@@ -233,3 +233,13 @@ class _BcdState extends State<Bcd> {
     );
   }
 }
+
+class A extends StatelessWidget {
+  final String text;
+  const A({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: Text(text)));
+  }
+}
