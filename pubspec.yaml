@@ -34,70 +34,35 @@ flutter:
   uses-material-design: true
 
   assets:
-    - asset/gif/der.gif
-    - asset/gif/cloud.gif
-    - asset/gif/done.gif
-    - asset/gif/flower.gif
-    - asset/img/side.png
-    - asset/img/ovec.png
-    - asset/img/svec.png
-    - asset/img/tvec.png
-    - asset/img/flowers.png
-    - asset/img/lvec.png
-    - asset/img/rvec.png
-    - asset/img/pana.png
-    - asset/img/cuate.png
-    - asset/img/relax.png
-    - asset/img/nature.png
-    - asset/img/bro.png
-    - asset/img/positivity.png
-    - asset/img/bat.png
-    - asset/img/water.png
-    - asset/img/amico.png
-    - asset/img/sleep.png
-    - asset/img/sleepp.png
-    - asset/img/shape.png
-    - asset/img/love.png
-    - asset/img/prod.png
-    - asset/img/procr.png
-    - asset/img/anxi.png
-    - asset/img/stress.png
-    - asset/img/rise.png
-    - asset/img/sun.png
-    - asset/img/flow.png
-    - asset/img/botFlow.png
-    - asset/img/play.png
-    - asset/img/prev.png
-    - asset/img/next.png
-    - asset/img/o.png
-    - asset/img/oo.png
-    - asset/img/ooo.png
-    - asset/img/oooo.png
-    - asset/img/secanxiety.png
-    - asset/img/stres.png
-    - asset/img/happiness.png
-    - asset/img/dis.png
-    - asset/img/souns.png
-    - asset/img/cake.png
-    - asset/img/paws.png
-    - asset/img/two.png
-    - asset/img/rbvec.png
-    - asset/img/lbat.png
-    - asset/img/lwawe.png
-    - asset/img/lnature.png
-    - asset/img/topArrow.png
-    - asset/img/bottomArow.png
+    - asset/gif/
+    - asset/img/
+   
 
   
   fonts:
     - family: Poppins
       fonts:
-        - asset: asset/font/Poppins-Black.ttf
-        - asset: asset/font/Poppins-Bold.ttf
-        - asset: asset/font/Poppins-ExtraBold.ttf
-        - asset: asset/font/Poppins-ExtraLight.ttf
-        - asset: asset/font/Poppins-Light.ttf
-        - asset: asset/font/Poppins-Medium.ttf
-        - asset: asset/font/Poppins-Regular.ttf
-        - asset: asset/font/Poppins-SemiBold.ttf
-        - asset: asset/font/Poppins-Thin.ttf
+        - asset: asset/font/Poppins/Poppins-Black.ttf
+        - asset: asset/font/Poppins/Poppins-Bold.ttf
+        - asset: asset/font/Poppins/Poppins-ExtraBold.ttf
+        - asset: asset/font/Poppins/Poppins-ExtraLight.ttf
+        - asset: asset/font/Poppins/Poppins-Light.ttf
+        - asset: asset/font/Poppins/Poppins-Medium.ttf
+        - asset: asset/font/Poppins/Poppins-Regular.ttf
+        - asset: asset/font/Poppins/Poppins-SemiBold.ttf
+        - asset: asset/font/Poppins/Poppins-Thin.ttf
+
+    - family: Alegreya
+      fonts:
+        - asset: asset/font/Alegreya/Alegreya-Italic-VariableFont_wght.ttf
+        - asset: asset/font/Alegreya/Alegreya-VariableFont_wght.ttf
+     
+    - family: AlegreyaSans
+      fonts:
+        - asset: asset/font/AlegreyaSans/AlegreyaSans-Black.ttf
+        - asset: asset/font/AlegreyaSans/AlegreyaSans-Bold.ttf
+        - asset: asset/font/AlegreyaSans/AlegreyaSans-ExtraBold.ttf
+        - asset: asset/font/AlegreyaSans/AlegreyaSans-Light.ttf
+        - asset: asset/font/AlegreyaSans/AlegreyaSans-Medium.ttf
+        - asset: asset/font/AlegreyaSans/AlegreyaSans-Regular.ttf
+        - asset: asset/font/AlegreyaSans/AlegreyaSans-Thin.ttf

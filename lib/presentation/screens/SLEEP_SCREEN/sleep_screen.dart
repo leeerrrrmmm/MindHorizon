@@ -25,7 +25,6 @@ class SleepScreen extends StatelessWidget {
               child: BlocBuilder<MeditationBloc, MeditationState>(
                 builder: (context, state) {
                   return ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
                     itemCount: sleepCategory.length,
                     itemBuilder: (context, index) {
                       final category = sleepCategory[index];
@@ -100,7 +99,7 @@ class SleepScreen extends StatelessWidget {
                                                       context
                                                           .read<
                                                             MeditationBloc
-                                                          >(), // Используем тот же экземпляр BLoC
+                                                          >(),
                                                   child: MeditationDetailScreen(
                                                     curListenedEl: currentStep,
                                                     secItemId: item.id,
@@ -207,8 +206,18 @@ class SleepScreen extends StatelessWidget {
                                                             .categoryFields[index]
                                                             .description !=
                                                         ''
-                                                    ? Text(
-                                                      '0  / ${item.steps?.length}',
+                                                    ? BlocBuilder<
+                                                      MeditationBloc,
+                                                      MeditationState
+                                                    >(
+                                                      builder: (
+                                                        context,
+                                                        state,
+                                                      ) {
+                                                        return Text(
+                                                          '${state.steps[item.id] ?? 0}  / ${item.steps?.length}',
+                                                        );
+                                                      },
                                                     )
                                                     : const SizedBox(),
                                               ],

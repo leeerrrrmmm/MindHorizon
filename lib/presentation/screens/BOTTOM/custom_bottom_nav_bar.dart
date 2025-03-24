@@ -4,6 +4,7 @@ import 'package:mind_horizon/components/app_bar.dart';
 import 'package:mind_horizon/presentation/screens/MAIN/main_screen.dart';
 import 'package:mind_horizon/presentation/screens/MEDITATION_SCREEN/meditation_screen.dart';
 import 'package:mind_horizon/presentation/screens/MUSIC_SCREEN/music_screen.dart';
+import 'package:mind_horizon/presentation/screens/PROFILE/profile_screen.dart';
 import 'package:mind_horizon/presentation/screens/SLEEP_SCREEN/sleep_screen.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
@@ -21,7 +22,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     SleepScreen(),
     MeditationScreen(),
     MusicScreen(),
-    Center(child: Text('Profile')),
+    ProfileScreen(),
   ];
 
   static const List<IconData> icons = [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mind_horizon/presentation/screens/BOTTOM/custom_bottom_nav_bar.dart';
+import 'package:mind_horizon/presentation/screens/PROFILE/profile_screen.dart';
 import 'package:mind_horizon/testt/a.dart';
 
 void main() {
@@ -20,3 +21,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+/**
+ *! При переходе с логина на регистрацию сделать отображение кнопки перехода(без аппБара)
+ */
