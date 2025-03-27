@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/presentation/screens/MAIN/main_screen.dart';
 import 'package:mind_horizon/presentation/screens/MEDITATION_SCREEN/meditation_screen.dart';
@@ -46,7 +48,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       backgroundColor: Color(0xfff8ecd6),
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
-        height: 100,
+        height: Platform.isAndroid ? 100 : 120,
         decoration: const BoxDecoration(
           color: Color(0xfffea386),
           borderRadius: BorderRadius.only(
