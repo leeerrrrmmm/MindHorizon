@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  mind
+//  mindHorizon
 //
-//  Created by .Leeerrrmmm . on 04.03.2025.
+//  Created by .Leeerrrmmm . on 27.03.2025.
 //
 
 import SwiftUI

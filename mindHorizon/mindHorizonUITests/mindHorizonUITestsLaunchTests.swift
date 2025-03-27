@@ -1,13 +1,13 @@
 //
-//  mindUITestsLaunchTests.swift
-//  mindUITests
+//  mindHorizonUITestsLaunchTests.swift
+//  mindHorizonUITests
 //
-//  Created by .Leeerrrmmm . on 04.03.2025.
+//  Created by .Leeerrrmmm . on 27.03.2025.
 //
 
 import XCTest
 
-final class mindUITestsLaunchTests: XCTestCase {
+final class mindHorizonUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

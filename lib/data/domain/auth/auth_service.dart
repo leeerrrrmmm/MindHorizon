@@ -114,6 +114,7 @@ class AuthService {
     }
   }
 
+  //LOGIN WITH GOOGLE
   Future<UserCredential?> loginWithGoogle() async {
     try {
       final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();

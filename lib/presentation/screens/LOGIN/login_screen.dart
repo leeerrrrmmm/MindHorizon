@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/log_and_ger_btn.dart';
 import 'package:mind_horizon/components/row_text_for_log_reg_screen.dart';
+import 'package:mind_horizon/data/domain/auth/auth_service.dart';
+import 'package:mind_horizon/presentation/screens/BOTTOM/custom_bottom_nav_bar.dart';
 import 'package:mind_horizon/presentation/screens/REGISTER/register_screen.dart';
 import 'package:mind_horizon/presentation/screens/REGISTER/widgets/build_reg_text.dart';
 
@@ -16,6 +18,37 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  void _loginWithCredential() async {
+    try {
+      AuthService authService = AuthService();
+
+      await authService.loginWithEmailAndPassword(
+        _emailController.text,
+        _passwordController.text,
+      );
+
+      if (!mounted) return;
+      Navigator.pushReplacement(
+        context,
+        CupertinoPageRoute(
+          builder:
+              (context) =>
+                  CustomBottomNavBar(), // Замени на экран, на который надо перейти
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Align(
+            alignment: Alignment.center,
+            child: Text("Ошибка авторизации"),
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.only(top: 27.0),
                     child: BuildRegText(
                       text:
-                          'Sign in now to acces your excercises and saved music.',
+                          'Sign in now to access your exercises and saved music.',
                       fontSize: 24,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'AlegreyaSans',
@@ -91,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // ЗАБЫЛИ ПАРОЛЬ - ВОССТАНОВЛЕНИЕ
+                          // Восстановление пароля
                         },
                         child: BuildRegText(
                           text: 'Forgot Password?',
@@ -107,14 +140,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.only(top: 49.0, bottom: 15.0),
                     child: LogAndGerBtn(
                       textBtn: 'Login',
-                      onTap: () {
-                        // LOGIN AUTHORIZATION
-                      },
+                      onTap: _loginWithCredential,
                     ),
                   ),
                   UnderButtonText(
                     firstText: "Don't have an account?",
-                    secondText: 'Sign Un',
+                    secondText: 'Sign Up',
                     onTap: () {
                       Navigator.push(
                         context,

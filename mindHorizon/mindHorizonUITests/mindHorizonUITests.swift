@@ -1,13 +1,13 @@
 //
-//  mindUITests.swift
-//  mindUITests
+//  mindHorizonUITests.swift
+//  mindHorizonUITests
 //
-//  Created by .Leeerrrmmm . on 04.03.2025.
+//  Created by .Leeerrrmmm . on 27.03.2025.
 //
 
 import XCTest
 
-final class mindUITests: XCTestCase {
+final class mindHorizonUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

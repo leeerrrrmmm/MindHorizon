@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/log_and_ger_btn.dart';
 import 'package:mind_horizon/components/row_text_for_log_reg_screen.dart';
+import 'package:mind_horizon/data/domain/auth/auth_service.dart';
+import 'package:mind_horizon/presentation/screens/BOTTOM/custom_bottom_nav_bar.dart';
 import 'package:mind_horizon/presentation/screens/LOGIN/login_screen.dart';
 import 'package:mind_horizon/presentation/screens/REGISTER/widgets/build_reg_text.dart';
 
@@ -17,6 +19,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
+
+  void _registerWithCredential() async {
+    try {
+      AuthService authService = AuthService();
+
+      await authService.registerWithEmailAndPassword(
+        _emailController.text,
+        _passwordController.text,
+        _nameController.text,
+      );
+
+      if (!mounted) return;
+
+      Navigator.pushReplacement(
+        context,
+        CupertinoPageRoute(builder: (context) => CustomBottomNavBar()),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Ошибка: Регистрации")));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,9 +138,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         padding: const EdgeInsets.only(top: 44.0, bottom: 15.0),
                         child: LogAndGerBtn(
                           textBtn: 'Sign Up',
-                          onTap: () {
-                            // Sign Up AUTHORIZATION
-                          },
+                          onTap: _registerWithCredential,
                         ),
                       ),
                       Center(

@@ -1,8 +1,8 @@
 //
 //  Persistence.swift
-//  mind
+//  mindHorizon
 //
-//  Created by .Leeerrrmmm . on 04.03.2025.
+//  Created by .Leeerrrmmm . on 27.03.2025.
 //
 
 import CoreData
@@ -32,7 +32,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "mind")
+        container = NSPersistentContainer(name: "mindHorizon")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

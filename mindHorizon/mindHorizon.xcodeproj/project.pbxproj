@@ -7,62 +7,62 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		7FAFE11F2D7718B800F024A2 /* PBXContainerItemProxy */ = {
+		7F8F46BE2D95733D0002FE46 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7FAFE1012D7718B700F024A2 /* Project object */;
+			containerPortal = 7F8F46A02D95733B0002FE46 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7FAFE1082D7718B700F024A2;
-			remoteInfo = mind;
+			remoteGlobalIDString = 7F8F46A72D95733B0002FE46;
+			remoteInfo = mindHorizon;
 		};
-		7FAFE1292D7718B800F024A2 /* PBXContainerItemProxy */ = {
+		7F8F46C82D95733D0002FE46 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7FAFE1012D7718B700F024A2 /* Project object */;
+			containerPortal = 7F8F46A02D95733B0002FE46 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7FAFE1082D7718B700F024A2;
-			remoteInfo = mind;
+			remoteGlobalIDString = 7F8F46A72D95733B0002FE46;
+			remoteInfo = mindHorizon;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7FAFE1092D7718B700F024A2 /* mind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mind.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FAFE11E2D7718B800F024A2 /* mindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FAFE1282D7718B800F024A2 /* mindUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mindUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F8F46A82D95733B0002FE46 /* mindHorizon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mindHorizon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F8F46BD2D95733D0002FE46 /* mindHorizonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mindHorizonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F8F46C72D95733D0002FE46 /* mindHorizonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mindHorizonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7FAFE10B2D7718B700F024A2 /* mind */ = {
+		7F8F46AA2D95733B0002FE46 /* mindHorizon */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = mind;
+			path = mindHorizon;
 			sourceTree = "<group>";
 		};
-		7FAFE1212D7718B800F024A2 /* mindTests */ = {
+		7F8F46C02D95733D0002FE46 /* mindHorizonTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = mindTests;
+			path = mindHorizonTests;
 			sourceTree = "<group>";
 		};
-		7FAFE12B2D7718B800F024A2 /* mindUITests */ = {
+		7F8F46CA2D95733D0002FE46 /* mindHorizonUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = mindUITests;
+			path = mindHorizonUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7FAFE1062D7718B700F024A2 /* Frameworks */ = {
+		7F8F46A52D95733B0002FE46 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FAFE11B2D7718B800F024A2 /* Frameworks */ = {
+		7F8F46BA2D95733D0002FE46 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FAFE1252D7718B800F024A2 /* Frameworks */ = {
+		7F8F46C42D95733D0002FE46 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,22 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7FAFE1002D7718B700F024A2 = {
+		7F8F469F2D95733B0002FE46 = {
 			isa = PBXGroup;
 			children = (
-				7FAFE10B2D7718B700F024A2 /* mind */,
-				7FAFE1212D7718B800F024A2 /* mindTests */,
-				7FAFE12B2D7718B800F024A2 /* mindUITests */,
-				7FAFE10A2D7718B700F024A2 /* Products */,
+				7F8F46AA2D95733B0002FE46 /* mindHorizon */,
+				7F8F46C02D95733D0002FE46 /* mindHorizonTests */,
+				7F8F46CA2D95733D0002FE46 /* mindHorizonUITests */,
+				7F8F46A92D95733B0002FE46 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		7FAFE10A2D7718B700F024A2 /* Products */ = {
+		7F8F46A92D95733B0002FE46 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7FAFE1092D7718B700F024A2 /* mind.app */,
-				7FAFE11E2D7718B800F024A2 /* mindTests.xctest */,
-				7FAFE1282D7718B800F024A2 /* mindUITests.xctest */,
+				7F8F46A82D95733B0002FE46 /* mindHorizon.app */,
+				7F8F46BD2D95733D0002FE46 /* mindHorizonTests.xctest */,
+				7F8F46C72D95733D0002FE46 /* mindHorizonUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,134 +95,134 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7FAFE1082D7718B700F024A2 /* mind */ = {
+		7F8F46A72D95733B0002FE46 /* mindHorizon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7FAFE1322D7718B800F024A2 /* Build configuration list for PBXNativeTarget "mind" */;
+			buildConfigurationList = 7F8F46D12D95733D0002FE46 /* Build configuration list for PBXNativeTarget "mindHorizon" */;
 			buildPhases = (
-				7FAFE1052D7718B700F024A2 /* Sources */,
-				7FAFE1062D7718B700F024A2 /* Frameworks */,
-				7FAFE1072D7718B700F024A2 /* Resources */,
+				7F8F46A42D95733B0002FE46 /* Sources */,
+				7F8F46A52D95733B0002FE46 /* Frameworks */,
+				7F8F46A62D95733B0002FE46 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				7FAFE10B2D7718B700F024A2 /* mind */,
+				7F8F46AA2D95733B0002FE46 /* mindHorizon */,
 			);
-			name = mind;
+			name = mindHorizon;
 			packageProductDependencies = (
 			);
-			productName = mind;
-			productReference = 7FAFE1092D7718B700F024A2 /* mind.app */;
+			productName = mindHorizon;
+			productReference = 7F8F46A82D95733B0002FE46 /* mindHorizon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7FAFE11D2D7718B800F024A2 /* mindTests */ = {
+		7F8F46BC2D95733D0002FE46 /* mindHorizonTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7FAFE1352D7718B800F024A2 /* Build configuration list for PBXNativeTarget "mindTests" */;
+			buildConfigurationList = 7F8F46D42D95733D0002FE46 /* Build configuration list for PBXNativeTarget "mindHorizonTests" */;
 			buildPhases = (
-				7FAFE11A2D7718B800F024A2 /* Sources */,
-				7FAFE11B2D7718B800F024A2 /* Frameworks */,
-				7FAFE11C2D7718B800F024A2 /* Resources */,
+				7F8F46B92D95733D0002FE46 /* Sources */,
+				7F8F46BA2D95733D0002FE46 /* Frameworks */,
+				7F8F46BB2D95733D0002FE46 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7FAFE1202D7718B800F024A2 /* PBXTargetDependency */,
+				7F8F46BF2D95733D0002FE46 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				7FAFE1212D7718B800F024A2 /* mindTests */,
+				7F8F46C02D95733D0002FE46 /* mindHorizonTests */,
 			);
-			name = mindTests;
+			name = mindHorizonTests;
 			packageProductDependencies = (
 			);
-			productName = mindTests;
-			productReference = 7FAFE11E2D7718B800F024A2 /* mindTests.xctest */;
+			productName = mindHorizonTests;
+			productReference = 7F8F46BD2D95733D0002FE46 /* mindHorizonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7FAFE1272D7718B800F024A2 /* mindUITests */ = {
+		7F8F46C62D95733D0002FE46 /* mindHorizonUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7FAFE1382D7718B800F024A2 /* Build configuration list for PBXNativeTarget "mindUITests" */;
+			buildConfigurationList = 7F8F46D72D95733D0002FE46 /* Build configuration list for PBXNativeTarget "mindHorizonUITests" */;
 			buildPhases = (
-				7FAFE1242D7718B800F024A2 /* Sources */,
-				7FAFE1252D7718B800F024A2 /* Frameworks */,
-				7FAFE1262D7718B800F024A2 /* Resources */,
+				7F8F46C32D95733D0002FE46 /* Sources */,
+				7F8F46C42D95733D0002FE46 /* Frameworks */,
+				7F8F46C52D95733D0002FE46 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7FAFE12A2D7718B800F024A2 /* PBXTargetDependency */,
+				7F8F46C92D95733D0002FE46 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				7FAFE12B2D7718B800F024A2 /* mindUITests */,
+				7F8F46CA2D95733D0002FE46 /* mindHorizonUITests */,
 			);
-			name = mindUITests;
+			name = mindHorizonUITests;
 			packageProductDependencies = (
 			);
-			productName = mindUITests;
-			productReference = 7FAFE1282D7718B800F024A2 /* mindUITests.xctest */;
+			productName = mindHorizonUITests;
+			productReference = 7F8F46C72D95733D0002FE46 /* mindHorizonUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7FAFE1012D7718B700F024A2 /* Project object */ = {
+		7F8F46A02D95733B0002FE46 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					7FAFE1082D7718B700F024A2 = {
+					7F8F46A72D95733B0002FE46 = {
 						CreatedOnToolsVersion = 16.2;
 					};
-					7FAFE11D2D7718B800F024A2 = {
+					7F8F46BC2D95733D0002FE46 = {
 						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 7FAFE1082D7718B700F024A2;
+						TestTargetID = 7F8F46A72D95733B0002FE46;
 					};
-					7FAFE1272D7718B800F024A2 = {
+					7F8F46C62D95733D0002FE46 = {
 						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 7FAFE1082D7718B700F024A2;
+						TestTargetID = 7F8F46A72D95733B0002FE46;
 					};
 				};
 			};
-			buildConfigurationList = 7FAFE1042D7718B700F024A2 /* Build configuration list for PBXProject "mind" */;
+			buildConfigurationList = 7F8F46A32D95733B0002FE46 /* Build configuration list for PBXProject "mindHorizon" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 7FAFE1002D7718B700F024A2;
+			mainGroup = 7F8F469F2D95733B0002FE46;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 7FAFE10A2D7718B700F024A2 /* Products */;
+			productRefGroup = 7F8F46A92D95733B0002FE46 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7FAFE1082D7718B700F024A2 /* mind */,
-				7FAFE11D2D7718B800F024A2 /* mindTests */,
-				7FAFE1272D7718B800F024A2 /* mindUITests */,
+				7F8F46A72D95733B0002FE46 /* mindHorizon */,
+				7F8F46BC2D95733D0002FE46 /* mindHorizonTests */,
+				7F8F46C62D95733D0002FE46 /* mindHorizonUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7FAFE1072D7718B700F024A2 /* Resources */ = {
+		7F8F46A62D95733B0002FE46 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FAFE11C2D7718B800F024A2 /* Resources */ = {
+		7F8F46BB2D95733D0002FE46 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FAFE1262D7718B800F024A2 /* Resources */ = {
+		7F8F46C52D95733D0002FE46 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,21 +232,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7FAFE1052D7718B700F024A2 /* Sources */ = {
+		7F8F46A42D95733B0002FE46 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FAFE11A2D7718B800F024A2 /* Sources */ = {
+		7F8F46B92D95733D0002FE46 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FAFE1242D7718B800F024A2 /* Sources */ = {
+		7F8F46C32D95733D0002FE46 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,20 +256,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7FAFE1202D7718B800F024A2 /* PBXTargetDependency */ = {
+		7F8F46BF2D95733D0002FE46 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7FAFE1082D7718B700F024A2 /* mind */;
-			targetProxy = 7FAFE11F2D7718B800F024A2 /* PBXContainerItemProxy */;
+			target = 7F8F46A72D95733B0002FE46 /* mindHorizon */;
+			targetProxy = 7F8F46BE2D95733D0002FE46 /* PBXContainerItemProxy */;
 		};
-		7FAFE12A2D7718B800F024A2 /* PBXTargetDependency */ = {
+		7F8F46C92D95733D0002FE46 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7FAFE1082D7718B700F024A2 /* mind */;
-			targetProxy = 7FAFE1292D7718B800F024A2 /* PBXContainerItemProxy */;
+			target = 7F8F46A72D95733B0002FE46 /* mindHorizon */;
+			targetProxy = 7F8F46C82D95733D0002FE46 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		7FAFE1302D7718B800F024A2 /* Debug */ = {
+		7F8F46CF2D95733D0002FE46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -332,7 +332,7 @@
 			};
 			name = Debug;
 		};
-		7FAFE1312D7718B800F024A2 /* Release */ = {
+		7F8F46D02D95733D0002FE46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -388,14 +388,14 @@
 			};
 			name = Release;
 		};
-		7FAFE1332D7718B800F024A2 /* Debug */ = {
+		7F8F46D22D95733D0002FE46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"mind/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"mindHorizon/Preview Content\"";
 				DEVELOPMENT_TEAM = 4L3KS228U2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -409,7 +409,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymind.mind;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymindhorrizon.mindHorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -417,14 +417,14 @@
 			};
 			name = Debug;
 		};
-		7FAFE1342D7718B800F024A2 /* Release */ = {
+		7F8F46D32D95733D0002FE46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"mind/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"mindHorizon/Preview Content\"";
 				DEVELOPMENT_TEAM = 4L3KS228U2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -438,7 +438,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymind.mind;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymindhorrizon.mindHorizon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -446,7 +446,7 @@
 			};
 			name = Release;
 		};
-		7FAFE1362D7718B800F024A2 /* Debug */ = {
+		7F8F46D52D95733D0002FE46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -456,16 +456,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymind.mindTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymindhorrizon.mindHorizonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mind.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mind";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mindHorizon.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mindHorizon";
 			};
 			name = Debug;
 		};
-		7FAFE1372D7718B800F024A2 /* Release */ = {
+		7F8F46D62D95733D0002FE46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -475,16 +475,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymind.mindTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymindhorrizon.mindHorizonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mind.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mind";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mindHorizon.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mindHorizon";
 			};
 			name = Release;
 		};
-		7FAFE1392D7718B800F024A2 /* Debug */ = {
+		7F8F46D82D95733D0002FE46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -492,16 +492,16 @@
 				DEVELOPMENT_TEAM = 4L3KS228U2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymind.mindUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymindhorrizon.mindHorizonUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = mind;
+				TEST_TARGET_NAME = mindHorizon;
 			};
 			name = Debug;
 		};
-		7FAFE13A2D7718B800F024A2 /* Release */ = {
+		7F8F46D92D95733D0002FE46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -509,55 +509,55 @@
 				DEVELOPMENT_TEAM = 4L3KS228U2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymind.mindUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lermcompanymindhorrizon.mindHorizonUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = mind;
+				TEST_TARGET_NAME = mindHorizon;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7FAFE1042D7718B700F024A2 /* Build configuration list for PBXProject "mind" */ = {
+		7F8F46A32D95733B0002FE46 /* Build configuration list for PBXProject "mindHorizon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7FAFE1302D7718B800F024A2 /* Debug */,
-				7FAFE1312D7718B800F024A2 /* Release */,
+				7F8F46CF2D95733D0002FE46 /* Debug */,
+				7F8F46D02D95733D0002FE46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7FAFE1322D7718B800F024A2 /* Build configuration list for PBXNativeTarget "mind" */ = {
+		7F8F46D12D95733D0002FE46 /* Build configuration list for PBXNativeTarget "mindHorizon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7FAFE1332D7718B800F024A2 /* Debug */,
-				7FAFE1342D7718B800F024A2 /* Release */,
+				7F8F46D22D95733D0002FE46 /* Debug */,
+				7F8F46D32D95733D0002FE46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7FAFE1352D7718B800F024A2 /* Build configuration list for PBXNativeTarget "mindTests" */ = {
+		7F8F46D42D95733D0002FE46 /* Build configuration list for PBXNativeTarget "mindHorizonTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7FAFE1362D7718B800F024A2 /* Debug */,
-				7FAFE1372D7718B800F024A2 /* Release */,
+				7F8F46D52D95733D0002FE46 /* Debug */,
+				7F8F46D62D95733D0002FE46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7FAFE1382D7718B800F024A2 /* Build configuration list for PBXNativeTarget "mindUITests" */ = {
+		7F8F46D72D95733D0002FE46 /* Build configuration list for PBXNativeTarget "mindHorizonUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7FAFE1392D7718B800F024A2 /* Debug */,
-				7FAFE13A2D7718B800F024A2 /* Release */,
+				7F8F46D82D95733D0002FE46 /* Debug */,
+				7F8F46D92D95733D0002FE46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 7FAFE1012D7718B700F024A2 /* Project object */;
+	rootObject = 7F8F46A02D95733B0002FE46 /* Project object */;
 }

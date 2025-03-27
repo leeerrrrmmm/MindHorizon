@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/build_text.dart';
+import 'package:mind_horizon/data/domain/auth/auth_service.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/profile/detail_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -10,6 +11,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final user = AuthService().getCurUser();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,13 +64,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   BuildText(
-                    text: 'Lerm Top',
+                    text: user!.displayName ?? 'User',
                     fontSize: 28,
                     fontWeight: FontWeight.w600,
                     color: Color(0xfff19584),
                   ),
                   BuildText(
-                    text: 'Lerm Top@gmail.com',
+                    text: user!.email ?? 'user@gmail.com',
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: Color(0xfff19584),
