@@ -10,7 +10,7 @@ class AuthGate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final auth = AuthService().getCurUser();
+    final auth = AuthService().getCurrentUser();
     return Scaffold(
       body: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),

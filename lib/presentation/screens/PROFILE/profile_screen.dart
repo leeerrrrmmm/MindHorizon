@@ -11,7 +11,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final user = AuthService().getCurUser();
+  final user = AuthService().getCurrentUser();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

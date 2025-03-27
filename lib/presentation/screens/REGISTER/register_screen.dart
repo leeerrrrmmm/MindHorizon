@@ -43,6 +43,51 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
+  void _registerWithGoogle() async {
+    try {
+      AuthService authService = AuthService();
+      final user = authService.getCurrentUser();
+
+      await authService.registerGoogle();
+
+      if (!mounted) return;
+      if(user != null) {
+        Navigator.pushReplacement(
+          context,
+          CupertinoPageRoute(
+            builder:
+                (context) =>
+                CustomBottomNavBar(),
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Align(
+                alignment: Alignment.center,
+                child: Text("Success"),
+              ),
+            ));
+      }else{
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Align(
+                alignment: Alignment.center,
+                child: Text("Ошибка авторизации"),
+              ),
+            ));
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Align(
+            alignment: Alignment.center,
+            child: Text("Ошибка авторизации"),
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,6 +186,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onTap: _registerWithCredential,
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 44.0, bottom: 15.0),
+                        child: LogAndGerBtn(
+                          textBtn: 'Sign Up',
+                          onTap:  _registerWithGoogle,
+                        ),
+                      ),
                       Center(
                         child: UnderButtonText(
                           firstText: 'Already have an account?',
@@ -157,6 +209,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ],
                   ),
+
                   const SizedBox(height: 10),
                 ],
               ),

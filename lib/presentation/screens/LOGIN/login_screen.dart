@@ -49,6 +49,50 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  void _loginWithGoogle() async {
+    try {
+      AuthService authService = AuthService();
+      final user = authService.getCurrentUser();
+
+      await authService.loginWithGoogle();
+
+      if (!mounted) return;
+     if(user != null) {
+       Navigator.pushReplacement(
+         context,
+         CupertinoPageRoute(
+           builder:
+               (context) =>
+               CustomBottomNavBar(),
+         ),
+       );
+       ScaffoldMessenger.of(context).showSnackBar(
+           SnackBar(
+             content: Align(
+               alignment: Alignment.center,
+               child: Text("Success"),
+             ),
+           ));
+     }else{
+       ScaffoldMessenger.of(context).showSnackBar(
+           SnackBar(
+             content: Align(
+               alignment: Alignment.center,
+               child: Text("Ошибка авторизации"),
+             ),
+           ));
+     }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Align(
+            alignment: Alignment.center,
+            child: Text("Ошибка авторизации"),
+          ),
+        ),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,6 +185,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: LogAndGerBtn(
                       textBtn: 'Login',
                       onTap: _loginWithCredential,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 49.0, bottom: 15.0),
+                    child: LogAndGerBtn(
+                      textBtn: 'Google',
+                      onTap: _loginWithGoogle,
                     ),
                   ),
                   UnderButtonText(
