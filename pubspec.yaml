@@ -39,35 +39,36 @@ flutter:
   uses-material-design: true
 
   assets:
-    - asset/gif/
-    - asset/img/
+    - assets/gif/
+    - assets/img/
+    - assets/sound/
    
 
   
   fonts:
     - family: Poppins
       fonts:
-        - asset: asset/font/Poppins/Poppins-Black.ttf
-        - asset: asset/font/Poppins/Poppins-Bold.ttf
-        - asset: asset/font/Poppins/Poppins-ExtraBold.ttf
-        - asset: asset/font/Poppins/Poppins-ExtraLight.ttf
-        - asset: asset/font/Poppins/Poppins-Light.ttf
-        - asset: asset/font/Poppins/Poppins-Medium.ttf
-        - asset: asset/font/Poppins/Poppins-Regular.ttf
-        - asset: asset/font/Poppins/Poppins-SemiBold.ttf
-        - asset: asset/font/Poppins/Poppins-Thin.ttf
+        - asset: assets/font/Poppins/Poppins-Black.ttf
+        - asset: assets/font/Poppins/Poppins-Bold.ttf
+        - asset: assets/font/Poppins/Poppins-ExtraBold.ttf
+        - asset: assets/font/Poppins/Poppins-ExtraLight.ttf
+        - asset: assets/font/Poppins/Poppins-Light.ttf
+        - asset: assets/font/Poppins/Poppins-Medium.ttf
+        - asset: assets/font/Poppins/Poppins-Regular.ttf
+        - asset: assets/font/Poppins/Poppins-SemiBold.ttf
+        - asset: assets/font/Poppins/Poppins-Thin.ttf
 
     - family: Alegreya
       fonts:
-        - asset: asset/font/Alegreya/Alegreya-Italic-VariableFont_wght.ttf
-        - asset: asset/font/Alegreya/Alegreya-VariableFont_wght.ttf
+        - asset: assets/font/Alegreya/Alegreya-Italic-VariableFont_wght.ttf
+        - asset: assets/font/Alegreya/Alegreya-VariableFont_wght.ttf
      
     - family: AlegreyaSans
       fonts:
-        - asset: asset/font/AlegreyaSans/AlegreyaSans-Black.ttf
-        - asset: asset/font/AlegreyaSans/AlegreyaSans-Bold.ttf
-        - asset: asset/font/AlegreyaSans/AlegreyaSans-ExtraBold.ttf
-        - asset: asset/font/AlegreyaSans/AlegreyaSans-Light.ttf
-        - asset: asset/font/AlegreyaSans/AlegreyaSans-Medium.ttf
-        - asset: asset/font/AlegreyaSans/AlegreyaSans-Regular.ttf
-        - asset: asset/font/AlegreyaSans/AlegreyaSans-Thin.ttf
+        - asset: assets/font/AlegreyaSans/AlegreyaSans-Black.ttf
+        - asset: assets/font/AlegreyaSans/AlegreyaSans-Bold.ttf
+        - asset: assets/font/AlegreyaSans/AlegreyaSans-ExtraBold.ttf
+        - asset: assets/font/AlegreyaSans/AlegreyaSans-Light.ttf
+        - asset: assets/font/AlegreyaSans/AlegreyaSans-Medium.ttf
+        - asset: assets/font/AlegreyaSans/AlegreyaSans-Regular.ttf
+        - asset: assets/font/AlegreyaSans/AlegreyaSans-Thin.ttf

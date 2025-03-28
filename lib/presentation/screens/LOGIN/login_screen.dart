@@ -51,41 +51,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _loginWithGoogle() async {
     try {
-      AuthService authService = AuthService();
-      final user = authService.getCurrentUser();
-
-      await authService.loginWithGoogle();
-
-      if (!mounted) return;
-      if (user != null) {
-        Navigator.pushReplacement(
+      final userCredential = await AuthService().registerGoogle();
+      if (userCredential != null) {
+        await Navigator.pushReplacement(
           context,
           CupertinoPageRoute(builder: (context) => CustomBottomNavBar()),
         );
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Align(alignment: Alignment.center, child: Text("Success")),
-          ),
-        );
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Align(
-              alignment: Alignment.center,
-              child: Text("Ошибка авторизации"),
-            ),
-          ),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Google Sign In was CANCELLED')));
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Align(
-            alignment: Alignment.center,
-            child: Text("Ошибка авторизации словлена"),
-          ),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error: $e')));
     }
   }
 

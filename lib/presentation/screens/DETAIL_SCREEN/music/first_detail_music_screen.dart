@@ -126,6 +126,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 DetailMusicScreen(
                                   categoryTitle: widget.title,
                                   soundsTitle: widget.sounds?[index].title,
+                                  musicAsset: widget.sounds![index].musicAsset,
                                 ),
                         transitionsBuilder: (
                           context,

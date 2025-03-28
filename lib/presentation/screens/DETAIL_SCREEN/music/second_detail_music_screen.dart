@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:mind_horizon/components/build_text.dart';
 
 class DetailMusicScreen extends StatefulWidget {
   final String categoryTitle;
   final String? soundsTitle;
+  final String musicAsset;
+
   const DetailMusicScreen({
     super.key,
     required this.categoryTitle,
     required this.soundsTitle,
+    required this.musicAsset,
   });
 
   @override
@@ -15,8 +19,65 @@ class DetailMusicScreen extends StatefulWidget {
 }
 
 class _DetailMusicScreenState extends State<DetailMusicScreen> {
+  final AudioPlayer _audioPlayer = AudioPlayer();
+  bool isPlaying = false;
   double curSoundPos = 0.0;
-  bool clicked = false;
+  Duration totalDuration = Duration.zero;
+  Duration currentPosition = Duration.zero;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _audioPlayer.onDurationChanged.listen((duration) {
+      if (mounted) {
+        setState(() {
+          totalDuration = duration;
+        });
+      }
+    });
+
+    _audioPlayer.onPositionChanged.listen((position) {
+      if (mounted) {
+        setState(() {
+          currentPosition = position;
+          curSoundPos = position.inSeconds.toDouble();
+        });
+      }
+    });
+
+    _audioPlayer.onPlayerComplete.listen((event) {
+      if (mounted) {
+        setState(() {
+          isPlaying = false;
+          curSoundPos = 0.0;
+        });
+      }
+    });
+  }
+
+  Future<void> _playPauseMusic() async {
+    if (isPlaying) {
+      await _audioPlayer.pause();
+    } else {
+      await _audioPlayer.play(AssetSource(widget.musicAsset));
+    }
+
+    setState(() {
+      isPlaying = !isPlaying;
+    });
+  }
+
+  Future<void> _seekToPosition(double seconds) async {
+    await _audioPlayer.seek(Duration(seconds: seconds.toInt()));
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.stop();
+    _audioPlayer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,62 +89,56 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
         child: Stack(
           children: [
             // BACKGROUND IMG
-            Positioned(top: 0, child: Image.asset('asset/img/flow.png')),
+            Positioned(top: 0, child: Image.asset('assets/img/flow.png')),
             Positioned(
               bottom: 0,
               right: 0,
-              child: Image.asset('asset/img/botFlow.png'),
+              child: Image.asset('assets/img/botFlow.png'),
             ),
             Positioned(
               top: 270,
               right: 50,
-              child: Image.asset('asset/img/o.png'),
+              child: Image.asset('assets/img/o.png'),
             ),
             Positioned(
               top: 270,
               right: 55,
-              child: Image.asset('asset/img/oo.png'),
+              child: Image.asset('assets/img/oo.png'),
             ),
             Positioned(
               top: 270,
               right: 60,
-              child: Image.asset('asset/img/ooo.png'),
+              child: Image.asset('assets/img/ooo.png'),
             ),
             Positioned(
               top: 270,
               right: 60,
-              child: Image.asset('asset/img/oooo.png'),
+              child: Image.asset('assets/img/oooo.png'),
             ),
             Positioned(
               top: 65.0,
               left: 46.0,
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.keyboard_arrow_left_sharp,
-                    size: 40,
-                    color: Color(0xfffea386),
-                  ),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.keyboard_arrow_left_sharp,
+                  size: 40,
+                  color: Color(0xfffea386),
                 ),
               ),
             ),
             Positioned(
               top: 80.0,
               left: 150.0,
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Text(
-                  'MindHorizon',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 20,
-                    color: Color(0xfffea386),
-                  ),
+              child: Text(
+                'MindHorizon',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                  color: Color(0xfffea386),
                 ),
               ),
             ),
@@ -129,12 +184,7 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color.fromARGB(
-                                    255,
-                                    204,
-                                    102,
-                                    95,
-                                  ),
+                                  color: Color.fromARGB(255, 204, 102, 95),
                                   blurRadius: 40,
                                   spreadRadius: 10,
                                 ),
@@ -154,7 +204,7 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
                       height: 188,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xfffea386).withValues(alpha: 0.1),
+                        color: Color(0xfffea386).withOpacity(0.1),
                       ),
                       child: Column(
                         children: [
@@ -162,12 +212,13 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
                             activeColor: Color(0xfffea386),
                             inactiveColor: Color(0xffbdbdbd),
                             min: 0,
-                            max: 10.02,
+                            max: totalDuration.inSeconds.toDouble(),
                             value: curSoundPos,
                             onChanged: (val) {
                               setState(() {
                                 curSoundPos = val;
                               });
+                              _seekToPosition(val);
                             },
                           ),
                           Padding(
@@ -177,8 +228,12 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(curSoundPos.toStringAsFixed(2)),
-                                Text('10:02'),
+                                Text(
+                                  "${currentPosition.inMinutes}:${(currentPosition.inSeconds % 60).toString().padLeft(2, '0')}",
+                                ),
+                                Text(
+                                  "${totalDuration.inMinutes}:${(totalDuration.inSeconds % 60).toString().padLeft(2, '0')}",
+                                ),
                               ],
                             ),
                           ),
@@ -189,7 +244,7 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
                                 backgroundColor: Colors.white,
                                 radius: 35,
                                 child: Image.asset(
-                                  'asset/img/prev.png',
+                                  'assets/img/prev.png',
                                   scale: 0.9,
                                 ),
                               ),
@@ -199,29 +254,25 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
                                   right: 11.0,
                                 ),
                                 child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      clicked = !clicked;
-                                    });
-                                  },
+                                  onTap: _playPauseMusic,
                                   child: CircleAvatar(
                                     backgroundColor: Color(0xfffea386),
                                     radius: 42.5,
                                     child:
-                                        !clicked
-                                            ? Padding(
+                                        isPlaying
+                                            ? Icon(
+                                              Icons.pause,
+                                              color: Colors.white,
+                                              size: 40,
+                                            )
+                                            : Padding(
                                               padding: const EdgeInsets.only(
                                                 left: 8.0,
                                               ),
                                               child: Image.asset(
-                                                'asset/img/play.png',
+                                                'assets/img/play.png',
                                                 scale: 0.9,
                                               ),
-                                            )
-                                            : Icon(
-                                              Icons.pause,
-                                              color: Colors.white,
-                                              size: 40,
                                             ),
                                   ),
                                 ),
@@ -230,7 +281,7 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
                                 backgroundColor: Colors.white,
                                 radius: 35,
                                 child: Image.asset(
-                                  'asset/img/next.png',
+                                  'assets/img/next.png',
                                   scale: 0.9,
                                 ),
                               ),
