@@ -379,14 +379,14 @@ final List<CategoryModel> sleepCategory = [
         description: 'Relax and fall asleep',
         imagePath: 'assets/img/sleep.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
-          StepsModel(id: 4, title: 'Step 5'),
-          StepsModel(id: 5, title: 'Step 6'),
-          StepsModel(id: 6, title: 'Step 7'),
-          StepsModel(id: 7, title: 'Step 8'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 5, title: 'Step 6', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 6, title: 'Step 7', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 7, title: 'Step 8', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -421,11 +421,11 @@ final List<CategoryModel> sleepCategory = [
         description: 'Fall asleep faster and easier',
         imagePath: 'assets/img/sleepp.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
-          StepsModel(id: 4, title: 'Step 5'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -468,14 +468,14 @@ final List<CategoryModel> meditationCategory = [
         description: 'Relax and fall asleep',
         imagePath: 'assets/img/sleep.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
-          StepsModel(id: 4, title: 'Step 5'),
-          StepsModel(id: 5, title: 'Step 6'),
-          StepsModel(id: 6, title: 'Step 7'),
-          StepsModel(id: 7, title: 'Step 8'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 5, title: 'Step 6', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 6, title: 'Step 7', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 7, title: 'Step 8', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -510,11 +510,11 @@ final List<CategoryModel> meditationCategory = [
         description: 'Fall asleep faster and easier',
         imagePath: 'assets/img/sleepp.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
-          StepsModel(id: 4, title: 'Step 5'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -554,14 +554,14 @@ final List<CategoryModel> meditationCategory = [
         description: 'Unleash your individuality',
         imagePath: 'assets/img/love.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
-          StepsModel(id: 4, title: 'Step 5'),
-          StepsModel(id: 5, title: 'Step 6'),
-          StepsModel(id: 6, title: 'Step 7'),
-          StepsModel(id: 7, title: 'Step 8'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 5, title: 'Step 6', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 6, title: 'Step 7', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 7, title: 'Step 8', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -596,14 +596,14 @@ final List<CategoryModel> meditationCategory = [
         description: 'Get your body in shape',
         imagePath: 'assets/img/shape.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
-          StepsModel(id: 4, title: 'Step 5'),
-          StepsModel(id: 5, title: 'Step 6'),
-          StepsModel(id: 6, title: 'Step 7'),
-          StepsModel(id: 7, title: 'Step 8'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 5, title: 'Step 6', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 6, title: 'Step 7', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 7, title: 'Step 8', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -643,10 +643,10 @@ final List<CategoryModel> meditationCategory = [
         description: 'Become more successful and productive',
         imagePath: 'assets/img/prod.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -681,10 +681,10 @@ final List<CategoryModel> meditationCategory = [
         description: 'Complete tasks quckly and efficientle',
         imagePath: 'assets/img/procr.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -724,12 +724,12 @@ final List<CategoryModel> meditationCategory = [
         description: 'Get rid of fear and worries',
         imagePath: 'assets/img/anxi.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
-          StepsModel(id: 4, title: 'Step 5'),
-          StepsModel(id: 5, title: 'Step 6'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 5, title: 'Step 6', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -764,11 +764,11 @@ final List<CategoryModel> meditationCategory = [
         description: 'Release tension and stress',
         imagePath: 'assets/img/stress.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
-          StepsModel(id: 4, title: 'Step 5'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -808,12 +808,12 @@ final List<CategoryModel> meditationCategory = [
         description: 'Learn to accept and forgive',
         imagePath: 'assets/img/sun.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
-          StepsModel(id: 4, title: 'Step 5'),
-          StepsModel(id: 5, title: 'Step 6'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 5, title: 'Step 6', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -848,12 +848,12 @@ final List<CategoryModel> meditationCategory = [
         description: 'Rise like a phoenix',
         imagePath: 'assets/img/rise.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1'),
-          StepsModel(id: 1, title: 'Step 2'),
-          StepsModel(id: 2, title: 'Step 3'),
-          StepsModel(id: 3, title: 'Step 4'),
-          StepsModel(id: 4, title: 'Step 5'),
-          StepsModel(id: 5, title: 'Step 6'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 5, title: 'Step 6', stepAsset: 'sound/cosmo.mp3'),
         ],
         colors: [
           // fCOlor
@@ -1021,12 +1021,32 @@ final List<CategoryModel> myCourseCategory = [
         description: '',
         imagePath: 'assets/img/dis.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Sleep cpace', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(
+            id: 1,
+            title: 'Time for sweet dreams',
+            stepAsset: 'sound/cosmo.mp3',
+          ),
+          StepsModel(
+            id: 2,
+            title: 'Melody for the soul',
+            stepAsset: 'sound/cosmo.mp3',
+          ),
+          StepsModel(
+            id: 3,
+            title: 'Tranquil sleep',
+            stepAsset: 'sound/cosmo.mp3',
+          ),
+          StepsModel(
+            id: 4,
+            title: 'Magical garden',
+            stepAsset: 'sound/cosmo.mp3',
+          ),
+          StepsModel(
+            id: 5,
+            title: 'Gentle flute',
+            stepAsset: 'sound/cosmo.mp3',
+          ),
         ],
       ),
       CategoryFields(
@@ -1035,12 +1055,32 @@ final List<CategoryModel> myCourseCategory = [
         description: '',
         imagePath: 'assets/img/souns.png',
         steps: [
-          StepsModel(id: 0, title: 'Sleep cpace'),
-          StepsModel(id: 1, title: 'Time for sweet dreams'),
-          StepsModel(id: 2, title: 'Melody for the soul'),
-          StepsModel(id: 3, title: 'Tranquil sleep'),
-          StepsModel(id: 4, title: 'Magical garden'),
-          StepsModel(id: 5, title: 'Gentle flute'),
+          StepsModel(id: 0, title: 'Sleep cpace', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(
+            id: 1,
+            title: 'Time for sweet dreams',
+            stepAsset: 'sound/cosmo.mp3',
+          ),
+          StepsModel(
+            id: 2,
+            title: 'Melody for the soul',
+            stepAsset: 'sound/cosmo.mp3',
+          ),
+          StepsModel(
+            id: 3,
+            title: 'Tranquil sleep',
+            stepAsset: 'sound/cosmo.mp3',
+          ),
+          StepsModel(
+            id: 4,
+            title: 'Magical garden',
+            stepAsset: 'sound/cosmo.mp3',
+          ),
+          StepsModel(
+            id: 5,
+            title: 'Gentle flute',
+            stepAsset: 'sound/cosmo.mp3',
+          ),
         ],
       ),
       CategoryFields(

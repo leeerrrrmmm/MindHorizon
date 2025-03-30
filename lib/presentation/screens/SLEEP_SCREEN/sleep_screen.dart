@@ -96,6 +96,7 @@ class SleepScreen extends StatelessWidget {
                                                     context
                                                         .read<MeditationBloc>(),
                                                 child: MeditationDetailScreen(
+                                                  curStepMusic: '',
                                                   curListenedEl: currentStep,
                                                   secItemId: item.id,
                                                   stepCounter:

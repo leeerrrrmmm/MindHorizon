@@ -74,6 +74,10 @@ class MeditationScreen extends StatelessWidget {
                                                     secItem.steps!.length,
                                                 steps: secItem.steps,
                                                 colors: secItem.colors,
+                                                curStepMusic:
+                                                    secItem
+                                                        .steps![currentStep]
+                                                        .stepAsset,
                                               ),
                                             ),
                                       ),
@@ -156,13 +160,6 @@ class MeditationScreen extends StatelessWidget {
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
-                                                Text(
-                                                  secItem.description,
-                                                  style: TextStyle(
-                                                    fontSize: 13,
-                                                    fontFamily: 'Poppins',
-                                                  ),
-                                                ),
                                                 BlocBuilder<
                                                   MeditationBloc,
                                                   MeditationState
@@ -172,6 +169,13 @@ class MeditationScreen extends StatelessWidget {
                                                       'Step listened: ${state.steps[secItem.id] ?? 0} / ${secItem.steps?.length}',
                                                     );
                                                   },
+                                                ),
+                                                Text(
+                                                  secItem.description,
+                                                  style: TextStyle(
+                                                    fontSize: 13,
+                                                    fontFamily: 'Poppins',
+                                                  ),
                                                 ),
                                               ],
                                             ),
