@@ -10,11 +10,11 @@ class HelpAndSupport extends StatelessWidget {
       backgroundColor: const Color(0xfff8ecd6),
       body: Stack(
         children: <Widget>[
-          Positioned(top: 0, child: Image.asset('asset/img/flow.png')),
+          Positioned(top: 0, child: Image.asset('assets/img/flow.png')),
           Positioned(
             bottom: 0,
             right: 0,
-            child: Image.asset('asset/img/botFlow.png'),
+            child: Image.asset('assets/img/botFlow.png'),
           ),
           SafeArea(
             child: Padding(

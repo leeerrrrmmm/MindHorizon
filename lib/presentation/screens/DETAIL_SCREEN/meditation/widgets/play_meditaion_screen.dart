@@ -29,11 +29,11 @@ class PlayMeditationScreen extends StatefulWidget {
 class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
   late int stepCount;
   late int listenedStepsCount;
-  bool isPlaying = false;
-  double curSoundPos = 0.0;
-  Duration totalDuration = Duration.zero;
-  Duration currentPosition = Duration.zero;
-  final _audioPlayer = AudioPlayer();
+  List<bool> isPlayingList = [];
+  Map<int, AudioPlayer> audioPlayers = {};
+  Map<int, Duration> stepPositions = {};
+  Map<int, Duration> stepDurations = {};
+  Map<int, double> stepProgress = {};
 
   @override
   void initState() {
@@ -41,83 +41,121 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
     stepCount = widget.currentStep;
     listenedStepsCount = widget.currentStep;
 
-    _audioPlayer.onDurationChanged.listen((duration) {
-      if (mounted) {
-        setState(() {
-          totalDuration = duration;
-        });
-      }
-    });
+    isPlayingList = List.generate(widget.steps!.length, (index) => false);
 
-    _audioPlayer.onPositionChanged.listen((position) {
-      if (mounted) {
-        setState(() {
-          currentPosition = position;
-          curSoundPos = position.inSeconds.toDouble();
-        });
-      }
-    });
+    // Инициализируем плееры для каждого шага
+    for (int i = 0; i < widget.steps!.length; i++) {
+      audioPlayers[i] = AudioPlayer();
+      stepPositions[i] = Duration.zero;
+      stepDurations[i] = Duration.zero;
+      stepProgress[i] = 0.0;
+
+      audioPlayers[i]!.onDurationChanged.listen((duration) {
+        if (mounted) {
+          setState(() {
+            stepDurations[i] = duration;
+          });
+        }
+      });
+
+      audioPlayers[i]!.onPositionChanged.listen((position) {
+        if (mounted) {
+          setState(() {
+            stepPositions[i] = position;
+            stepProgress[i] = durationToProgress(position, stepDurations[i]!);
+          });
+        }
+      });
+
+      audioPlayers[i]!.onPlayerComplete.listen((event) async {
+        if (mounted) {
+          setState(() {
+            isPlayingList[i] = false;
+            stepPositions[i] = Duration.zero;
+            stepProgress[i] = 0.0;
+
+            // Увеличиваем кол-во прослушанных шагов
+            if (i == listenedStepsCount) {
+              listenedStepsCount++;
+
+              // Обновляем состояние в Bloc
+              context.read<MeditationBloc>().add(
+                UpdateStepCount(
+                  id: widget.curElement,
+                  stepCount: listenedStepsCount,
+                ),
+              );
+            }
+
+            // Переход на экран завершения
+            if (mounted) {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) => EndMeditationScreen(colors: widget.colors),
+                ),
+              );
+            }
+          });
+        }
+      });
+    }
+  }
+
+  // Функция для расчета прогресса
+  double durationToProgress(Duration position, Duration total) {
+    return (total.inSeconds > 0) ? position.inSeconds / total.inSeconds : 0.0;
   }
 
   Future<void> _playPauseMusic(int step) async {
-    if (isPlaying) {
-      await _audioPlayer.pause();
-    } else {
-      await _audioPlayer.play(AssetSource(widget.stepAsset));
+    final player = audioPlayers[step];
+
+    if (player == null) {
+      print("Ошибка: Плеер не найден для шага $step");
+      return;
     }
 
-    _audioPlayer.onPlayerComplete.listen((event) async {
-      if (mounted) {
-        setState(() {
-          isPlaying = false;
-          curSoundPos = 0.0;
-
-          // Увеличиваем кол-во прослушанных шагов
-          if (step == listenedStepsCount) {
-            listenedStepsCount++;
-
-            // Обновляем состояние в Bloc
-            context.read<MeditationBloc>().add(
-              UpdateStepCount(
-                id: widget.curElement,
-                stepCount: listenedStepsCount,
-              ),
-            );
-          }
-        });
-        await Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => EndMeditationScreen(colors: widget.colors),
-          ),
-        );
+    if (isPlayingList[step]) {
+      print("Пауза для шага $step");
+      await player.pause();
+    } else {
+      print("Попытка воспроизвести: ${widget.steps![step].stepAsset}");
+      try {
+        await player.play(AssetSource(widget.steps![step].stepAsset));
+        print("Аудио запущено!");
+      } catch (e) {
+        print("Ошибка при воспроизведении: $e");
       }
-    });
+    }
 
     setState(() {
-      isPlaying = !isPlaying;
+      isPlayingList[step] = !isPlayingList[step];
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    double progress =
-        totalDuration.inSeconds > 0
-            ? currentPosition.inSeconds / totalDuration.inSeconds
-            : 0.0;
+  void dispose() {
+    for (var player in audioPlayers.values) {
+      player.dispose();
+    }
+    super.dispose();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: widget.colors?[7],
       body: Stack(
         children: [
           Positioned(
             left: 0,
-            child: Image.asset('asset/img/lvec.png', color: widget.colors![8]),
+            child: Image.asset('assets/img/lvec.png', color: widget.colors![8]),
           ),
           Positioned(
             bottom: 0,
             right: 0,
-            child: Image.asset('asset/img/rvec.png', color: widget.colors![8]),
+            child: Image.asset('assets/img/rvec.png', color: widget.colors![8]),
           ),
           SizedBox(
             width: double.infinity,
@@ -148,7 +186,7 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
                             child: CircularProgressIndicator(
                               backgroundColor: widget.colors?[1],
                               color: widget.colors?[2],
-                              value: progress,
+                              value: stepProgress[index] ?? 0.0,
                               strokeWidth: 10,
                             ),
                           ),
@@ -160,7 +198,7 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
                               radius: 60,
                               backgroundColor: widget.colors?[2],
                               child: Icon(
-                                isPlaying
+                                isPlayingList[index]
                                     ? Icons.pause_rounded
                                     : Icons.play_arrow_rounded,
                                 size: 50,

@@ -19,11 +19,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       backgroundColor: Color(0xfff8ecd6),
       body: Stack(
         children: <Widget>[
-          Positioned(top: 0, child: Image.asset('asset/img/flow.png')),
+          Positioned(top: 0, child: Image.asset('assets/img/flow.png')),
           Positioned(
             bottom: 0,
             right: 0,
-            child: Image.asset('asset/img/botFlow.png'),
+            child: Image.asset('assets/img/botFlow.png'),
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -102,8 +102,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                               },
                               child: Image.asset(
                                 isGeneralNotificationEnabled
-                                    ? 'asset/img/off.png'
-                                    : 'asset/img/on.png',
+                                    ? 'assets/img/off.png'
+                                    : 'assets/img/on.png',
                               ),
                             ),
                           ],
@@ -138,8 +138,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                 },
                                 child: Image.asset(
                                   isSoundEnabled
-                                      ? 'asset/img/off.png'
-                                      : 'asset/img/on.png',
+                                      ? 'assets/img/off.png'
+                                      : 'assets/img/on.png',
                                 ),
                               ),
                             ],
@@ -173,8 +173,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                               },
                               child: Image.asset(
                                 isVibrateEnabled
-                                    ? 'asset/img/off.png'
-                                    : 'asset/img/on.png',
+                                    ? 'assets/img/off.png'
+                                    : 'assets/img/on.png',
                               ),
                             ),
                           ],

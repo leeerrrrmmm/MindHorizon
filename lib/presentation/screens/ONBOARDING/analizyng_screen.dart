@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mind_horizon/presentation/screens/BOTTOM/custom_bottom_nav_bar.dart';
 import 'dart:async';
-
-import 'package:mind_horizon/presentation/screens/MAIN/main_screen.dart';
 
 class CheckScreen extends StatefulWidget {
   const CheckScreen({super.key});
@@ -70,7 +69,7 @@ class _CheckScreenState extends State<CheckScreen> {
                     ),
                   ),
                 ),
-                Image.asset('asset/gif/flower.gif'),
+                Image.asset('assets/gif/flower.gif'),
                 Text(
                   textAlign: TextAlign.center,
                   !_isRunning && _progress > 0.0
@@ -92,7 +91,9 @@ class _CheckScreenState extends State<CheckScreen> {
                     ? () {
                       Navigator.pushReplacement(
                         context,
-                        CupertinoPageRoute(builder: (context) => MainScreen()),
+                        CupertinoPageRoute(
+                          builder: (context) => CustomBottomNavBar(),
+                        ),
                       );
                     }
                     : null,

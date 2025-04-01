@@ -28,31 +28,31 @@ class _SoundOfTheDayState extends State<SoundOfTheDay> {
         child: Stack(
           children: [
             // BACKGROUND IMG
-            Positioned(top: 0, child: Image.asset('asset/img/flow.png')),
+            Positioned(top: 0, child: Image.asset('assets/img/flow.png')),
             Positioned(
               bottom: 0,
               right: 0,
-              child: Image.asset('asset/img/botFlow.png'),
+              child: Image.asset('assets/img/botFlow.png'),
             ),
             Positioned(
               top: 270,
               right: 50,
-              child: Image.asset('asset/img/o.png'),
+              child: Image.asset('assets/img/o.png'),
             ),
             Positioned(
               top: 270,
               right: 55,
-              child: Image.asset('asset/img/oo.png'),
+              child: Image.asset('assets/img/oo.png'),
             ),
             Positioned(
               top: 270,
               right: 60,
-              child: Image.asset('asset/img/ooo.png'),
+              child: Image.asset('assets/img/ooo.png'),
             ),
             Positioned(
               top: 270,
               right: 60,
-              child: Image.asset('asset/img/oooo.png'),
+              child: Image.asset('assets/img/oooo.png'),
             ),
             Positioned(
               top: 65.0,
@@ -189,7 +189,7 @@ class _SoundOfTheDayState extends State<SoundOfTheDay> {
                                 backgroundColor: Colors.white,
                                 radius: 35,
                                 child: Image.asset(
-                                  'asset/img/prev.png',
+                                  'assets/img/prev.png',
                                   scale: 0.9,
                                 ),
                               ),
@@ -214,7 +214,7 @@ class _SoundOfTheDayState extends State<SoundOfTheDay> {
                                                 left: 8.0,
                                               ),
                                               child: Image.asset(
-                                                'asset/img/play.png',
+                                                'assets/img/play.png',
                                                 scale: 0.9,
                                               ),
                                             )
@@ -230,7 +230,7 @@ class _SoundOfTheDayState extends State<SoundOfTheDay> {
                                 backgroundColor: Colors.white,
                                 radius: 35,
                                 child: Image.asset(
-                                  'asset/img/next.png',
+                                  'assets/img/next.png',
                                   scale: 0.9,
                                 ),
                               ),

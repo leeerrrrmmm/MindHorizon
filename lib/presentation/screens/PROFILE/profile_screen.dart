@@ -22,7 +22,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Positioned(
             right: 0,
             bottom: 0,
-            child: Image.asset('asset/img/botFlow.png'),
+            child: Image.asset('assets/img/botFlow.png'),
           ),
           Positioned(
             child: Container(
@@ -60,17 +60,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     padding: const EdgeInsets.only(bottom: 15.0),
                     child: CircleAvatar(
                       radius: 60,
-                      child: Image.asset('asset/img/cuate.png'),
+                      child: Image.asset('assets/img/cuate.png'),
                     ),
                   ),
                   BuildText(
-                    text: user!.displayName ?? 'User',
+                    text: user?.displayName ?? 'User',
                     fontSize: 28,
                     fontWeight: FontWeight.w600,
                     color: Color(0xfff19584),
                   ),
                   BuildText(
-                    text: user!.email ?? 'user@gmail.com',
+                    text: user?.email ?? 'user@gmail.com',
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: Color(0xfff19584),

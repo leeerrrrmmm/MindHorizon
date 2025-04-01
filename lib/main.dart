@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mind_horizon/presentation/screens/BOTTOM/custom_bottom_nav_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mind_horizon/presentation/screens/MEDITATION_SCREEN/meditation_screen.dart';
 import 'package:mind_horizon/testt/a.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -17,19 +18,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MeditationBloc(),
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: CustomBottomNavBar(),
-      ),
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return BlocProvider(
+          create: (context) => MeditationBloc(),
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: MeditationScreen(),
+          ),
+        );
+      },
     );
   }
 }
-
-/**
- *! При переходе с логина на регистрацию сделать отображение кнопки перехода(без аппБара)
- *! Сделать апп бар для каждого екрана и правильные отступы
- *! логика регистраций сделана -> завтра нужно реализовать авторизацию,отображения данных пользователя и тд
- *? и сделать еще update UserInfo и добавить уведомления 
- */

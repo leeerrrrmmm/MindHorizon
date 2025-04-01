@@ -52,7 +52,7 @@ class _ThirdState extends State<Third> {
           Positioned(
             top: -10,
             left: 0,
-            child: Image.asset('asset/img/flowers.png', color: Colors.white),
+            child: Image.asset('assets/img/flowers.png', color: Colors.white),
           ),
           Positioned(
             top: 105,
@@ -76,11 +76,11 @@ class _ThirdState extends State<Third> {
             ),
           ),
           if (!(_timer?.isActive ?? false) && _elapsedTime.inSeconds > 0)
-            Positioned(top: 230, child: Image.asset('asset/gif/done.gif')),
+            Positioned(top: 230, child: Image.asset('assets/gif/done.gif')),
           Positioned(
             top: 270,
             left: -30,
-            child: Image.asset('asset/gif/cloud.gif', color: Colors.white),
+            child: Image.asset('assets/gif/cloud.gif', color: Colors.white),
           ),
           if (_elapsedTime.inSeconds >= 0)
             Positioned(

@@ -11,12 +11,12 @@ class EndPlayingSoundOnScreen extends StatelessWidget {
       children: [
         Positioned(
           left: 0,
-          child: Image.asset('asset/img/lvec.png', color: colors?[8]),
+          child: Image.asset('assets/img/lvec.png', color: colors?[8]),
         ),
         Positioned(
           bottom: 0,
           right: 0,
-          child: Image.asset('asset/img/rvec.png', color: colors?[8]),
+          child: Image.asset('assets/img/rvec.png', color: colors?[8]),
         ),
         Center(
           child: Container(
@@ -31,12 +31,12 @@ class EndPlayingSoundOnScreen extends StatelessWidget {
                 Positioned(
                   top: 80,
                   left: 0,
-                  child: Image.asset('asset/img/lvec.png', color: colors?[7]),
+                  child: Image.asset('assets/img/lvec.png', color: colors?[7]),
                 ),
                 Positioned(
                   bottom: -40,
                   right: 0,
-                  child: Image.asset('asset/img/rbvec.png', color: colors?[7]),
+                  child: Image.asset('assets/img/rbvec.png', color: colors?[7]),
                 ),
                 Column(
                   children: [

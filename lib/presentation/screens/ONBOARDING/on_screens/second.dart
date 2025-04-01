@@ -68,7 +68,7 @@ class _SecondState extends State<Second> {
                     Matrix4.identity()
                       ..rotateZ(60.3 * (math.pi / 180))
                       ..scale(-1.0, 1.0), // Зеркальное отражение по горизонтали
-                child: Image.asset('asset/gif/der.gif'),
+                child: Image.asset('assets/gif/der.gif'),
               ),
             ),
 
@@ -76,17 +76,17 @@ class _SecondState extends State<Second> {
             Positioned(
               top: 200,
               right: 75,
-              child: Image.asset('asset/img/ovec.png'),
+              child: Image.asset('assets/img/ovec.png'),
             ),
             Positioned(
               top: 200,
               right: 75,
-              child: Image.asset('asset/img/svec.png'),
+              child: Image.asset('assets/img/svec.png'),
             ),
             Positioned(
               top: 200,
               right: 75,
-              child: Image.asset('asset/img/tvec.png'),
+              child: Image.asset('assets/img/tvec.png'),
             ),
             // Первый выбор
             _buildSelectableCircle(0, "No, never before", 209, 86),
@@ -95,17 +95,17 @@ class _SecondState extends State<Second> {
             Positioned(
               top: 374,
               right: 5,
-              child: Image.asset('asset/img/ovec.png'),
+              child: Image.asset('assets/img/ovec.png'),
             ),
             Positioned(
               top: 374,
               right: 5,
-              child: Image.asset('asset/img/svec.png'),
+              child: Image.asset('assets/img/svec.png'),
             ),
             Positioned(
               top: 374,
               right: 5,
-              child: Image.asset('asset/img/tvec.png'),
+              child: Image.asset('assets/img/tvec.png'),
             ),
             // Второй выбор
             _buildSelectableCircle(1, "Yes, a long time ago", 383, 14),
@@ -113,24 +113,24 @@ class _SecondState extends State<Second> {
             Positioned(
               bottom: -50,
               right: 0,
-              child: Image.asset('asset/img/side.png'),
+              child: Image.asset('assets/img/side.png'),
             ),
 
             /// ЛИНИИ К ТРЕТЬЕМУ
             Positioned(
               top: 545,
               right: 12,
-              child: Image.asset('asset/img/ovec.png'),
+              child: Image.asset('assets/img/ovec.png'),
             ),
             Positioned(
               top: 545,
               right: 12,
-              child: Image.asset('asset/img/svec.png'),
+              child: Image.asset('assets/img/svec.png'),
             ),
             Positioned(
               top: 545,
               right: 12,
-              child: Image.asset('asset/img/tvec.png'),
+              child: Image.asset('assets/img/tvec.png'),
             ),
             // Третий выбор
             _buildSelectableCircle(2, "Yes, i pricice regulary", 554, 21),

@@ -13,8 +13,8 @@ class MainScreen extends StatelessWidget {
       backgroundColor: Color(0xfff8ecd6),
       body: Stack(
         children: [
-          Positioned(left: 0, child: Image.asset('asset/img/lvec.png')),
-          Positioned(right: 0, child: Image.asset('asset/img/rvec.png')),
+          Positioned(left: 0, child: Image.asset('assets/img/lvec.png')),
+          Positioned(right: 0, child: Image.asset('assets/img/rvec.png')),
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: ListView.builder(

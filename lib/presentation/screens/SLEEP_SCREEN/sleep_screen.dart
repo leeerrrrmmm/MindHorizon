@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
@@ -16,8 +17,8 @@ class SleepScreen extends StatelessWidget {
       backgroundColor: Color(0xfff8ecd6),
       body: Stack(
         children: [
-          Positioned(left: 0, child: Image.asset('asset/img/lvec.png')),
-          Positioned(right: 0, child: Image.asset('asset/img/rvec.png')),
+          Positioned(left: 0, child: Image.asset('assets/img/lvec.png')),
+          Positioned(right: 0, child: Image.asset('assets/img/rvec.png')),
           Padding(
             padding: const EdgeInsets.only(top: 50, left: 15, right: 15),
             child: BlocBuilder<MeditationBloc, MeditationState>(
@@ -29,16 +30,16 @@ class SleepScreen extends StatelessWidget {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         BuildText(
                           text: category.title,
                           fontSize: 32,
                           fontWeight: FontWeight.w500,
                           color: Color(0xfffea386),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         SizedBox(
-                          height: index == 0 ? 175 : 287,
+                          height: index == 0 ? 155.w : 260.w,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemCount: category.categoryFields.length,
@@ -124,8 +125,8 @@ class SleepScreen extends StatelessWidget {
                                         height:
                                             category.categoryFields[index].id ==
                                                     0
-                                                ? 36
-                                                : 91,
+                                                ? 35.w
+                                                : 80.w,
                                         width: double.infinity,
                                         decoration: BoxDecoration(
                                           color: item.colors?[1],
@@ -169,8 +170,8 @@ class SleepScreen extends StatelessWidget {
                                                                   .categoryFields[index]
                                                                   .id ==
                                                               0
-                                                          ? 20
-                                                          : 25,
+                                                          ? 18.6.w
+                                                          : 23.w,
                                                   fontFamily: 'Poppins',
                                                   fontWeight:
                                                       category
@@ -189,7 +190,7 @@ class SleepScreen extends StatelessWidget {
                                                     item.description,
                                                     style: TextStyle(
                                                       color: Colors.black,
-                                                      fontSize: 12,
+                                                      fontSize: 12.sp,
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
                                                           FontWeight.w300,

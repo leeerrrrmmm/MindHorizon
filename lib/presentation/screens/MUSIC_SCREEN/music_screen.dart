@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/music/first_detail_music_screen.dart';
 
@@ -11,8 +12,8 @@ class MusicScreen extends StatelessWidget {
       backgroundColor: Color(0xfff8ecd6),
       body: Stack(
         children: [
-          Positioned(left: 0, child: Image.asset('asset/img/lvec.png')),
-          Positioned(right: 0, child: Image.asset('asset/img/rvec.png')),
+          Positioned(left: 0, child: Image.asset('assets/img/lvec.png')),
+          Positioned(right: 0, child: Image.asset('assets/img/rvec.png')),
           Align(
             alignment: Alignment.topCenter,
             child: Padding(
@@ -81,8 +82,11 @@ class MusicScreen extends StatelessWidget {
 
                             child: Container(
                               margin: const EdgeInsets.only(bottom: 20),
-                              width: 397,
-                              height: 397,
+                              width: 397.w,
+                              height:
+                                  MediaQuery.of(context).size.width < 430
+                                      ? 330.h
+                                      : 290.h,
                               decoration: BoxDecoration(
                                 color: Color(0xfffea386),
                                 borderRadius: BorderRadius.circular(10),
@@ -115,7 +119,13 @@ class MusicScreen extends StatelessWidget {
                                           Text(
                                             item.title,
                                             style: TextStyle(
-                                              fontSize: 24,
+                                              fontSize:
+                                                  MediaQuery.of(
+                                                            context,
+                                                          ).size.width <
+                                                          430
+                                                      ? 18.sp
+                                                      : 22.sp,
                                               fontWeight: FontWeight.bold,
                                               color: Color(0xff455a64),
                                               fontFamily: 'Poppins',
@@ -123,9 +133,14 @@ class MusicScreen extends StatelessWidget {
                                           ),
                                           Text(
                                             item.description,
-                                            textAlign: TextAlign.center,
                                             style: TextStyle(
-                                              fontSize: 12,
+                                              fontSize:
+                                                  MediaQuery.of(
+                                                            context,
+                                                          ).size.width <
+                                                          430
+                                                      ? 12.sp
+                                                      : 10.sp,
                                               color: Color(0xff455a64),
                                               fontFamily: 'Poppins',
                                             ),

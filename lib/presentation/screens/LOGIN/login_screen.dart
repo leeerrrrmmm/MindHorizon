@@ -4,6 +4,7 @@ import 'package:mind_horizon/components/log_and_ger_btn.dart';
 import 'package:mind_horizon/components/row_text_for_log_reg_screen.dart';
 import 'package:mind_horizon/data/domain/auth/auth_service.dart';
 import 'package:mind_horizon/presentation/screens/BOTTOM/custom_bottom_nav_bar.dart';
+import 'package:mind_horizon/presentation/screens/FORGOT_PASSWORD/screens/forgot_password.dart';
 import 'package:mind_horizon/presentation/screens/REGISTER/register_screen.dart';
 import 'package:mind_horizon/presentation/screens/REGISTER/widgets/build_reg_text.dart';
 
@@ -74,8 +75,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(top: 0, child: Image.asset('asset/img/reglogtop.png')),
-          Positioned(bottom: 0, child: Image.asset('asset/img/reglogbot.png')),
+          Positioned(top: 0, child: Image.asset('assets/img/reglogtop.png')),
+          Positioned(bottom: 0, child: Image.asset('assets/img/reglogbot.png')),
           SizedBox(
             width: double.infinity,
             child: Padding(
@@ -143,9 +144,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          // Восстановление пароля
-                        },
+                        onTap:
+                            () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ForgotPassword(),
+                              ),
+                            ),
                         child: BuildRegText(
                           text: 'Forgot Password?',
                           fontSize: 20,

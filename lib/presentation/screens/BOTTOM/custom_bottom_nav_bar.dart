@@ -26,11 +26,11 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   ];
 
   static const List<String> img = [
-    'asset/img/home.png',
-    'asset/img/moo.png',
-    'asset/img/meditaion.png',
-    'asset/img/note.png',
-    'asset/img/prof.png',
+    'assets/img/home.png',
+    'assets/img/moo.png',
+    'assets/img/meditaion.png',
+    'assets/img/note.png',
+    'assets/img/prof.png',
   ];
 
   static const List<String> titles = [

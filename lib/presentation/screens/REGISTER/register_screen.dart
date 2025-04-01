@@ -51,30 +51,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
       await authService.registerGoogle();
 
       if (!mounted) return;
-      if(user != null) {
+      if (user != null) {
         Navigator.pushReplacement(
           context,
-          CupertinoPageRoute(
-            builder:
-                (context) =>
-                CustomBottomNavBar(),
-          ),
+          CupertinoPageRoute(builder: (context) => CustomBottomNavBar()),
         );
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Align(
-                alignment: Alignment.center,
-                child: Text("Success"),
-              ),
-            ));
-      }else{
+          SnackBar(
+            content: Align(alignment: Alignment.center, child: Text("Success")),
+          ),
+        );
+      } else {
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Align(
-                alignment: Alignment.center,
-                child: Text("Ошибка авторизации"),
-              ),
-            ));
+          SnackBar(
+            content: Align(
+              alignment: Alignment.center,
+              child: Text("Ошибка авторизации"),
+            ),
+          ),
+        );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -93,8 +88,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(top: 0, child: Image.asset('asset/img/reglogtop.png')),
-          Positioned(bottom: 0, child: Image.asset('asset/img/reglogbot.png')),
+          Positioned(top: 0, child: Image.asset('assets/img/reglogtop.png')),
+          Positioned(bottom: 0, child: Image.asset('assets/img/reglogbot.png')),
           SizedBox(
             width: double.infinity,
             child: Padding(
@@ -190,7 +185,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         padding: const EdgeInsets.only(top: 44.0, bottom: 15.0),
                         child: LogAndGerBtn(
                           textBtn: 'Sign Up',
-                          onTap:  _registerWithGoogle,
+                          onTap: _registerWithGoogle,
                         ),
                       ),
                       Center(

@@ -41,12 +41,12 @@ class _PlaySoundScreenState extends State<PlaySoundScreen> {
       children: [
         Positioned(
           left: 0,
-          child: Image.asset('asset/img/lvec.png', color: widget.colors[8]),
+          child: Image.asset('assets/img/lvec.png', color: widget.colors[8]),
         ),
         Positioned(
           bottom: 0,
           right: 0,
-          child: Image.asset('asset/img/rvec.png', color: widget.colors[8]),
+          child: Image.asset('assets/img/rvec.png', color: widget.colors[8]),
         ),
         // Индикатор загрузки
         Align(

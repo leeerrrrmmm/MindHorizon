@@ -6,7 +6,7 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
- FirebaseAuth get auth => _auth;
+  FirebaseAuth get auth => _auth;
   FirebaseFirestore get firebaseFirestore => _firebaseFirestore;
 
   User? getCurrentUser() {
@@ -23,10 +23,10 @@ class AuthService {
   }
 
   Future<UserCredential> registerWithEmailAndPassword(
-      String email,
-      String password,
-      String displayName,
-      ) async {
+    String email,
+    String password,
+    String displayName,
+  ) async {
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -57,18 +57,19 @@ class AuthService {
   }
 
   Future<UserCredential> loginWithEmailAndPassword(
-      String email,
-      String password,
-      ) async {
+    String email,
+    String password,
+  ) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      _firebaseFirestore.collection('Users').doc(userCredential.user!.uid).update({
-        'lastLogin': FieldValue.serverTimestamp(),
-      });
+      _firebaseFirestore
+          .collection('Users')
+          .doc(userCredential.user!.uid)
+          .update({'lastLogin': FieldValue.serverTimestamp()});
 
       return userCredential;
     } on FirebaseAuthException catch (e) {
@@ -103,7 +104,8 @@ class AuthService {
       }
 
       // Проверяем, существует ли пользователь в Firestore
-      final userDoc = await _firebaseFirestore.collection('Users').doc(user.uid).get();
+      final userDoc =
+          await _firebaseFirestore.collection('Users').doc(user.uid).get();
 
       if (!userDoc.exists) {
         // Если документа нет, записываем пользователя в Firestore
@@ -150,10 +152,10 @@ class AuthService {
 
       // Проверка, существует ли пользователь в базе данных Firestore
       final userDoc =
-      await _firebaseFirestore
-          .collection('Users')
-          .doc(userCredential.user!.uid)
-          .get();
+          await _firebaseFirestore
+              .collection('Users')
+              .doc(userCredential.user!.uid)
+              .get();
 
       if (!userDoc.exists) {
         // Если пользователя нет в базе данных -> выбрасываем ошибку
@@ -184,6 +186,31 @@ class AuthService {
 
   Future<void> logout() async {
     return await _auth.signOut();
+  }
+
+  Future<void> resetUserPassword(
+    String password,
+    String confirmPassword,
+  ) async {
+    User? user = _auth.currentUser;
+
+    if (user != null) {
+      await _firebaseFirestore.collection('Users').doc(user.uid).update({
+        'password': confirmPassword,
+      });
+    }
+  }
+
+  Future<void> editProfile(String name, String email, String male) async {
+    User? user = _auth.currentUser;
+
+    if (user != null) {
+      await _firebaseFirestore.collection('Users').doc(user.uid).update({
+        'displayName': name,
+        'email': email,
+        'male': male,
+      });
+    }
   }
 
   String getErrorMessage(String errorCode) {

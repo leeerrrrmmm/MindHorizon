@@ -34,7 +34,7 @@ class _SecondDetailSleepScreenState extends State<SecondDetailSleepScreen> {
             Positioned(
               top: 0,
               child: Image.asset(
-                'asset/img/flow.png',
+                'assets/img/flow.png',
                 color: widget.colors?[8],
               ),
             ),
@@ -42,30 +42,33 @@ class _SecondDetailSleepScreenState extends State<SecondDetailSleepScreen> {
               bottom: 0,
               right: 0,
               child: Image.asset(
-                'asset/img/botFlow.png',
+                'assets/img/botFlow.png',
                 color: widget.colors?[8],
               ),
             ),
             Positioned(
               top: 270,
               right: 50,
-              child: Image.asset('asset/img/o.png', color: widget.colors?[9]),
+              child: Image.asset('assets/img/o.png', color: widget.colors?[9]),
             ),
             Positioned(
               top: 270,
               right: 55,
-              child: Image.asset('asset/img/oo.png', color: widget.colors?[9]),
-            ),
-            Positioned(
-              top: 270,
-              right: 60,
-              child: Image.asset('asset/img/ooo.png', color: widget.colors?[9]),
+              child: Image.asset('assets/img/oo.png', color: widget.colors?[9]),
             ),
             Positioned(
               top: 270,
               right: 60,
               child: Image.asset(
-                'asset/img/oooo.png',
+                'assets/img/ooo.png',
+                color: widget.colors?[9],
+              ),
+            ),
+            Positioned(
+              top: 270,
+              right: 60,
+              child: Image.asset(
+                'assets/img/oooo.png',
                 color: widget.colors?[9],
               ),
             ),

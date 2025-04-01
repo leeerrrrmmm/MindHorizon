@@ -31,7 +31,7 @@ class FirstScreen extends StatelessWidget {
                   right: -60,
                   child: Transform.rotate(
                     angle: -16.3 * (math.pi / 160),
-                    child: Image.asset('asset/gif/der.gif'),
+                    child: Image.asset('assets/gif/der.gif'),
                   ),
                 ),
               ],
