@@ -49,15 +49,32 @@ class MeditationScreen extends StatelessWidget {
                                         fontWeight: FontWeight.w500,
                                         color: Color(0xfffea386),
                                         fontSize:
-                                            MediaQuery.of(context).size.width <
-                                                    300
-                                                ? 10.sp
-                                                : 30.sp,
+                                            MediaQuery.of(context).size.height <
+                                                    896
+                                                ? 30.h
+                                                /// Тест для СЕ
+                                                : MediaQuery.of(
+                                                      context,
+                                                    ).size.height >
+                                                    896
+                                                ? 30
+                                                    .h // 16 pro max
+                                                : 30.h, // 11 iphone
                                       ),
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 250.h,
+                                    height:
+                                        MediaQuery.of(context).size.height < 896
+                                            ? 312.h
+                                            /// Тест для СЕ
+                                            : MediaQuery.of(
+                                                  context,
+                                                ).size.height >
+                                                896
+                                            ? 280
+                                                .h // 16 pro max
+                                            : 280.h, // 11 iphone
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
                                       itemCount: item.categoryFields.length,
@@ -102,7 +119,13 @@ class MeditationScreen extends StatelessWidget {
                                           },
                                           child: Container(
                                             margin: const EdgeInsets.all(10.0),
-                                            width: 300.w,
+                                            width:
+                                                MediaQuery.of(
+                                                          context,
+                                                        ).size.height <
+                                                        690
+                                                    ? 240.w
+                                                    : 260.w,
                                             decoration: BoxDecoration(
                                               color: secItem.colors![0],
                                               borderRadius:
@@ -113,16 +136,32 @@ class MeditationScreen extends StatelessWidget {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                Image.asset(secItem.imagePath),
+                                                Image.asset(
+                                                  secItem.imagePath,
+                                                  height:
+                                                      MediaQuery.of(
+                                                                context,
+                                                              ).size.height <
+                                                              690
+                                                          ? 150
+                                                          : 160,
+                                                ),
                                                 Container(
                                                   width: double.infinity,
                                                   height:
                                                       MediaQuery.of(
                                                                 context,
-                                                              ).size.width <
-                                                              430
-                                                          ? 90.sp
-                                                          : 80.sp,
+                                                              ).size.height <
+                                                              896
+                                                          ? 94.h
+                                                          /// Тест для СЕ
+                                                          : MediaQuery.of(
+                                                                context,
+                                                              ).size.height >
+                                                              896
+                                                          ? 93
+                                                              .h // 16 pro max
+                                                          : 93.h, // 11 iphone
                                                   decoration: BoxDecoration(
                                                     color: secItem.colors![1],
                                                     borderRadius:
@@ -148,29 +187,31 @@ class MeditationScreen extends StatelessWidget {
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
+                                                        // TITLE
                                                         Text(
                                                           secItem.title,
                                                           style: TextStyle(
                                                             fontFamily:
                                                                 'Poppins',
-                                                            fontSize: 22.sp,
+                                                            fontSize:
+                                                                MediaQuery.of(
+                                                                          context,
+                                                                        ).size.height <
+                                                                        896
+                                                                    ? 16.sp
+                                                                    /// Тест для СЕ
+                                                                    : MediaQuery.of(
+                                                                          context,
+                                                                        ).size.height >
+                                                                        896
+                                                                    ? 20
+                                                                        .sp // 16 pro max
+                                                                    : 16.sp, // 11 iphone
                                                             fontWeight:
                                                                 FontWeight.w600,
                                                           ),
                                                         ),
-                                                        BlocBuilder<
-                                                          MeditationBloc,
-                                                          MeditationState
-                                                        >(
-                                                          builder: (
-                                                            context,
-                                                            state,
-                                                          ) {
-                                                            return Text(
-                                                              'Step listened: ${state.steps[secItem.id] ?? 0} / ${secItem.steps?.length}',
-                                                            );
-                                                          },
-                                                        ),
+                                                        // DESCRIPTION
                                                         Flexible(
                                                           child: Text(
                                                             secItem.description,
@@ -178,53 +219,98 @@ class MeditationScreen extends StatelessWidget {
                                                               fontSize:
                                                                   MediaQuery.of(
                                                                             context,
-                                                                          ).size.width <
-                                                                          430
-                                                                      ? 12.sp
-                                                                      : 13.sp,
+                                                                          ).size.height <
+                                                                          896
+                                                                      ? 10.sp
+                                                                      /// Тест для СЕ
+                                                                      : MediaQuery.of(
+                                                                            context,
+                                                                          ).size.height >
+                                                                          896
+                                                                      ? 12
+                                                                          .sp // 16 pro max
+                                                                      : 9.sp, // 11 iphone
                                                               fontFamily:
                                                                   'Poppins',
                                                             ),
                                                           ),
                                                         ),
-                                                        Container(
-                                                          width: 290,
-                                                          height: 8,
-                                                          decoration: BoxDecoration(
-                                                            color: Color(
-                                                              0xfffcd1af,
+                                                        const SizedBox(
+                                                          height: 10,
+                                                        ),
+                                                        Flexible(
+                                                          child: Text(
+                                                            '${secItem.steps!.length} steps',
+                                                            style: TextStyle(
+                                                              fontSize:
+                                                                  MediaQuery.of(
+                                                                            context,
+                                                                          ).size.height <
+                                                                          896
+                                                                      ? 10.sp
+                                                                      /// Тест для СЕ
+                                                                      : MediaQuery.of(
+                                                                            context,
+                                                                          ).size.height >
+                                                                          896
+                                                                      ? 10
+                                                                          .sp // 16 pro max
+                                                                      : 10.sp, // 11 iphone
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
                                                             ),
-                                                            borderRadius:
-                                                                BorderRadius.circular(
-                                                                  12,
-                                                                ),
                                                           ),
-                                                          child: Stack(
-                                                            children: [
-                                                              AnimatedContainer(
-                                                                duration: Duration(
-                                                                  milliseconds:
-                                                                      300,
-                                                                ),
-                                                                width:
-                                                                    ((state.steps[secItem.id] ??
-                                                                            0) /
-                                                                        secItem
-                                                                            .steps!
-                                                                            .length) *
-                                                                    290,
-                                                                height: 8,
-                                                                decoration: BoxDecoration(
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets.only(
+                                                                right: 10.0,
+                                                              ),
+                                                          child: Container(
+                                                            width:
+                                                                double.infinity,
+                                                            height: 8,
+                                                            decoration:
+                                                                BoxDecoration(
                                                                   color: Color(
-                                                                    0xfff19584,
+                                                                    0xfffcd1af,
                                                                   ),
                                                                   borderRadius:
                                                                       BorderRadius.circular(
                                                                         12,
                                                                       ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                            child: Stack(
+                                                              children: [
+                                                                AnimatedContainer(
+                                                                  duration:
+                                                                      Duration(
+                                                                        milliseconds:
+                                                                            300,
+                                                                      ),
+                                                                  width:
+                                                                      ((state.steps[secItem.id] ??
+                                                                              0) /
+                                                                          secItem
+                                                                              .steps!
+                                                                              .length) *
+                                                                      290,
+                                                                  height: 8,
+                                                                  decoration: BoxDecoration(
+                                                                    color: Color(
+                                                                      0xfff19584,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                          12,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ],

@@ -95,13 +95,36 @@ class MusicScreen extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
+                                  /// IMG
                                   Image.asset(
                                     item.imagePath,
                                     fit: BoxFit.cover,
-                                    height: 316,
-                                    width: 320,
+                                    height:
+                                        MediaQuery.of(context).size.height < 896
+                                            ? 230.h
+                                            /// Тест для СЕ
+                                            : MediaQuery.of(
+                                                  context,
+                                                ).size.height >
+                                                896
+                                            ? 210
+                                                .h // 16 pro max
+                                            : 250.h, // 11 iphone
                                   ),
+
+                                  /// BOT CONTAINER
                                   Container(
+                                    height:
+                                        MediaQuery.of(context).size.height < 896
+                                            ? 90.h
+                                            /// Тест для СЕ
+                                            : MediaQuery.of(
+                                                  context,
+                                                ).size.height >
+                                                896
+                                            ? 70
+                                                .h // 16 pro max
+                                            : 80.h, // 11 iphone,
                                     decoration: BoxDecoration(
                                       color: Color(0xfffbc9aa),
                                       borderRadius: BorderRadius.only(
@@ -111,7 +134,10 @@ class MusicScreen extends StatelessWidget {
                                     ),
                                     alignment: Alignment.bottomLeft,
                                     child: Padding(
-                                      padding: const EdgeInsets.all(15.0),
+                                      padding: const EdgeInsets.only(
+                                        left: 10.0,
+                                        top: 5.0,
+                                      ),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -122,10 +148,17 @@ class MusicScreen extends StatelessWidget {
                                               fontSize:
                                                   MediaQuery.of(
                                                             context,
-                                                          ).size.width <
-                                                          430
-                                                      ? 18.sp
-                                                      : 22.sp,
+                                                          ).size.height <
+                                                          896
+                                                      ? 30.h
+                                                      /// Тест для СЕ
+                                                      : MediaQuery.of(
+                                                            context,
+                                                          ).size.height >
+                                                          896
+                                                      ? 20
+                                                          .h // 16 pro max
+                                                      : 20.sp, // 11 iphone
                                               fontWeight: FontWeight.bold,
                                               color: Color(0xff455a64),
                                               fontFamily: 'Poppins',
@@ -137,10 +170,17 @@ class MusicScreen extends StatelessWidget {
                                               fontSize:
                                                   MediaQuery.of(
                                                             context,
-                                                          ).size.width <
-                                                          430
+                                                          ).size.height <
+                                                          896
                                                       ? 12.sp
-                                                      : 10.sp,
+                                                      /// Тест для СЕ
+                                                      : MediaQuery.of(
+                                                            context,
+                                                          ).size.height >
+                                                          896
+                                                      ? 12
+                                                          .sp // 16 pro max
+                                                      : 13.sp, // 11 iphone
                                               color: Color(0xff455a64),
                                               fontFamily: 'Poppins',
                                             ),

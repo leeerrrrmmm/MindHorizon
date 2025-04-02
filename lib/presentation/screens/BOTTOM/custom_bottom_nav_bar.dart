@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/presentation/screens/MAIN/main_screen.dart';
 import 'package:mind_horizon/presentation/screens/MEDITATION_SCREEN/meditation_screen.dart';
 import 'package:mind_horizon/presentation/screens/MUSIC_SCREEN/music_screen.dart';
@@ -48,7 +49,14 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       backgroundColor: Color(0xfff8ecd6),
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
-        height: Platform.isAndroid ? 100 : 120,
+        height:
+            MediaQuery.of(context).size.height < 896
+                ? 100.h
+                /// Тест для СЕ
+                : MediaQuery.of(context).size.height > 896
+                ? 100
+                    .h // 16 pro max
+                : 100.h, // 11 iphone
         decoration: const BoxDecoration(
           color: Color(0xfffea386),
           borderRadius: BorderRadius.only(
@@ -75,8 +83,22 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                       AnimatedContainer(
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.easeInOut,
-                        width: 59,
-                        height: 39,
+                        width:
+                            MediaQuery.of(context).size.height < 896
+                                ? 50.h
+                                /// Тест для СЕ
+                                : MediaQuery.of(context).size.height > 896
+                                ? 59
+                                    .h // 16 pro max
+                                : 59.h, // 11 iphone 59,
+                        height:
+                            MediaQuery.of(context).size.height < 896
+                                ? 30.h
+                                /// Тест для СЕ
+                                : MediaQuery.of(context).size.height > 896
+                                ? 39
+                                    .h // 16 pro max
+                                : 39.h, // 11 iphone 39,
                         decoration: BoxDecoration(
                           color:
                               isSelected
@@ -86,6 +108,14 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                         ),
                         child: Image.asset(
                           img[index],
+                          scale:
+                              MediaQuery.of(context).size.height < 896
+                                  ? 2.h
+                                  /// Тест для СЕ
+                                  : MediaQuery.of(context).size.height > 896
+                                  ? 1
+                                      .h // 16 pro max
+                                  : 1.h, // 11 iphone,
                           color:
                               isSelected
                                   ? const Color(0xfffea386)

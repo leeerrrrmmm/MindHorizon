@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/domain/auth/auth_service.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/profile/detail_profile_screen.dart';
@@ -27,7 +28,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Positioned(
             child: Container(
               width: double.infinity,
-              height: 264,
+              height:
+                  MediaQuery.of(context).size.height < 896
+                      ? 200.h
+                      /// Тест для СЕ
+                      : MediaQuery.of(context).size.height > 896
+                      ? 260
+                          .h // 16 pro max
+                      : 240.h, // 11 iphone
               decoration: BoxDecoration(
                 color: Color(0xfffbe7c3),
                 borderRadius: BorderRadius.only(
@@ -38,7 +46,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           Positioned(
-            top: 74,
+            top:
+                MediaQuery.of(context).size.height < 896
+                    ? 30.sp
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? 74
+                        .sp // 16 pro max
+                    : 74.sp, // 11 iphone ,
             left: 25,
             child: BuildText(
               text: 'MindHorizon',
@@ -49,7 +64,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.1,
+              top:
+                  MediaQuery.of(context).size.height < 896
+                      ? 50.h
+                      /// Тест для СЕ
+                      : MediaQuery.of(context).size.height > 896
+                      ? 100
+                          .h // 16 pro max
+                      : 100.h, // 11 iphone
             ),
             child: SizedBox(
               width: double.infinity,
@@ -59,7 +81,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 15.0),
                     child: CircleAvatar(
-                      radius: 60,
+                      radius:
+                          MediaQuery.of(context).size.height < 896
+                              ? 50.sp
+                              /// Тест для СЕ
+                              : MediaQuery.of(context).size.height > 896
+                              ? 60
+                                  .sp // 16 pro max
+                              : 60.sp, // 11 iphone 60,
                       child: Image.asset('assets/img/cuate.png'),
                     ),
                   ),
