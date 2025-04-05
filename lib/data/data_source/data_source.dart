@@ -643,10 +643,10 @@ final List<CategoryModel> meditationCategory = [
         description: 'Become more successful and productive',
         imagePath: 'assets/img/prod.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/clap.mp3'),
         ],
         colors: [
           // fCOlor

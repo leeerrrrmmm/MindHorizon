@@ -75,7 +75,8 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
             stepProgress[i] = 0.0;
 
             // Увеличиваем кол-во прослушанных шагов
-            if (i == listenedStepsCount) {
+            if (i == listenedStepsCount &&
+                listenedStepsCount + 1 < widget.stepAsset.length) {
               listenedStepsCount++;
 
               // Обновляем состояние в Bloc
@@ -161,10 +162,11 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
             width: double.infinity,
             child: PageView.builder(
               scrollDirection: Axis.vertical,
-              itemCount:
-                  listenedStepsCount < widget.steps!.length
-                      ? listenedStepsCount + 1
-                      : listenedStepsCount,
+              itemCount: (listenedStepsCount + 1).clamp(
+                1,
+                widget.steps!.length,
+              ),
+
               itemBuilder: (context, index) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,

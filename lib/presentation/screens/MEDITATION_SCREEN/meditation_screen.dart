@@ -110,7 +110,7 @@ class MeditationScreen extends StatelessWidget {
                                                         colors: secItem.colors,
                                                         curStepMusic:
                                                             secItem
-                                                                .steps![currentStep]
+                                                                .steps![secIndex]
                                                                 .stepAsset,
                                                       ),
                                                     ),
@@ -276,7 +276,7 @@ class MeditationScreen extends StatelessWidget {
                                                             decoration:
                                                                 BoxDecoration(
                                                                   color: Color(
-                                                                    0xfffcd1af,
+                                                                    0xffffffff,
                                                                   ),
                                                                   borderRadius:
                                                                       BorderRadius.circular(
@@ -301,7 +301,7 @@ class MeditationScreen extends StatelessWidget {
                                                                   height: 8,
                                                                   decoration: BoxDecoration(
                                                                     color: Color(
-                                                                      0xfff19584,
+                                                                      0xff263238,
                                                                     ),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
