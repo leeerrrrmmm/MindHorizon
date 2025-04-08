@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mind_horizon/components/build_text.dart';
@@ -8,6 +9,8 @@ import 'package:mind_horizon/data/models/steps_model.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/widgets/end_meditation_screen.dart';
 import 'package:mind_horizon/testt/a.dart';
 import 'package:vibration/vibration.dart';
+
+import '../../../../../data/domain/auth/push.dart' show FirebaseMsg;
 
 class PlayMeditationScreen extends StatefulWidget {
   final List<StepsModel>? steps;
@@ -37,8 +40,23 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
   Map<int, Duration> stepPositions = {};
   Map<int, Duration> stepDurations = {};
   Map<int, double> stepProgress = {};
-  late bool isGeneralNotificationEnabled;
-  late bool isVibrateEnabled;
+   bool isGeneralNotificationEnabled = true;
+   bool isVibrateEnabled = true;
+  final FirebaseMsg _notificationService = FirebaseMsg();
+
+
+  void _sendNotification() {
+   if(isGeneralNotificationEnabled) {
+      _notificationService.showLocalNotification(
+        RemoteMessage(
+          notification: RemoteNotification(
+            title: 'MindHorizon',
+            body: 'Step ${widget.currentStep} was finished!',
+          ),
+        ),
+      );
+    }
+  }
 
   // Получаем настройки уведомлений пользователя из Firebase
   Future<void> getUserNotificationSettings() async {
@@ -67,13 +85,13 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
     }
   }
 
+
   @override
   void initState() {
     super.initState();
     getUserNotificationSettings();
     stepCount = widget.currentStep;
     listenedStepsCount = widget.currentStep;
-
     isPlayingList = List.generate(widget.steps!.length, (index) => false);
 
     // Инициализируем плееры для каждого шага
@@ -122,7 +140,7 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
                 ),
               );
             }
-
+            _sendNotification();
             // Переход на экран завершения
             if (mounted) {
               Navigator.pushReplacement(
