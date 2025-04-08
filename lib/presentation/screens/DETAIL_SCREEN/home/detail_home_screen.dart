@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/data/models/category_fields_model.dart';
-import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/home/widgets/asmr_screen.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/home/widgets/course/my_course_screen.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/home/widgets/sound_of_the_day.dart';
+import 'package:mind_horizon/presentation/screens/MAIN/widgets/video_screen.dart';
 
 class DetailHomeScreen extends StatelessWidget {
   final int index;
@@ -33,7 +33,7 @@ class DetailHomeScreen extends StatelessWidget {
                 colors: [...?colors],
               )
               : index == 1
-              ? AsmrScreen(imagePath: imagePath ?? '')
+              ? VideoScreen(video: secondeItems, secIndex: secondIndex)
               : SoundOfTheDay(
                 title: secondeItems.title,
                 description: secondeItems.description,

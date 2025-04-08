@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/build_text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vibration/vibration.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
@@ -9,9 +12,52 @@ class NotificationsScreen extends StatefulWidget {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
-  bool isGeneralNotificationEnabled = false;
-  bool isSoundEnabled = false;
-  bool isVibrateEnabled = false;
+  bool isGeneralNotificationEnabled = true;
+  bool isVibrateEnabled = true;
+  // Получаем настройки уведомлений пользователя из Firebase
+  Future<void> getUserNotificationSettings() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      var snapshot =
+          await FirebaseFirestore.instance
+              .collection('Users')
+              .doc(user.uid)
+              .get();
+
+      if (snapshot.exists) {
+        setState(() {
+          isGeneralNotificationEnabled =
+              snapshot['notificationSettings']['sendNotification'] ?? true;
+          isVibrateEnabled =
+              snapshot['notificationSettings']['vibration'] ?? true;
+        });
+      }
+    }
+  }
+
+  // Обновляем настройки уведомлений в Firestore
+  Future<void> updateNotificationSettings({
+    required bool isGeneralNotificationEnabled,
+    required bool isVibrateEnabled,
+  }) async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      await FirebaseFirestore.instance.collection('Users').doc(user.uid).update(
+        {
+          'notificationSettings': {
+            'vibration': isVibrateEnabled,
+            'sendNotification': isGeneralNotificationEnabled,
+          },
+        },
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUserNotificationSettings();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +110,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                   fontWeight: FontWeight.w600,
                   color: Color(0xfffea386),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 49.0,
@@ -99,19 +144,24 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                   isGeneralNotificationEnabled =
                                       !isGeneralNotificationEnabled;
                                 });
+                                updateNotificationSettings(
+                                  isGeneralNotificationEnabled:
+                                      isGeneralNotificationEnabled,
+                                  isVibrateEnabled: isVibrateEnabled,
+                                );
                               },
                               child: Image.asset(
                                 isGeneralNotificationEnabled
-                                    ? 'assets/img/off.png'
-                                    : 'assets/img/on.png',
+                                    ? 'assets/img/on.png'
+                                    : 'assets/img/off.png',
                               ),
                             ),
                           ],
                         ),
                       ),
-                      // SOUND
+                      // VIBRATE
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 14.0),
+                        padding: const EdgeInsets.only(top: 10.0),
                         child: Container(
                           padding: const EdgeInsets.all(8.0),
                           width: double.infinity,
@@ -125,7 +175,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               BuildText(
-                                text: 'Sound',
+                                text: 'Vibrate',
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xfffea386),
@@ -133,52 +183,38 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isSoundEnabled = !isSoundEnabled;
+                                    isVibrateEnabled = !isVibrateEnabled;
                                   });
+                                  updateNotificationSettings(
+                                    isGeneralNotificationEnabled:
+                                        isGeneralNotificationEnabled,
+                                    isVibrateEnabled: isVibrateEnabled,
+                                  );
                                 },
                                 child: Image.asset(
-                                  isSoundEnabled
-                                      ? 'assets/img/off.png'
-                                      : 'assets/img/on.png',
+                                  isVibrateEnabled
+                                      ? 'assets/img/on.png'
+                                      : 'assets/img/off.png',
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                      // VIBRATE
-                      Container(
-                        padding: const EdgeInsets.all(8.0),
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.065,
-                        decoration: BoxDecoration(
-                          color: Color(0xfffbe7c3),
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0xfffea386)),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            BuildText(
-                              text: 'Vibrate',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xfffea386),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  isVibrateEnabled = !isVibrateEnabled;
-                                });
-                              },
-                              child: Image.asset(
-                                isVibrateEnabled
-                                    ? 'assets/img/off.png'
-                                    : 'assets/img/on.png',
-                              ),
-                            ),
-                          ],
-                        ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          if (isVibrateEnabled) {
+                            if (await Vibration.hasVibrator()) {
+                              Vibration.vibrate(
+                                duration: 1000,
+                                amplitude: 128,
+                              ); // amplitude от 1 до 255
+                            } else {
+                              print("Вибрация недоступна на этом устройстве");
+                            }
+                          }
+                        },
+                        child: Text('Click me'),
                       ),
                     ],
                   ),

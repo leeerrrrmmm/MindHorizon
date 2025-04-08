@@ -11,6 +11,7 @@ class CategoryFields {
   final String? largestImagepath;
   final List<StepsModel>? steps;
   final List<SoundsModel>? sounds;
+  final String? videoPath;
   List<Color>? colors;
   late int? curStepListened;
 
@@ -19,6 +20,7 @@ class CategoryFields {
     required this.title,
     required this.description,
     required this.imagePath,
+    this.videoPath,
     this.steps,
     this.sounds,
     this.colors,

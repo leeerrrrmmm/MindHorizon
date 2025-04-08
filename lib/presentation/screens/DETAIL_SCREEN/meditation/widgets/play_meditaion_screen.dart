@@ -1,10 +1,13 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/models/steps_model.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/widgets/end_meditation_screen.dart';
 import 'package:mind_horizon/testt/a.dart';
+import 'package:vibration/vibration.dart';
 
 class PlayMeditationScreen extends StatefulWidget {
   final List<StepsModel>? steps;
@@ -34,10 +37,40 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
   Map<int, Duration> stepPositions = {};
   Map<int, Duration> stepDurations = {};
   Map<int, double> stepProgress = {};
+  late bool isGeneralNotificationEnabled;
+  late bool isVibrateEnabled;
+
+  // Получаем настройки уведомлений пользователя из Firebase
+  Future<void> getUserNotificationSettings() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      var snapshot =
+          await FirebaseFirestore.instance
+              .collection('Users')
+              .doc(user.uid)
+              .get();
+
+      if (snapshot.exists) {
+        setState(() {
+          isGeneralNotificationEnabled =
+              snapshot['notificationSettings']['sendNotification'] ?? true;
+          isVibrateEnabled =
+              snapshot['notificationSettings']['vibration'] ?? true;
+        });
+      }
+    }
+  }
+
+  void triggerVibration() async {
+    if (isVibrateEnabled && await Vibration.hasVibrator()) {
+      Vibration.vibrate(duration: 1000, amplitude: 128);
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+    getUserNotificationSettings();
     stepCount = widget.currentStep;
     listenedStepsCount = widget.currentStep;
 
@@ -68,6 +101,8 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
       });
 
       audioPlayers[i]!.onPlayerComplete.listen((event) async {
+        triggerVibration();
+
         if (mounted) {
           setState(() {
             isPlayingList[i] = false;
@@ -76,7 +111,7 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
 
             // Увеличиваем кол-во прослушанных шагов
             if (i == listenedStepsCount &&
-                listenedStepsCount + 1 < widget.stepAsset.length) {
+                listenedStepsCount + 1 < widget.steps!.length) {
               listenedStepsCount++;
 
               // Обновляем состояние в Bloc
