@@ -12,7 +12,7 @@ class AuthGate extends StatelessWidget {
   Widget build(BuildContext context) {
     final auth = AuthService().getCurrentUser();
     return Scaffold(
-      body: StreamBuilder(
+      body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snap) {
           if (snap.connectionState == ConnectionState.waiting) {
@@ -25,13 +25,13 @@ class AuthGate extends StatelessWidget {
 
           if (snap.hasData) {
             var user = FirebaseAuth.instance.currentUser;
-            if (user != null && auth != null && user.uid != auth.uid) {
-              return CustomBottomNavBar();
+            if (user != null && auth != null && user.uid == auth.uid) {
+              return CustomBottomNavBar(); // Переход на главный экран
             } else {
-              return LoginScreen();
+              return Onboarding(); // Переход на экран логина, если uid не совпадает
             }
           } else {
-            return Onboarding();
+            return LoginScreen(); // Если данных нет, пользователь не авторизован
           }
         },
       ),

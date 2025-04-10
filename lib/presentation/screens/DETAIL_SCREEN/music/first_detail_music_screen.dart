@@ -3,13 +3,13 @@ import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/models/sounds_model.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/music/second_detail_music_screen.dart';
 
-class DetailScreen extends StatefulWidget {
+class FirstDetailMusicScreen extends StatefulWidget {
   final String title;
   final String description;
   final String imagePath;
   final List<SoundsModel>? sounds;
   final int indexEl;
-  const DetailScreen({
+  const FirstDetailMusicScreen({
     super.key,
     required this.title,
     required this.description,
@@ -19,10 +19,10 @@ class DetailScreen extends StatefulWidget {
   });
 
   @override
-  State<DetailScreen> createState() => _DetailScreenState();
+  State<FirstDetailMusicScreen> createState() => _FirstDetailMusicScreenState();
 }
 
-class _DetailScreenState extends State<DetailScreen> {
+class _FirstDetailMusicScreenState extends State<FirstDetailMusicScreen> {
   int curEl = 5;
   @override
   Widget build(BuildContext context) {

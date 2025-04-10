@@ -1,26 +1,39 @@
 import 'dart:developer';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class FirebaseMsg {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
-  final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
   Future<void> init() async {
     await _initLocalNotifications();
-    await _requestPermissions();
-    await _logFcmToken();
-    await _initListeners();
+
+    // Проверка на платформу, если это не iOS, то инициализируем FCM
+    if (defaultTargetPlatform != TargetPlatform.iOS) {
+      await _requestPermissions();
+      await _logFcmToken();
+      await _initListeners();
+    }
   }
 
   Future<void> _initLocalNotifications() async {
-    const androidInitSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
-    const initSettings = InitializationSettings(android: androidInitSettings);
+    const androidInitSettings = AndroidInitializationSettings(
+      '@mipmap/ic_launcher',
+    );
+    final iosInitSettings = DarwinInitializationSettings();
+    final initSettings = InitializationSettings(
+      android: androidInitSettings,
+      iOS: iosInitSettings,
+    );
     await _flutterLocalNotificationsPlugin.initialize(initSettings);
   }
 
   Future<void> _requestPermissions() async {
-    final NotificationSettings settings = await _firebaseMessaging.requestPermission();
+    final NotificationSettings settings =
+        await _firebaseMessaging.requestPermission();
     log('User granted permission: ${settings.authorizationStatus}');
   }
 
@@ -36,7 +49,9 @@ class FirebaseMsg {
   }
 
   void _onMessageOpenedApp(RemoteMessage message) {
-    log('Push notification opened: ${message.notification?.title}, ${message.notification?.body}');
+    log(
+      'Push notification opened: ${message.notification?.title}, ${message.notification?.body}',
+    );
   }
 
   void _onMessage(RemoteMessage message) {
@@ -59,15 +74,18 @@ class FirebaseMsg {
   /// Настройка обработки уведомлений в фоновом режиме (работает только для Android)
   @pragma('vm:entry-point')
   static Future<void> _onBackgroundApp(RemoteMessage message) async {
-    log('Push notification on background: ${message.notification?.title}, ${message.notification?.body}');
+    log(
+      'Push notification on background: ${message.notification?.title}, ${message.notification?.body}',
+    );
   }
 }
 
 class NotificationChannels {
-  static const AndroidNotificationDetails generalChannel = AndroidNotificationDetails(
-    'general_notifications',
-    'Общие уведомления',
-    importance: Importance.max,
-    priority: Priority.high,
-  );
+  static const AndroidNotificationDetails generalChannel =
+      AndroidNotificationDetails(
+        'general_notifications',
+        'Общие уведомления',
+        importance: Importance.max,
+        priority: Priority.high,
+      );
 }

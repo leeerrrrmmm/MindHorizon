@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -210,7 +212,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                 amplitude: 128,
                               ); // amplitude от 1 до 255
                             } else {
-                              print("Вибрация недоступна на этом устройстве");
+                              log("Вибрация недоступна на этом устройстве");
                             }
                           }
                         },

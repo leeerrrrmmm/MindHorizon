@@ -50,12 +50,34 @@ class _ThirdState extends State<Third> {
       body: Stack(
         children: [
           Positioned(
-            top: -10,
+            top:
+                MediaQuery.of(context).size.height < 896
+                    ? -60
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? -10 // 16 pro max
+                    : -10,
             left: 0,
-            child: Image.asset('assets/img/flowers.png', color: Colors.white),
+            child: Image.asset(
+              'assets/img/flowers.png',
+              scale:
+                  MediaQuery.of(context).size.height < 896
+                      ? 1.2
+                      /// Тест для СЕ
+                      : MediaQuery.of(context).size.height > 896
+                      ? 1 // 16 pro max
+                      : 1,
+              color: Colors.white,
+            ),
           ),
           Positioned(
-            top: 105,
+            top:
+                MediaQuery.of(context).size.height < 896
+                    ? 70
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? 105 // 16 pro max
+                    : 105,
             left: 30,
             right: 0,
             child: Center(
@@ -67,7 +89,13 @@ class _ThirdState extends State<Third> {
                         : "Let's measure your inhale"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize:
+                      MediaQuery.of(context).size.height < 896
+                          ? 20
+                          /// Тест для СЕ
+                          : MediaQuery.of(context).size.height > 896
+                          ? 24 // 16 pro max
+                          : 24,
                   color: Color(0xfff19584),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w600,
@@ -76,11 +104,51 @@ class _ThirdState extends State<Third> {
             ),
           ),
           if (!(_timer?.isActive ?? false) && _elapsedTime.inSeconds > 0)
-            Positioned(top: 230, child: Image.asset('assets/gif/done.gif')),
+            Positioned(
+              top:
+                  MediaQuery.of(context).size.height < 896
+                      ? 110
+                      /// Тест для СЕ
+                      : MediaQuery.of(context).size.height > 896
+                      ? 230 // 16 pro max
+                      : 230, // 11 iphone,
+              child: Image.asset(
+                'assets/gif/done.gif',
+                scale:
+                    MediaQuery.of(context).size.height < 896
+                        ? 1.1
+                        /// Тест для СЕ
+                        : MediaQuery.of(context).size.height > 896
+                        ? 1 // 16 pro max
+                        : 1, // 11 iphone
+              ),
+            ),
           Positioned(
-            top: 270,
-            left: -30,
-            child: Image.asset('assets/gif/cloud.gif', color: Colors.white),
+            top:
+                MediaQuery.of(context).size.height < 896
+                    ? 170
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? 270 // 16 pro max
+                    : 250, // 11 iphone
+            left:
+                MediaQuery.of(context).size.height < 896
+                    ? 0
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? -30 // 16 pro max
+                    : -30,
+            child: Image.asset(
+              'assets/gif/cloud.gif',
+              scale:
+                  MediaQuery.of(context).size.height < 896
+                      ? 1.3
+                      /// Тест для СЕ
+                      : MediaQuery.of(context).size.height > 896
+                      ? 1 // 16 pro max
+                      : 1,
+              color: Colors.white,
+            ),
           ),
           if (_elapsedTime.inSeconds >= 0)
             Positioned(
@@ -101,8 +169,20 @@ class _ThirdState extends State<Third> {
             left:
                 _isRunning
                     ? MediaQuery.of(context).size.width / 3.2
-                    : MediaQuery.of(context).size.width / 2.8,
-            top: MediaQuery.of(context).size.height / 1.22,
+                    :
+                    /// Тест для СЕ
+                    MediaQuery.of(context).size.height > 896
+                    ? MediaQuery.of(context).size.width /
+                        2.8 // 16 pro max
+                    : MediaQuery.of(context).size.width / 3.2,
+            top:
+                MediaQuery.of(context).size.height < 896
+                    ? MediaQuery.of(context).size.height / 1.3
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? MediaQuery.of(context).size.height /
+                        1.22 // 16 pro max
+                    : MediaQuery.of(context).size.height / 1.22,
             child: Text(
               _isRunning
                   ? "Press 'Stop'\nwhen you reach your limit"
@@ -118,8 +198,20 @@ class _ThirdState extends State<Third> {
             ),
           ),
           Positioned(
-            bottom: 44,
-            right: 113,
+            bottom:
+                MediaQuery.of(context).size.height < 896
+                    ? 20
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? 44 // 16 pro max
+                    : 44, // 11 iphone
+            right:
+                MediaQuery.of(context).size.height < 896
+                    ? 80
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? 113 // 16 pro max
+                    : 113, // 11 iphone
             child: GestureDetector(
               onTap: () {
                 if (_isRunning) {
@@ -149,7 +241,13 @@ class _ThirdState extends State<Third> {
                             : 'Start'),
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize:
+                          MediaQuery.of(context).size.height < 896
+                              ? 22
+                              /// Тест для СЕ
+                              : MediaQuery.of(context).size.height > 896
+                              ? 24 // 16 pro max
+                              : 20, // 11 iphone
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Poppins',
                       color: Color(0xfffea386),

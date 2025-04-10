@@ -1,42 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
-
-// События
-abstract class MeditationEvent extends Equatable {
-  @override
-  List<Object?> get props => [];
-}
-
-class UpdateStepCount extends MeditationEvent {
-  final int id;
-  final int stepCount;
-
-  UpdateStepCount({required this.id, required this.stepCount});
-
-  @override
-  List<Object?> get props => [id, stepCount];
-}
-
-// Состояние
-class MeditationState extends Equatable {
-  final Map<int, int> steps;
-
-  MeditationState({required this.steps});
-
-  @override
-  List<Object?> get props => [steps];
-}
-
-// BLoC
-class MeditationBloc extends Bloc<MeditationEvent, MeditationState> {
-  MeditationBloc() : super(MeditationState(steps: {})) {
-    on<UpdateStepCount>((event, emit) {
-      emit(MeditationState(steps: {...state.steps, event.id: event.stepCount}));
-    });
-  }
-}
+import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
 
 class Abc extends StatelessWidget {
   const Abc({super.key});

@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mind_horizon/presentation/screens/BOTTOM/custom_bottom_nav_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:async';
+import 'package:mind_horizon/presentation/screens/REGISTER/register_screen.dart';
 
 class CheckScreen extends StatefulWidget {
   const CheckScreen({super.key});
@@ -46,7 +46,14 @@ class _CheckScreenState extends State<CheckScreen> {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 1.3,
+            height:
+                MediaQuery.of(context).size.height < 896
+                    ? MediaQuery.of(context).size.height / 1.4
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? MediaQuery.of(context).size.height /
+                        1.3 // 16 pro max
+                    : MediaQuery.of(context).size.height / 1.3, // 11 iphone
             decoration: BoxDecoration(
               color: Color(0xfffbe7c3),
               borderRadius: BorderRadius.only(
@@ -58,25 +65,48 @@ class _CheckScreenState extends State<CheckScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 50.0),
+                  padding: const EdgeInsets.only(top: 10.0),
                   child: Text(
                     'MindHorizon',
                     style: TextStyle(
-                      fontSize: 36,
+                      fontSize:
+                          MediaQuery.of(context).size.height < 896
+                              ? 30.sp
+                              /// Тест для СЕ
+                              : MediaQuery.of(context).size.height > 896
+                              ? 36
+                                  .sp // 16 pro max
+                              : 34.sp, // 11 iphone36,
                       color: Color(0xfffea386),
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-                Image.asset('assets/gif/flower.gif'),
+                Image.asset(
+                  'assets/gif/flower.gif',
+                  scale:
+                      MediaQuery.of(context).size.height < 896
+                          ? 1.6
+                          /// Тест для СЕ
+                          : MediaQuery.of(context).size.height > 896
+                          ? 1 // 16 pro max
+                          : 1.2, // 11 iphone
+                ),
                 Text(
                   textAlign: TextAlign.center,
                   !_isRunning && _progress > 0.0
                       ? "Your plan is ready.\nLet's begin?"
                       : 'Creating your\npersonalized plan',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize:
+                        MediaQuery.of(context).size.height < 896
+                            ? 18.sp
+                            /// Тест для СЕ
+                            : MediaQuery.of(context).size.height > 896
+                            ? 20
+                                .sp // 16 pro max
+                            : 18.sp, // 11 iphone 20,
                     color: Color(0xfffea386),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w700,
@@ -91,8 +121,8 @@ class _CheckScreenState extends State<CheckScreen> {
                     ? () {
                       Navigator.pushReplacement(
                         context,
-                        CupertinoPageRoute(
-                          builder: (context) => CustomBottomNavBar(),
+                        MaterialPageRoute(
+                          builder: (context) => RegisterScreen(),
                         ),
                       );
                     }

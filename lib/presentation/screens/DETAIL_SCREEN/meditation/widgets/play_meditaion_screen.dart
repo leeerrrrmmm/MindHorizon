@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,10 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/models/steps_model.dart';
+import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/widgets/end_meditation_screen.dart';
-import 'package:mind_horizon/testt/a.dart';
 import 'package:vibration/vibration.dart';
-
 import '../../../../../data/domain/auth/push.dart' show FirebaseMsg;
 
 class PlayMeditationScreen extends StatefulWidget {
@@ -40,13 +40,12 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
   Map<int, Duration> stepPositions = {};
   Map<int, Duration> stepDurations = {};
   Map<int, double> stepProgress = {};
-   bool isGeneralNotificationEnabled = true;
-   bool isVibrateEnabled = true;
+  bool isGeneralNotificationEnabled = true;
+  bool isVibrateEnabled = true;
   final FirebaseMsg _notificationService = FirebaseMsg();
 
-
   void _sendNotification() {
-   if(isGeneralNotificationEnabled) {
+    if (isGeneralNotificationEnabled) {
       _notificationService.showLocalNotification(
         RemoteMessage(
           notification: RemoteNotification(
@@ -84,7 +83,6 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
       Vibration.vibrate(duration: 1000, amplitude: 128);
     }
   }
-
 
   @override
   void initState() {
@@ -166,20 +164,20 @@ class _PlayMeditationScreenState extends State<PlayMeditationScreen> {
     final player = audioPlayers[step];
 
     if (player == null) {
-      print("Ошибка: Плеер не найден для шага $step");
+      log("Ошибка: Плеер не найден для шага $step");
       return;
     }
 
     if (isPlayingList[step]) {
-      print("Пауза для шага $step");
+      log("Пауза для шага $step");
       await player.pause();
     } else {
-      print("Попытка воспроизвести: ${widget.steps![step].stepAsset}");
+      log("Попытка воспроизвести: ${widget.steps![step].stepAsset}");
       try {
         await player.play(AssetSource(widget.steps![step].stepAsset));
-        print("Аудио запущено!");
+        log("Аудио запущено!");
       } catch (e) {
-        print("Ошибка при воспроизведении: $e");
+        log("Ошибка при воспроизведении: $e");
       }
     }
 

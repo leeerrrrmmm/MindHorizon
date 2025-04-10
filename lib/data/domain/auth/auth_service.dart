@@ -87,8 +87,9 @@ class AuthService {
       );
       final User? user = userCredential.user;
 
-      if (user == null)
+      if (user == null) {
         throw Exception('Ошибка авторизации. Пользователь = null.');
+      }
 
       final userDoc =
           await _firebaseFirestore.collection('Users').doc(user.uid).get();

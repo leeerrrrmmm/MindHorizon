@@ -1,6 +1,10 @@
-class ButtonState {
-  final int unlockedButtons;
-  final int lastCompletedStep; // Запоминаем, какой шаг был завершен
+part of 'steps_bloc.dart';
 
-  ButtonState({required this.unlockedButtons, required this.lastCompletedStep});
+class MeditationState extends Equatable {
+  final Map<int, int> steps;
+
+  const MeditationState({required this.steps});
+
+  @override
+  List<Object?> get props => [steps];
 }

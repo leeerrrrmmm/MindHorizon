@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/log_and_ger_btn.dart';
 import 'package:mind_horizon/data/domain/auth/auth_service.dart';
 import 'package:mind_horizon/presentation/screens/LOGIN/login_screen.dart';
@@ -33,76 +34,72 @@ class _SetNewPassState extends State<SetNewPass> {
         );
       }
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Error: $e')));
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error: $e')));
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned(top: 0, child: Image.asset('assets/img/reglogtop.png')),
-          Positioned(bottom: 0, child: Image.asset('assets/img/reglogbot.png')),
-          SizedBox(
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 40.0,
-                vertical: 200.0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const BuildRegText(
-                    text: 'Set a new password',
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Alegreya',
-                    color: Color(0xff455a64),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 27.0),
-                    child: SizedBox(
-                      width: 370,
-                      child: BuildRegText(
-                        text:
-                            'Create a new password. Ensure it differs from previous ones for security',
-                        fontSize: 22,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'AlegreyaSans',
-                        color: Color(0xff455a64),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+        child: Stack(
+          children: [
+            Positioned(top: 0, child: Image.asset('assets/img/reglogtop.png')),
+            Positioned(
+              bottom: 0,
+              child: Image.asset('assets/img/reglogbot.png'),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 40.0,
+                  vertical:
+                      MediaQuery.of(context).size.height < 896
+                          ? 160.h
+                          /// Тест для СЕ
+                          : MediaQuery.of(context).size.height > 896
+                          ? 200
+                              .h // 16 pro max
+                          : 200.h, // 11 iphone ,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const BuildRegText(
+                      text: 'Set a new password',
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Alegreya',
+                      color: Color(0xff455a64),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 27.0),
+                      child: SizedBox(
+                        width: 370,
+                        child: BuildRegText(
+                          text:
+                              'Create a new password. Ensure it differs from previous ones for security',
+                          fontSize: 22,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'AlegreyaSans',
+                          color: Color(0xff455a64),
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 15.0),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            controller: _passwordController,
-                            obscureText: true,
-                            validator: (val) {
-                              if (val == null || val.isEmpty) {
-                                return 'Enter a password';
-                              }
-                              if (val.length < 6) {
-                                return 'Password must contain at least 6 characters';
-                              }
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                              labelText: 'Password',
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
-                            child: TextFormField(
-                              controller: _confirmPasswordController,
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 15.0),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: <Widget>[
+                            TextFormField(
+                              controller: _passwordController,
                               obscureText: true,
                               validator: (val) {
                                 if (val == null || val.isEmpty) {
@@ -111,37 +108,58 @@ class _SetNewPassState extends State<SetNewPass> {
                                 if (val.length < 6) {
                                   return 'Password must contain at least 6 characters';
                                 }
-                                if (val != _passwordController.text) {
-                                  return 'Password does not match';
-                                }
                                 return null;
                               },
                               decoration: const InputDecoration(
-                                labelText: 'Confirm Password',
+                                labelText: 'Password',
                               ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 20.0,
+                              ),
+                              child: TextFormField(
+                                controller: _confirmPasswordController,
+                                obscureText: true,
+                                validator: (val) {
+                                  if (val == null || val.isEmpty) {
+                                    return 'Enter a password';
+                                  }
+                                  if (val.length < 6) {
+                                    return 'Password must contain at least 6 characters';
+                                  }
+                                  if (val != _passwordController.text) {
+                                    return 'Password does not match';
+                                  }
+                                  return null;
+                                },
+                                decoration: const InputDecoration(
+                                  labelText: 'Confirm Password',
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Column(
-                    children: [
-                      LogAndGerBtn(
-                        textBtn: 'Confirm',
-                        onTap:
-                            () => setNewPass(
-                              _passwordController.text,
-                              _confirmPasswordController.text,
-                            ),
-                      ),
-                    ],
-                  ),
-                ],
+                    Column(
+                      children: [
+                        LogAndGerBtn(
+                          textBtn: 'Confirm',
+                          onTap:
+                              () => setNewPass(
+                                _passwordController.text,
+                                _confirmPasswordController.text,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/presentation/screens/REGISTER/widgets/build_reg_text.dart';
 
 class UnderButtonText extends StatelessWidget {
@@ -20,7 +21,14 @@ class UnderButtonText extends StatelessWidget {
       children: <Widget>[
         BuildRegText(
           text: firstText,
-          fontSize: 22,
+          fontSize:
+              MediaQuery.of(context).size.height < 896
+                  ? 18.sp
+                  /// Тест для СЕ
+                  : MediaQuery.of(context).size.height > 896
+                  ? 22.sp
+                  // 16 pro max
+                  : 22.sp,
           fontWeight: FontWeight.w400,
           fontFamily: 'AlegreyaSans',
           color: Color(0xff5b6c72),
@@ -29,7 +37,14 @@ class UnderButtonText extends StatelessWidget {
           onTap: onTap,
           child: BuildRegText(
             text: '\t$secondText',
-            fontSize: 22,
+            fontSize:
+                MediaQuery.of(context).size.height < 896
+                    ? 18.sp
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? 22.sp
+                    // 16 pro max
+                    : 22.sp,
             fontWeight: FontWeight.bold,
             fontFamily: 'AlegreyaSans',
             color: Color(0xff5b6c72),

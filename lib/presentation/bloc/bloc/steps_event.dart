@@ -1,7 +1,16 @@
-abstract class ButtonEvent {}
+part of 'steps_bloc.dart';
 
-class IncrementButtonEvent extends ButtonEvent {
-  final int completedStep;
+abstract class MeditationEvent extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
 
-  IncrementButtonEvent(this.completedStep);
+class UpdateStepCount extends MeditationEvent {
+  final int id;
+  final int stepCount;
+
+  UpdateStepCount({required this.id, required this.stepCount});
+
+  @override
+  List<Object?> get props => [id, stepCount];
 }

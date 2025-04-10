@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/presentation/screens/REGISTER/widgets/build_reg_text.dart';
 
 class LogAndGerBtn extends StatelessWidget {
@@ -11,7 +12,14 @@ class LogAndGerBtn extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 60,
+        height:
+            MediaQuery.of(context).size.height < 896
+                ? 60.h
+                /// Тест для СЕ
+                : MediaQuery.of(context).size.height > 896
+                ? 60.h
+                // 16 pro max
+                : 60.h,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Color(0xffe7c178),
@@ -20,7 +28,7 @@ class LogAndGerBtn extends StatelessWidget {
         child: Center(
           child: BuildRegText(
             text: textBtn,
-            fontSize: 32,
+            fontSize: 32.sp,
             fontWeight: FontWeight.w500,
             fontFamily: 'AlegreyaSans',
             color: Colors.white,

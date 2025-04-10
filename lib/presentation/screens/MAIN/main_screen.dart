@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/home/detail_home_screen.dart';
@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
           Positioned(left: 0, child: Image.asset('assets/img/lvec.png')),
           Positioned(right: 0, child: Image.asset('assets/img/rvec.png')),
           Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
+            padding: const EdgeInsets.only(left: 12, right: 15),
             child: ListView.builder(
               itemCount: myCourseCategory.length,
               itemBuilder: (context, index) {
@@ -28,12 +28,19 @@ class MainScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 12.0),
                       child: BuildText(
                         text: myCategory.title,
-                        fontSize: 30,
+                        fontSize:
+                            MediaQuery.of(context).size.height < 896
+                                ? 30.sp
+                                /// Тест для СЕ
+                                : MediaQuery.of(context).size.height > 896
+                                ? 30
+                                    .sp // 16 pro max
+                                : 30.sp, // 11 iphone
                         fontWeight: FontWeight.w500,
                         color: Color(0xfffea386),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 20),
                     SizedBox(
                       height: 175,
                       child: ListView.builder(
@@ -50,12 +57,11 @@ class MainScreen extends StatelessWidget {
                                   left: 10.0,
                                   right: 10.0,
                                 ),
-                                // ASMR DETAIL SCREEN
                                 child: GestureDetector(
                                   onTap:
                                       () => Navigator.push(
                                         context,
-                                        CupertinoPageRoute(
+                                        MaterialPageRoute(
                                           builder:
                                               (context) => DetailHomeScreen(
                                                 index: index,
@@ -78,7 +84,7 @@ class MainScreen extends StatelessWidget {
                                 onTap:
                                     () => Navigator.push(
                                       context,
-                                      CupertinoPageRoute(
+                                      MaterialPageRoute(
                                         builder:
                                             (context) => DetailHomeScreen(
                                               index: index,
@@ -110,6 +116,10 @@ class MainScreen extends StatelessWidget {
                                                 scale: 1,
                                               ),
                                               Container(
+                                                padding: const EdgeInsets.only(
+                                                  left: 12,
+                                                  top: 4,
+                                                ),
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.only(
@@ -122,18 +132,44 @@ class MainScreen extends StatelessWidget {
                                                 ),
                                                 width: double.infinity,
                                                 height: 38,
-                                                child: Center(
-                                                  child: BuildText(
-                                                    text: secondItem.title,
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w400,
-                                                    color:
-                                                        secIndex == 0
-                                                            ? Colors.black
-                                                            : secIndex == 1
-                                                            ? Colors.white
-                                                            : Colors.black,
-                                                  ),
+                                                child: BuildText(
+                                                  text: secondItem.title,
+                                                  fontSize:
+                                                      MediaQuery.of(
+                                                                context,
+                                                              ).size.height <
+                                                              896
+                                                          ? myCategory
+                                                                      .categoryFields[index]
+                                                                      .id ==
+                                                                  0
+                                                              ? 15.sp
+                                                              : 18.sp
+                                                          /// Тест для СЕ
+                                                          : MediaQuery.of(
+                                                                context,
+                                                              ).size.height >
+                                                              896
+                                                          ? myCategory
+                                                                      .categoryFields[index]
+                                                                      .id ==
+                                                                  0
+                                                              ? 18.sp
+                                                              : 20
+                                                                  .sp // 16 pro max
+                                                          : myCategory
+                                                                  .categoryFields[index]
+                                                                  .id ==
+                                                              0
+                                                          ? 18.sp
+                                                          : 20.sp, // 11 iphone
+                                                  fontWeight: FontWeight.w400,
+                                                  color:
+                                                      secIndex == 0
+                                                          ? Colors.black
+                                                          : secIndex == 1
+                                                          ? Colors.white
+                                                          : Colors.black,
                                                 ),
                                               ),
                                             ],

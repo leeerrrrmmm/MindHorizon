@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/build_text.dart';
 
@@ -6,8 +7,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    User? user = FirebaseAuth.instance.currentUser;
+
     return AppBar(
-      toolbarHeight: 70,
+      toolbarHeight: 80,
       backgroundColor: Color(0xfff8ecd6),
       centerTitle: false,
       title: Padding(
@@ -23,32 +26,29 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 fontWeight: FontWeight.w700,
                 color: Color(0xfffea386),
               ),
-              Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Color(0xfffea386),
-                    radius: 24,
-                    child: Center(
-                      child: Text(
-                        '12',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: Color(0xfffea386),
+                    shape: BoxShape.circle,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xfffea386),
-                      radius: 24,
-                      child: Center(
-                        child: Icon(Icons.person, color: Colors.white),
-                      ),
-                    ),
+                  child: Center(
+                    child:
+                        user?.photoURL != null
+                            ? ClipOval(
+                              child: Image.network(
+                                user!.photoURL!,
+                                width: 48,
+                                height: 48,
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                            : Image.asset('assets/img/cuate.png', scale: 8),
                   ),
-                ],
+                ),
               ),
             ],
           ),
@@ -58,5 +58,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(70);
+  Size get preferredSize => const Size.fromHeight(100);
 }

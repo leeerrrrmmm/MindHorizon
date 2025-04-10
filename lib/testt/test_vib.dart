@@ -28,7 +28,7 @@ class _TestVibState extends State<TestVib> {
           isActiveVibro = vibroValue;
         });
 
-        if (vibroValue == true && await Vibration.hasVibrator() ?? false) {
+        if (vibroValue == true && await Vibration.hasVibrator()) {
           await Vibration.vibrate(duration: 1000, amplitude: 1);
         }
       }

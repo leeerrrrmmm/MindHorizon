@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
+import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/sleep/first_detail_sleep_screen.dart';
-import 'package:mind_horizon/testt/a.dart';
 
 class SleepScreen extends StatelessWidget {
   const SleepScreen({super.key});
@@ -20,7 +19,7 @@ class SleepScreen extends StatelessWidget {
           Positioned(left: 0, child: Image.asset('assets/img/lvec.png')),
           Positioned(right: 0, child: Image.asset('assets/img/rvec.png')),
           Padding(
-            padding: const EdgeInsets.only(top: 50, left: 15, right: 15),
+            padding: const EdgeInsets.only(left: 24, right: 15),
             child: BlocBuilder<MeditationBloc, MeditationState>(
               builder: (context, state) {
                 return ListView.builder(
@@ -30,30 +29,35 @@ class SleepScreen extends StatelessWidget {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 30),
                         BuildText(
                           text: category.title,
-                          fontSize: 32,
+                          fontSize:
+                              MediaQuery.of(context).size.height < 896
+                                  ? 30.sp
+                                  /// Тест для СЕ
+                                  : MediaQuery.of(context).size.height > 896
+                                  ? 30
+                                      .sp // 16 pro max
+                                  : 30.sp, // 11 iphone
                           fontWeight: FontWeight.w500,
                           color: Color(0xfffea386),
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 20),
                         SizedBox(
-                          // height: index == 0 ? 156.w : 260.w,
                           height:
                               MediaQuery.of(context).size.height < 896
                                   ? index == 0
-                                      ? 146.h
+                                      ? 205.h
                                       : 245.h
                                   /// Тест для СЕ
                                   : MediaQuery.of(context).size.height > 896
                                   ? index == 0
-                                      ? 156.h
+                                      ? 175.h
                                       : 260
                                           .h
                                           .sp // 16 pro max
                                   : index == 0
-                                  ? 160.h
+                                  ? 175.h
                                   : 250.h, // 11 iphone,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
@@ -129,49 +133,57 @@ class SleepScreen extends StatelessWidget {
                                   width:
                                       MediaQuery.of(context).size.height < 896
                                           ? index == 0
-                                              ? 150.h
-                                              : 267.h
+                                              ? 190.w
+                                              : 267.w
                                           /// Тест для СЕ
                                           : MediaQuery.of(context).size.height >
                                               896
                                           ? index == 0
-                                              ? 175.h
-                                              : 287
-                                                  .h // 16 pro max
+                                              ? 175.w
+                                              : 287.w
+                                          // 16 pro max
                                           : index == 0
-                                          ? 175.h
-                                          : 287.h, // 11 iphone
+                                          ? 175.w
+                                          : 287.w, // 11 iphone
                                   //  index == 0 ? 175 : 287,
                                   decoration: BoxDecoration(
-                                    color: item.colors?[5],
+                                    color: item.colors?[0],
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Column(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        categoryIndex == 0
+                                            ? CrossAxisAlignment.end
+                                            : CrossAxisAlignment.center,
                                     children: [
                                       // PHOTO
                                       Image.asset(
                                         item.imagePath,
-                                        width:
+                                        scale:
                                             MediaQuery.of(context).size.height <
                                                     896
                                                 ? index == 0
-                                                    ? 100.h
-                                                    : 165.h
+                                                    ? categoryIndex == 0
+                                                        ? 1.1
+                                                        : 1
+                                                    : 1.6
                                                 /// Тест для СЕ
                                                 : MediaQuery.of(
                                                       context,
                                                     ).size.height >
                                                     896
                                                 ? index == 0
-                                                    ? 120.h
-                                                    : 190
-                                                        .h
-                                                        .h // 16 pro max
+                                                    ? categoryIndex == 0
+                                                        ? 0.95
+                                                        : 0.9
+                                                    : 0.94 // 16 pro max
                                                 : index == 0
-                                                ? 110.h
-                                                : 170.h, // 11 iphone
+                                                ? categoryIndex == 0
+                                                    ? 1.1
+                                                    : 1
+                                                : 1.24, // 11 iphone
                                       ),
                                       Container(
                                         height:
@@ -212,12 +224,14 @@ class SleepScreen extends StatelessWidget {
                                         child: Padding(
                                           padding: const EdgeInsets.only(
                                             top: 3,
-                                            left: 12.0,
+                                            left: 12,
+
                                             bottom: 3,
                                           ),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
+
                                             children: [
                                               Text(
                                                 item.title,
@@ -275,7 +289,7 @@ class SleepScreen extends StatelessWidget {
                                                                   .categoryFields[index]
                                                                   .id ==
                                                               0
-                                                          ? FontWeight.w300
+                                                          ? FontWeight.w400
                                                           : FontWeight.w600,
                                                 ),
                                               ),

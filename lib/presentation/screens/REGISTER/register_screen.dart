@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mind_horizon/components/log_and_ger_btn.dart';
 import 'package:mind_horizon/components/row_text_for_log_reg_screen.dart';
 import 'package:mind_horizon/data/domain/auth/auth_service.dart';
@@ -34,7 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
       Navigator.pushReplacement(
         context,
-        CupertinoPageRoute(builder: (context) => CustomBottomNavBar()),
+        MaterialPageRoute(builder: (context) => CustomBottomNavBar()),
       );
     } catch (e) {
       ScaffoldMessenger.of(
@@ -54,7 +55,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       if (user != null) {
         Navigator.pushReplacement(
           context,
-          CupertinoPageRoute(builder: (context) => CustomBottomNavBar()),
+          MaterialPageRoute(builder: (context) => CustomBottomNavBar()),
         );
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -85,132 +86,241 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned(top: 0, child: Image.asset('assets/img/reglogtop.png')),
-          Positioned(bottom: 0, child: Image.asset('assets/img/reglogbot.png')),
-          SizedBox(
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  BuildRegText(
-                    text: 'Sign Up',
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Alegreya',
-                    color: Color(0xff455a64),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 27.0),
-                    child: SizedBox(
-                      width: 300,
-                      child: BuildRegText(
-                        text:
-                            'Sign up for free and start meditating, and explore Medic.',
-                        fontSize: 24,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'AlegreyaSans',
-                        color: Color(0xff455a64),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 43.0),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            controller: _nameController,
-                            decoration: const InputDecoration(
-                              hintText: 'Name',
-                              hintStyle: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'AlegreyaSans',
-                                color: Color(0xff455a64),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 58.0),
-                            child: TextFormField(
-                              controller: _emailController,
-                              decoration: const InputDecoration(
-                                hintText: 'Email Address',
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'AlegreyaSans',
-                                  color: Color(0xff455a64),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 58.0),
-                            child: TextFormField(
-                              controller: _passwordController,
-                              decoration: const InputDecoration(
-                                hintText: 'Password',
-                                hintStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'AlegreyaSans',
-                                  color: Color(0xff455a64),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+    double screenHeight = MediaQuery.of(context).size.height;
 
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 44.0, bottom: 15.0),
-                        child: LogAndGerBtn(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 0,
+              child: Image.asset(
+                'assets/img/reglogtop.png',
+                scale:
+                    screenHeight < 896
+                        ? 1.3
+                        /// Тест для СЕ
+                        : screenHeight > 896
+                        ? 1
+                        // 16 pro max
+                        : 1,
+              ),
+            ), // 11 iphone
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: Image.asset(
+                'assets/img/reglogbot.png',
+                scale:
+                    screenHeight < 896
+                        ? 1.2
+                        /// Тест для СЕ
+                        : screenHeight > 896
+                        ? 1
+                        // 16 pro max
+                        : 1,
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BuildRegText(
+                      text: 'Sign Up',
+                      fontSize:
+                          screenHeight < 896
+                              ? 24
+                              /// Тест для СЕ
+                              : screenHeight > 896
+                              ? 30
+                              // 16 pro max
+                              : 30,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Alegreya',
+                      color: Color(0xff455a64),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top:
+                            screenHeight < 896
+                                ? 40.0.h
+                                /// Тест для СЕ
+                                : screenHeight > 896
+                                ? 58.0.h
+                                // 16 pro max
+                                : 58.0.h,
+                      ),
+                      child: SizedBox(
+                        width:
+                            screenHeight < 896
+                                ? 250
+                                /// Тест для СЕ
+                                : screenHeight > 896
+                                ? 300
+                                // 16 pro max
+                                : 300,
+                        child: BuildRegText(
+                          text:
+                              'Sign up for free and start meditating, and explore Medic.',
+                          fontSize:
+                              screenHeight < 896
+                                  ? 20
+                                  /// Тест для СЕ
+                                  : screenHeight > 896
+                                  ? 24
+                                  // 16 pro max
+                                  : 24,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'AlegreyaSans',
+                          color: Color(0xff455a64),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40.0),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: <Widget>[
+                            TextFormField(
+                              controller: _nameController,
+                              decoration: const InputDecoration(
+                                hintText: 'Name',
+                                hintStyle: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'AlegreyaSans',
+                                  color: Color(0xff455a64),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top:
+                                    screenHeight < 896
+                                        ? 30.0.h
+                                        /// Тест для СЕ
+                                        : screenHeight > 896
+                                        ? 30.0.h
+                                        // 16 pro max
+                                        : 30.0.h,
+                              ),
+                              child: TextFormField(
+                                controller: _emailController,
+                                decoration: const InputDecoration(
+                                  hintText: 'Email Address',
+                                  hintStyle: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'AlegreyaSans',
+                                    color: Color(0xff455a64),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top:
+                                    screenHeight < 896
+                                        ? 30.0.h
+                                        /// Тест для СЕ
+                                        : screenHeight > 896
+                                        ? 30.0.h
+                                        // 16 pro max
+                                        : 30.0.h,
+                                bottom:
+                                    screenHeight < 896
+                                        ? 40.0.h
+                                        /// Тест для СЕ
+                                        : screenHeight > 896
+                                        ? 50.0.h
+                                        // 16 pro max
+                                        : 50.0.h,
+                              ),
+                              child: TextFormField(
+                                controller: _passwordController,
+                                decoration: const InputDecoration(
+                                  hintText: 'Password',
+                                  hintStyle: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'AlegreyaSans',
+                                    color: Color(0xff455a64),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        LogAndGerBtn(
                           textBtn: 'Sign Up',
                           onTap: _registerWithCredential,
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 44.0, bottom: 15.0),
-                        child: LogAndGerBtn(
-                          textBtn: 'Sign Up',
-                          onTap: _registerWithGoogle,
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top:
+                                screenHeight < 896
+                                    ? 50.0.h
+                                    /// Тест для СЕ
+                                    : screenHeight > 896
+                                    ? 50.0.h
+                                    // 16 pro max
+                                    : 50.0.h,
+                            bottom:
+                                screenHeight < 896
+                                    ? 30.0.h
+                                    /// Тест для СЕ
+                                    : screenHeight > 896
+                                    ? 45.0.h
+                                    // 16 pro max
+                                    : 45.0.h,
+                          ),
+                          child: GestureDetector(
+                            onTap: _registerWithGoogle,
+                            child: FaIcon(
+                              FontAwesomeIcons.google,
+                              size:
+                                  screenHeight < 896
+                                      ? 40.0.h
+                                      /// Тест для СЕ
+                                      : screenHeight > 896
+                                      ? 45.0.h
+                                      // 16 pro max
+                                      : 45.0.h,
+                              color: Colors.brown,
+                            ),
+                          ),
                         ),
-                      ),
-                      Center(
-                        child: UnderButtonText(
+                        UnderButtonText(
                           firstText: 'Already have an account?',
                           secondText: 'Sign In',
                           onTap: () {
                             Navigator.push(
                               context,
-                              CupertinoPageRoute(
+                              MaterialPageRoute(
                                 builder: (context) => LoginScreen(),
                               ),
                             );
                           },
                         ),
-                      ),
-                    ],
-                  ),
-
-                  const SizedBox(height: 10),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

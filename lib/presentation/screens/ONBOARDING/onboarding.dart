@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/presentation/screens/ONBOARDING/on_screens/first.dart';
 import 'package:mind_horizon/presentation/screens/ONBOARDING/on_screens/fourth.dart';
 import 'package:mind_horizon/presentation/screens/ONBOARDING/on_screens/second.dart';
@@ -46,7 +47,14 @@ class _OnboardingState extends State<Onboarding> {
               ],
             ),
             Positioned(
-              top: 60,
+              top:
+                  MediaQuery.of(context).size.height < 896
+                      ? 10
+                      /// Тест для СЕ
+                      : MediaQuery.of(context).size.height > 896
+                      ? 60
+                      // 16 pro max
+                      : 60, // 11 iphone 60,
               left: 14,
               child: IconButton(
                 onPressed: () {
@@ -72,11 +80,34 @@ class _OnboardingState extends State<Onboarding> {
                     );
                   },
                   child: Container(
-                    width: 216,
-                    height: 63,
+                    width:
+                        MediaQuery.of(context).size.height < 896
+                            ? 200.w
+                            /// Тест для СЕ
+                            : MediaQuery.of(context).size.height > 896
+                            ? 214.w
+                            // 16 pro max
+                            : 214.w, // 11 iphone214,
+                    height:
+                        MediaQuery.of(context).size.height < 896
+                            ? 60.h
+                            /// Тест для СЕ
+                            : MediaQuery.of(context).size.height > 896
+                            ? 62.h
+                            // 16 pro max
+                            : 63.h, // 11 iphone 63,
                     decoration: BoxDecoration(
                       color: Color(0xfffbe7c3),
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius:
+                          MediaQuery.of(context).size.height < 896
+                              ? BorderRadius.circular(16)
+                              /// Тест для СЕ
+                              : MediaQuery.of(context).size.height > 896
+                              ? BorderRadius.circular(25)
+                              // 16 pro max
+                              : BorderRadius.circular(
+                                25,
+                              ), // 11 iphone BorderRadius.circular(25),
                     ),
                     child: Center(
                       child: Text(
@@ -93,8 +124,22 @@ class _OnboardingState extends State<Onboarding> {
                 ),
               ),
             Positioned(
-              top: 78,
-              left: 76,
+              top:
+                  MediaQuery.of(context).size.height < 896
+                      ? 30
+                      /// Тест для СЕ
+                      : MediaQuery.of(context).size.height > 896
+                      ? 78
+                      // 16 pro max
+                      : 78, // 11 iphone
+              left:
+                  MediaQuery.of(context).size.height < 896
+                      ? 60.w
+                      /// Тест для СЕ
+                      : MediaQuery.of(context).size.height > 896
+                      ? 75.w
+                      // 16 pro max
+                      : 75.w, // 11 iphone214,76,
               child: Container(
                 width: 290,
                 height: 8,

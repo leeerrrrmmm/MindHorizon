@@ -26,11 +26,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {});
   }
 
+  void _logout() async {
+    await AuthService().logout();
+    if (mounted) {
+      Navigator.of(context).pop();
+    }
+  }
+
+  void _deleteAccount() async {
+    await AuthService().deleteUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xfff8ecd6),
-
       body: Stack(
         children: [
           Positioned(
@@ -44,11 +54,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height:
                   MediaQuery.of(context).size.height < 896
                       ? 200.h
-                      /// Тест для СЕ
                       : MediaQuery.of(context).size.height > 896
-                      ? 260
-                          .h // 16 pro max
-                      : 240.h, // 11 iphone
+                      ? 260.h
+                      : 240.h,
               decoration: BoxDecoration(
                 color: Color(0xfffbe7c3),
                 borderRadius: BorderRadius.only(
@@ -62,11 +70,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             top:
                 MediaQuery.of(context).size.height < 896
                     ? 30.sp
-                    /// Тест для СЕ
                     : MediaQuery.of(context).size.height > 896
-                    ? 74
-                        .sp // 16 pro max
-                    : 74.sp, // 11 iphone ,
+                    ? 74.sp
+                    : 74.sp,
             left: 25,
             child: BuildText(
               text: 'MindHorizon',
@@ -80,11 +86,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               top:
                   MediaQuery.of(context).size.height < 896
                       ? 50.h
-                      /// Тест для СЕ
                       : MediaQuery.of(context).size.height > 896
-                      ? 100
-                          .h // 16 pro max
-                      : 100.h, // 11 iphone
+                      ? 100.h
+                      : 100.h,
             ),
             child: SizedBox(
               width: double.infinity,
@@ -93,16 +97,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(bottom: 15.0),
-                    child: CircleAvatar(
-                      radius:
+                    child: Container(
+                      width:
                           MediaQuery.of(context).size.height < 896
-                              ? 50.sp
-                              /// Тест для СЕ
+                              ? 50.w
                               : MediaQuery.of(context).size.height > 896
-                              ? 60
-                                  .sp // 16 pro max
-                              : 60.sp, // 11 iphone 60,
-                      child: Image.asset('assets/img/cuate.png'),
+                              ? 120.w
+                              : 120.w,
+                      height:
+                          MediaQuery.of(context).size.height < 896
+                              ? 50.h
+                              : MediaQuery.of(context).size.height > 896
+                              ? 120.h
+                              : 120.h,
+                      decoration: BoxDecoration(
+                        color: Color(0xfffea386),
+                        shape: BoxShape.circle,
+                      ),
+                      child:
+                          user?.photoURL != null
+                              ? ClipOval(
+                                child: Image.network(
+                                  user!.photoURL!,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                              : Image.asset('assets/img/cuate.png'),
                     ),
                   ),
                   BuildText(
@@ -166,13 +186,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                         ),
                                               ),
                                             )
-                                            : showDialog(
+                                            : index == 2
+                                            ? showDialog(
                                               context: context,
                                               builder: (BuildContext context) {
                                                 return AlertDialog(
-                                                  title: Text('Alert'),
+                                                  title: Text('Exit'),
                                                   content: Text(
-                                                    'This is a sample alert message.',
+                                                    'Are you sure you want to sign out?',
                                                   ),
                                                   actions: <Widget>[
                                                     TextButton(
@@ -182,6 +203,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                         ).pop();
                                                       },
                                                       child: Text('Close'),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        _logout();
+                                                      },
+                                                      child: Text('Yes'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            )
+                                            : showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  title: Text('Delete'),
+                                                  content: Text(
+                                                    'Are you sure you want to delete Your account?',
+                                                  ),
+                                                  actions: <Widget>[
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.of(
+                                                          context,
+                                                        ).pop();
+                                                      },
+                                                      child: Text('Close'),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        _deleteAccount();
+                                                      },
+                                                      child: Text('Yes'),
                                                     ),
                                                   ],
                                                 );

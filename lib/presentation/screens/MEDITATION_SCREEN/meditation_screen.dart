@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
+import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
-import 'package:mind_horizon/testt/a.dart';
 
 class MeditationScreen extends StatelessWidget {
   const MeditationScreen({super.key});
@@ -35,7 +34,6 @@ class MeditationScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                 left: 15.0,
                                 bottom: 20.0,
-                                top: 20.0,
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,15 +49,15 @@ class MeditationScreen extends StatelessWidget {
                                         fontSize:
                                             MediaQuery.of(context).size.height <
                                                     896
-                                                ? 30.h
+                                                ? 30.sp
                                                 /// Тест для СЕ
                                                 : MediaQuery.of(
                                                       context,
                                                     ).size.height >
                                                     896
                                                 ? 30
-                                                    .h // 16 pro max
-                                                : 30.h, // 11 iphone
+                                                    .sp // 16 pro max
+                                                : 30.sp, // 11 iphone
                                       ),
                                     ),
                                   ),
@@ -88,7 +86,7 @@ class MeditationScreen extends StatelessWidget {
                                           onTap: () {
                                             Navigator.push(
                                               context,
-                                              CupertinoPageRoute(
+                                              MaterialPageRoute(
                                                 builder:
                                                     (
                                                       context,
@@ -135,6 +133,11 @@ class MeditationScreen extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment
                                                       .spaceBetween,
+                                              crossAxisAlignment:
+                                                  index == 0 && secIndex == 0
+                                                      ? CrossAxisAlignment.end
+                                                      : CrossAxisAlignment
+                                                          .center,
                                               children: [
                                                 Image.asset(
                                                   secItem.imagePath,

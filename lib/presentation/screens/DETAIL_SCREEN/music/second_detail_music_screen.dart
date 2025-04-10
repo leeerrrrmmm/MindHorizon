@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 
 class DetailMusicScreen extends StatefulWidget {
@@ -81,6 +82,8 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Color(0xfff8ecd6),
       body: SafeArea(
@@ -96,28 +99,40 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
               child: Image.asset('assets/img/botFlow.png'),
             ),
             Positioned(
-              top: 270,
-              right: 50,
-              child: Image.asset('assets/img/o.png'),
+              top: screenHeight < 896 ? 200.h : 270.h,
+              right: screenHeight < 896 ? 70.h : 60.h,
+              child: Image.asset(
+                'assets/img/o.png',
+                scale: screenHeight < 896 ? 1.2 : 1,
+              ),
             ),
             Positioned(
-              top: 270,
-              right: 55,
-              child: Image.asset('assets/img/oo.png'),
+              top: screenHeight < 896 ? 200.h : 270.h,
+              right: screenHeight < 896 ? 70.h : 60.h,
+              child: Image.asset(
+                'assets/img/oo.png',
+                scale: screenHeight < 896 ? 1.2 : 1,
+              ),
             ),
             Positioned(
-              top: 270,
-              right: 60,
-              child: Image.asset('assets/img/ooo.png'),
+              top: screenHeight < 896 ? 200.h : 270.h,
+              right: screenHeight < 896 ? 70.h : 60.h,
+              child: Image.asset(
+                'assets/img/ooo.png',
+                scale: screenHeight < 896 ? 1.2 : 1,
+              ),
             ),
             Positioned(
-              top: 270,
-              right: 60,
-              child: Image.asset('assets/img/oooo.png'),
+              top: screenHeight < 896 ? 200.h : 270.h,
+              right: screenHeight < 896 ? 70.h : 60.h,
+              child: Image.asset(
+                'assets/img/oooo.png',
+                scale: screenHeight < 896 ? 1.2 : 1,
+              ),
             ),
             Positioned(
-              top: 65.0,
-              left: 46.0,
+              top: screenHeight < 896 ? 30.h : 66.h,
+              left: 40.0,
               child: IconButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -130,8 +145,8 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
               ),
             ),
             Positioned(
-              top: 80.0,
-              left: 150.0,
+              top: screenHeight < 896 ? 50.h : 80.h,
+              left: screenHeight < 896 ? 14.w : 150.w,
               child: Text(
                 'MindHorizon',
                 style: TextStyle(
@@ -204,7 +219,7 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
                       height: 188,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xfffea386).withOpacity(0.1),
+                        color: Color(0xfffea386).withValues(alpha: 0.1),
                       ),
                       child: Column(
                         children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mind_horizon/components/app_bar.dart';
 import 'package:mind_horizon/presentation/screens/MAIN/main_screen.dart';
 import 'package:mind_horizon/presentation/screens/MEDITATION_SCREEN/meditation_screen.dart';
 import 'package:mind_horizon/presentation/screens/MUSIC_SCREEN/music_screen.dart';
@@ -43,7 +44,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: CustomAppBar(),
+      appBar: pages[selectedPage] != pages[4] ? CustomAppBar() : null,
       backgroundColor: Color(0xfff8ecd6),
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
@@ -54,7 +55,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                 : MediaQuery.of(context).size.height > 896
                 ? 100
                     .h // 16 pro max
-                : 100.h, // 11 iphone
+                : 105.h, // 11 iphone
         decoration: const BoxDecoration(
           color: Color(0xfffea386),
           borderRadius: BorderRadius.only(
