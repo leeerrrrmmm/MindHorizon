@@ -5,7 +5,6 @@ import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
 import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
-import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/sleep/first_detail_sleep_screen.dart';
 
 class SleepScreen extends StatelessWidget {
   const SleepScreen({super.key});
@@ -70,63 +69,24 @@ class SleepScreen extends StatelessWidget {
                                   (item.curStepListened ?? 0);
                               return GestureDetector(
                                 onTap: () {
-                                  index == 0
-                                      ? Navigator.push(
-                                        context,
-                                        PageRouteBuilder(
-                                          transitionDuration: Duration(
-                                            milliseconds: 300,
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) => BlocProvider.value(
+                                            value:
+                                                context.read<MeditationBloc>(),
+                                            child: MeditationDetailScreen(
+                                              curStepMusic: '',
+                                              curListenedEl: currentStep,
+                                              secItemId: item.id,
+                                              stepCounter: item.steps!.length,
+                                              steps: item.steps,
+                                              colors: item.colors,
+                                            ),
                                           ),
-                                          pageBuilder:
-                                              (
-                                                context,
-                                                animation,
-                                                secondaryAnimation,
-                                              ) => FirstDetailSleepScreen(
-                                                title: item.title,
-                                                description: item.description,
-                                                largestImagepath:
-                                                    item.largestImagepath ?? '',
-                                                sounds: item.sounds,
-                                                indexEl: index,
-                                                itemColors: item.colors,
-                                              ),
-                                          transitionsBuilder: (
-                                            context,
-                                            animation,
-                                            secondaryAnimation,
-                                            child,
-                                          ) {
-                                            return SlideTransition(
-                                              position: Tween<Offset>(
-                                                begin: Offset(0.0, 1.0),
-                                                end: Offset.zero,
-                                              ).animate(animation),
-                                              child: child,
-                                            );
-                                          },
-                                        ),
-                                      )
-                                      : Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder:
-                                              (context) => BlocProvider.value(
-                                                value:
-                                                    context
-                                                        .read<MeditationBloc>(),
-                                                child: MeditationDetailScreen(
-                                                  curStepMusic: '',
-                                                  curListenedEl: currentStep,
-                                                  secItemId: item.id,
-                                                  stepCounter:
-                                                      item.steps!.length,
-                                                  steps: item.steps,
-                                                  colors: item.colors,
-                                                ),
-                                              ),
-                                        ),
-                                      );
+                                    ),
+                                  );
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(right: 10),
@@ -273,14 +233,14 @@ class SleepScreen extends StatelessWidget {
                                                                       .categoryFields[index]
                                                                       .id ==
                                                                   0
-                                                              ? 18.sp
-                                                              : 20
+                                                              ? 16.sp
+                                                              : 18
                                                                   .sp // 16 pro max
                                                           : category
                                                                   .categoryFields[index]
                                                                   .id ==
                                                               0
-                                                          ? 18.sp
+                                                          ? 16.sp
                                                           : 20.sp, // 11 iphone
 
                                                   fontFamily: 'Poppins',
@@ -301,7 +261,22 @@ class SleepScreen extends StatelessWidget {
                                                     item.description,
                                                     style: TextStyle(
                                                       color: Colors.black,
-                                                      fontSize: 12.sp,
+                                                      fontSize:
+                                                          MediaQuery.of(context)
+                                                                      .size
+                                                                      .height <
+                                                                  896
+                                                              ? 10.sp
+                                                              /// Тест для СЕ
+                                                              : MediaQuery.of(
+                                                                        context,
+                                                                      )
+                                                                      .size
+                                                                      .height >
+                                                                  896
+                                                              ? 12
+                                                                  .sp // 16 pro max
+                                                              : 9.sp, // 11 iphone
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
                                                           FontWeight.w300,
@@ -317,8 +292,83 @@ class SleepScreen extends StatelessWidget {
                                                     MeditationState
                                                   >(
                                                     builder: (context, state) {
-                                                      return Text(
-                                                        '${state.steps[item.id] ?? 0}  / ${item.steps?.length}',
+                                                      return Padding(
+                                                        padding:
+                                                            const EdgeInsets.only(
+                                                              right: 10.0,
+                                                            ),
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: <Widget>[
+                                                            Text(
+                                                              '${item.steps!.length} steps',
+                                                              style: TextStyle(
+                                                                fontSize:
+                                                                    MediaQuery.of(
+                                                                              context,
+                                                                            ).size.height <
+                                                                            896
+                                                                        ? 10.sp
+                                                                        /// Тест для СЕ
+                                                                        : MediaQuery.of(
+                                                                              context,
+                                                                            ).size.height >
+                                                                            896
+                                                                        ? 10
+                                                                            .sp // 16 pro max
+                                                                        : 10.sp, // 11 iphone
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              width:
+                                                                  double
+                                                                      .infinity,
+                                                              height: 8,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                    color: Color(
+                                                                      0xffffffff,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                          12,
+                                                                        ),
+                                                                  ),
+                                                              child: Stack(
+                                                                children: [
+                                                                  AnimatedContainer(
+                                                                    duration: Duration(
+                                                                      milliseconds:
+                                                                          300,
+                                                                    ),
+                                                                    width:
+                                                                        ((state.steps[item.id] ??
+                                                                                0) /
+                                                                            item.steps!.length) *
+                                                                        290,
+                                                                    height: 8,
+                                                                    decoration: BoxDecoration(
+                                                                      color: Color(
+                                                                        0xff263238,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                            12,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       );
                                                     },
                                                   )

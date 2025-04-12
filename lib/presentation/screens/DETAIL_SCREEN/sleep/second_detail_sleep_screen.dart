@@ -203,7 +203,7 @@ class _SecondDetailSleepScreenState extends State<SecondDetailSleepScreen> {
                                 backgroundColor: Colors.white,
                                 radius: 35,
                                 child: Image.asset(
-                                  'asset/img/prev.png',
+                                  'assets/img/prev.png',
                                   scale: 0.9,
                                   color: widget.colors?[2],
                                 ),
@@ -229,7 +229,7 @@ class _SecondDetailSleepScreenState extends State<SecondDetailSleepScreen> {
                                                 left: 8.0,
                                               ),
                                               child: Image.asset(
-                                                'asset/img/play.png',
+                                                'assets/img/play.png',
                                                 scale: 0.9,
                                               ),
                                             )
@@ -245,7 +245,7 @@ class _SecondDetailSleepScreenState extends State<SecondDetailSleepScreen> {
                                 backgroundColor: Colors.white,
                                 radius: 35,
                                 child: Image.asset(
-                                  'asset/img/next.png',
+                                  'assets/img/next.png',
                                   scale: 0.9,
                                   color: widget.colors?[2],
                                 ),

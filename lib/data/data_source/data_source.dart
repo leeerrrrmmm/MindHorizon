@@ -247,12 +247,8 @@ final List<CategoryModel> sleepCategory = [
         description: '',
         imagePath: 'assets/img/bat.png',
         largestImagepath: 'assets/img/lbat.png',
-        sounds: [
-          SoundsModel(
-            id: 0,
-            title: 'Sleep cpace',
-            musicAsset: 'sound/lslep.mp3',
-          ),
+        steps: [
+          StepsModel(id: 0, title: 'Sleep cpace', stepAsset: 'sound/lslep.mp3'),
         ],
         colors: [
           // fCOlor
@@ -287,8 +283,8 @@ final List<CategoryModel> sleepCategory = [
         description: '',
         imagePath: 'assets/img/water.png',
         largestImagepath: 'assets/img/lwawe.png',
-        sounds: [
-          SoundsModel(id: 0, title: 'Nirvana', musicAsset: 'sound/lwave.mp3'),
+        steps: [
+          StepsModel(id: 0, title: 'Nirvana', stepAsset: 'sound/lwave.mp3'),
         ],
         colors: [
           // SoundsModelfCOlor
@@ -323,8 +319,8 @@ final List<CategoryModel> sleepCategory = [
         description: '',
         imagePath: 'assets/img/amico.png',
         largestImagepath: 'assets/img/lnature.png',
-        sounds: [
-          SoundsModel(id: 0, title: 'Nature', musicAsset: 'sound/lnature.mp3'),
+        steps: [
+          StepsModel(id: 0, title: 'Nature', stepAsset: 'sound/lnature.mp3'),
         ],
         colors: [
           // fCOlor
@@ -364,8 +360,8 @@ final List<CategoryModel> sleepCategory = [
         description: 'Relax and fall asleep',
         imagePath: 'assets/img/sleep.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/clap.mp3'),
           StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
           StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
           StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
@@ -901,8 +897,8 @@ final List<CategoryModel> myCourseCategory = [
         title: 'Anxiety',
         description: '',
         imagePath: 'assets/img/secanxiety.png',
-        sounds: [
-          SoundsModel(id: 0, title: 'Sleep cpace', musicAsset: 'sound/anx.mp3'),
+        steps: [
+          StepsModel(id: 0, title: 'Anxiety', stepAsset: 'sound/anx.mp3'),
         ],
         colors: [
           // fCOlor
@@ -932,12 +928,12 @@ final List<CategoryModel> myCourseCategory = [
         ],
       ),
       CategoryFields(
-        id: 1,
+        id: 0,
         title: 'Happines',
         description: '',
         imagePath: 'assets/img/happiness.png',
-        sounds: [
-          SoundsModel(id: 0, title: 'Sleep cpace', musicAsset: 'sound/hap.mp3'),
+        steps: [
+          StepsModel(id: 0, title: 'Happines', stepAsset: 'sound/hap.mp3'),
         ],
         colors: [
           // fCOlor
@@ -967,15 +963,15 @@ final List<CategoryModel> myCourseCategory = [
         ],
       ),
       CategoryFields(
-        id: 2,
+        id: 0,
         title: 'Stress relief',
         description: '',
         imagePath: 'assets/img/stres.png',
-        sounds: [
-          SoundsModel(
+        steps: [
+          StepsModel(
             id: 0,
-            title: 'Sleep cpace',
-            musicAsset: 'sound/relie.mp3',
+            title: 'Stress relief',
+            stepAsset: 'sound/relie.mp3',
           ),
         ],
         colors: [
@@ -1049,6 +1045,13 @@ final List<CategoryModel> myCourseCategory = [
         description: 'Relaxation',
         imagePath: 'assets/img/two.png',
         colors: [Color(0xfffbe7c3)],
+        sounds: [
+          SoundsModel(
+            id: 0,
+            title: 'Touch of  silence',
+            musicAsset: 'sound/wind.mp3',
+          ),
+        ],
       ),
     ],
   ),

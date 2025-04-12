@@ -124,9 +124,10 @@ class _FirstDetailMusicScreenState extends State<FirstDetailMusicScreen> {
                         pageBuilder:
                             (context, animation, secondaryAnimation) =>
                                 DetailMusicScreen(
+                                  soundsList: widget.sounds!,
+                                  initialElemId: widget.sounds![index].id,
                                   categoryTitle: widget.title,
                                   soundsTitle: widget.sounds?[index].title,
-                                  musicAsset: widget.sounds![index].musicAsset,
                                 ),
                         transitionsBuilder: (
                           context,
