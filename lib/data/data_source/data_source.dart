@@ -247,9 +247,7 @@ final List<CategoryModel> sleepCategory = [
         description: '',
         imagePath: 'assets/img/bat.png',
         largestImagepath: 'assets/img/lbat.png',
-        steps: [
-          StepsModel(id: 0, title: 'Sleep cpace', stepAsset: 'sound/lslep.mp3'),
-        ],
+        longStepAsset: 'sound/lslep.mp3',
         colors: [
           // fCOlor
           Color(0xffa3fdbd),
@@ -283,9 +281,7 @@ final List<CategoryModel> sleepCategory = [
         description: '',
         imagePath: 'assets/img/water.png',
         largestImagepath: 'assets/img/lwawe.png',
-        steps: [
-          StepsModel(id: 0, title: 'Nirvana', stepAsset: 'sound/lwave.mp3'),
-        ],
+        longStepAsset: 'sound/lwave.mp3',
         colors: [
           // SoundsModelfCOlor
           Color(0xfffea386),
@@ -319,9 +315,7 @@ final List<CategoryModel> sleepCategory = [
         description: '',
         imagePath: 'assets/img/amico.png',
         largestImagepath: 'assets/img/lnature.png',
-        steps: [
-          StepsModel(id: 0, title: 'Nature', stepAsset: 'sound/lnature.mp3'),
-        ],
+        longStepAsset: 'sound/lnature.mp3',
         colors: [
           // fCOlor
           Color(0xffead2ef),
@@ -360,14 +354,19 @@ final List<CategoryModel> sleepCategory = [
         description: 'Relax and fall asleep',
         imagePath: 'assets/img/sleep.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
-          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/clap.mp3'),
-          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 5, title: 'Step 6', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 6, title: 'Step 7', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 7, title: 'Step 8', stepAsset: 'sound/cosmo.mp3'),
+          // StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/sleep.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/sleeep.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/sleeeep.mp3'),
+          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/sleeeeep.mp3'),
+          StepsModel(id: 5, title: 'Step 6', stepAsset: 'sound/sleeeeeep.mp3'),
+          StepsModel(id: 6, title: 'Step 7', stepAsset: 'sound/sleeeeeeep.mp3'),
+          StepsModel(
+            id: 7,
+            title: 'Step 8',
+            stepAsset: 'sound/sleeeeeeeep.mp3',
+          ),
         ],
         colors: [
           // fCOlor
@@ -450,7 +449,7 @@ final List<CategoryModel> meditationCategory = [
         imagePath: 'assets/img/sleep.png',
         steps: [
           // StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
           StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/sleep.mp3'),
           StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/sleeep.mp3'),
           StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/sleeeep.mp3'),
@@ -496,7 +495,7 @@ final List<CategoryModel> meditationCategory = [
         description: 'Fall asleep faster and easier',
         imagePath: 'assets/img/sleepp.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slepp.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
           StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/sleppp.mp3'),
           StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/slepppp.mp3'),
           StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/sleppppp.mp3'),
@@ -897,9 +896,7 @@ final List<CategoryModel> myCourseCategory = [
         title: 'Anxiety',
         description: '',
         imagePath: 'assets/img/secanxiety.png',
-        steps: [
-          StepsModel(id: 0, title: 'Anxiety', stepAsset: 'sound/anx.mp3'),
-        ],
+        longStepAsset: 'sound/anx.mp3',
         colors: [
           // fCOlor
           Color(0xffa3fdbd),
@@ -932,9 +929,7 @@ final List<CategoryModel> myCourseCategory = [
         title: 'Happines',
         description: '',
         imagePath: 'assets/img/happiness.png',
-        steps: [
-          StepsModel(id: 0, title: 'Happines', stepAsset: 'sound/hap.mp3'),
-        ],
+        longStepAsset: 'sound/hap.mp3',
         colors: [
           // fCOlor
           Color(0xfffea386),
@@ -967,13 +962,7 @@ final List<CategoryModel> myCourseCategory = [
         title: 'Stress relief',
         description: '',
         imagePath: 'assets/img/stres.png',
-        steps: [
-          StepsModel(
-            id: 0,
-            title: 'Stress relief',
-            stepAsset: 'sound/relie.mp3',
-          ),
-        ],
+        longStepAsset: 'sound/relie.mp3',
         colors: [
           // fCOlor
           Color(0xffead2ef),
@@ -1011,28 +1000,28 @@ final List<CategoryModel> myCourseCategory = [
         title: '',
         description: '',
         imagePath: 'assets/img/dis.png',
-        videoPath: 'assets/video/lvideo.mp4',
+        videoPath: 'assets/video/abst.mp4',
       ),
       CategoryFields(
-        id: 10,
+        id: 1,
         title: '',
         description: '',
         imagePath: 'assets/img/souns.png',
-        videoPath: 'assets/video/mvid.mp4',
+        videoPath: 'assets/video/bvid.mp4',
       ),
       CategoryFields(
         id: 2,
         title: '',
         description: '',
         imagePath: 'assets/img/cake.png',
-        videoPath: 'assets/video/mvid.mp4',
+        videoPath: 'assets/video/outumn.mp4',
       ),
       CategoryFields(
         id: 3,
         title: '',
         description: '',
         imagePath: 'assets/img/paws.png',
-        videoPath: 'assets/video/mvid.mp4',
+        videoPath: 'assets/video/vodopad.mp4',
       ),
     ],
   ),

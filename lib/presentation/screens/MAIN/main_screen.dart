@@ -5,7 +5,7 @@ import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
 import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/home/detail_home_screen.dart';
-import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
+import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/widgets/long_meditation_screen.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/music/second_detail_music_screen.dart';
 
 class MainScreen extends StatelessWidget {
@@ -121,22 +121,11 @@ class MainScreen extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder:
-                                            (context) => BlocProvider.value(
-                                              value:
-                                                  context
-                                                      .read<MeditationBloc>(),
-                                              child: MeditationDetailScreen(
-                                                curListenedEl: currentStep,
-                                                secItemId: secondItem.id,
-                                                stepCounter:
-                                                    secondItem.steps!.length,
-                                                steps: secondItem.steps,
-                                                colors: secondItem.colors,
-                                                curStepMusic:
-                                                    secondItem
-                                                        .steps![currentStep]
-                                                        .stepAsset,
-                                              ),
+                                            (context) => LongMeditationScreen(
+                                              colors: secondItem.colors,
+                                              longStepAsset:
+                                                  secondItem.longStepAsset,
+                                              title: secondItem.title,
                                             ),
                                       ),
                                     );

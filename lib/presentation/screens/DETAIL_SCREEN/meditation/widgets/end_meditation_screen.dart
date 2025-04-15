@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 
 class EndMeditationScreen extends StatelessWidget {
@@ -11,21 +12,71 @@ class EndMeditationScreen extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-            left: 0,
-            child: Image.asset('assets/img/lvec.png', color: colors?[8]),
+            top:
+                MediaQuery.of(context).size.height < 896
+                    ? 40.h
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? 60
+                        .h // 16 pro max
+                    : 60, // 11 iphone54, 60,
+            left: 20,
+            child: BuildText(
+              text: 'MindHorizon',
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: colors![2],
+            ),
+          ),
+          Positioned(
+            top:
+                MediaQuery.of(context).size.height < 896
+                    ? 26.h
+                    /// Тест для СЕ
+                    : MediaQuery.of(context).size.height > 896
+                    ? 54
+                        .h // 16 pro max
+                    : 54.h, // 11 iphone
+            right: 20,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: CircleAvatar(
+                backgroundColor: colors![2],
+                radius: 22,
+                child: Icon(Icons.close, color: Colors.white),
+              ),
+            ),
           ),
           Positioned(
             bottom: 0,
             right: 0,
             child: Image.asset('assets/img/rvec.png', color: colors?[8]),
           ),
-          Center(
+          Padding(
+            padding: EdgeInsets.only(
+              top:
+                  MediaQuery.of(context).size.height < 896
+                      ? 90
+                      /// Тест для СЕ
+                      : MediaQuery.of(context).size.height > 896
+                      ? 120 // 16 pro max
+                      : 120,
+            ), // 11 iphone),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: colors?[2],
               ),
-              height: 746,
+              height:
+                  MediaQuery.of(context).size.height < 896
+                      ? 700.h
+                      /// Тест для СЕ
+                      : MediaQuery.of(context).size.height > 896
+                      ? 700
+                          .h // 16 pro max
+                      : 740.h, // 11 iphone 746,
               width: double.infinity,
               child: Stack(
                 children: [
@@ -53,7 +104,13 @@ class EndMeditationScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 40.0),
                             child: BuildText(
                               text: 'Very good!',
-                              fontSize: 36,
+                              fontSize:
+                                  MediaQuery.of(context).size.height < 896
+                                      ? 30
+                                      /// Тест для СЕ
+                                      : MediaQuery.of(context).size.height > 896
+                                      ? 36 // 16 pro max
+                                      : 36, // 11 iphone
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
                             ),
@@ -65,7 +122,14 @@ class EndMeditationScreen extends StatelessWidget {
                             ),
                             child: BuildText(
                               text: 'Deep immersion in meditation',
-                              fontSize: 20,
+                              fontSize:
+                                  MediaQuery.of(context).size.height < 896
+                                      ? 18.sp
+                                      /// Тест для СЕ
+                                      : MediaQuery.of(context).size.height > 896
+                                      ? 20
+                                          .sp // 16 pro max
+                                      : 20.sp, // 11 iphone54,,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
                             ),
@@ -76,7 +140,14 @@ class EndMeditationScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 40.0),
                         child: Container(
                           width: double.infinity,
-                          height: 386,
+                          height:
+                              MediaQuery.of(context).size.height < 896
+                                  ? 350.h
+                                  /// Тест для СЕ
+                                  : MediaQuery.of(context).size.height > 896
+                                  ? 386
+                                      .h // 16 pro max
+                                  : 380.h, // 11 iphone54,386,
                           decoration: BoxDecoration(
                             color: colors?[7],
                             borderRadius: BorderRadius.circular(8),

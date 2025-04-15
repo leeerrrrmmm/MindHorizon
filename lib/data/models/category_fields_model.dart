@@ -14,6 +14,7 @@ class CategoryFields {
   final String? videoPath;
   List<Color>? colors;
   late int? curStepListened;
+  final String? longStepAsset;
 
   CategoryFields({
     required this.id,
@@ -24,6 +25,7 @@ class CategoryFields {
     this.steps,
     this.sounds,
     this.colors,
+    this.longStepAsset,
     this.largestImagepath,
     int? curStepListened,
   }) : curStepListened = curStepListened ?? 0;

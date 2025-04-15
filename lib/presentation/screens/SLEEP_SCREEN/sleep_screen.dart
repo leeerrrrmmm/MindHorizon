@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
 import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
-import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
+import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/widgets/long_meditation_screen.dart';
 
 class SleepScreen extends StatelessWidget {
   const SleepScreen({super.key});
@@ -64,26 +64,17 @@ class SleepScreen extends StatelessWidget {
                             itemBuilder: (context, categoryIndex) {
                               final item =
                                   category.categoryFields[categoryIndex];
-                              int currentStep =
-                                  state.steps[item.id] ??
-                                  (item.curStepListened ?? 0);
+
                               return GestureDetector(
                                 onTap: () {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder:
-                                          (context) => BlocProvider.value(
-                                            value:
-                                                context.read<MeditationBloc>(),
-                                            child: MeditationDetailScreen(
-                                              curStepMusic: '',
-                                              curListenedEl: currentStep,
-                                              secItemId: item.id,
-                                              stepCounter: item.steps!.length,
-                                              steps: item.steps,
-                                              colors: item.colors,
-                                            ),
+                                          (context) => LongMeditationScreen(
+                                            colors: item.colors,
+                                            longStepAsset: item.longStepAsset,
+                                            title: item.title,
                                           ),
                                     ),
                                   );
