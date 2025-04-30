@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -188,9 +190,24 @@ class AuthService {
     }
   }
 
-  // Выход из системы
   Future<void> logout() async {
-    await _auth.signOut();
+    try {
+      // Получаем текущего пользователя
+      User? user = _auth.currentUser;
+
+      // Проверяем, использовался ли Google при входе
+      for (final info in user?.providerData ?? []) {
+        if (info.providerId == 'google.com') {
+          // Если вход через Google — нужно выйти и из Google аккаунта
+          await GoogleSignIn().signOut();
+        }
+      }
+
+      // Основной выход из Firebase
+      await _auth.signOut();
+    } catch (e) {
+      log("Ошибка при выходе: $e");
+    }
   }
 
   // Сброс пароля

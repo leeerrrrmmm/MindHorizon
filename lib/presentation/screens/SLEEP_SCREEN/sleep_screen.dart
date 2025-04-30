@@ -12,13 +12,13 @@ class SleepScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff8ecd6),
+      backgroundColor: const Color(0xfff8ecd6),
       body: Stack(
         children: [
           Positioned(left: 0, child: Image.asset('assets/img/lvec.png')),
           Positioned(right: 0, child: Image.asset('assets/img/rvec.png')),
           Padding(
-            padding: const EdgeInsets.only(left: 24, right: 15),
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: BlocBuilder<MeditationBloc, MeditationState>(
               builder: (context, state) {
                 return ListView.builder(
@@ -30,48 +30,26 @@ class SleepScreen extends StatelessWidget {
                       children: [
                         BuildText(
                           text: category.title,
-                          fontSize:
-                              MediaQuery.of(context).size.height < 896
-                                  ? 30.sp
-                                  /// Тест для СЕ
-                                  : MediaQuery.of(context).size.height > 896
-                                  ? 30
-                                      .sp // 16 pro max
-                                  : 30.sp, // 11 iphone
+                          fontSize: 28.sp,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xfffea386),
+                          color: const Color(0xfffea386),
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         SizedBox(
-                          height:
-                              MediaQuery.of(context).size.height < 896
-                                  ? index == 0
-                                      ? 205.h
-                                      : 245.h
-                                  /// Тест для СЕ
-                                  : MediaQuery.of(context).size.height > 896
-                                  ? index == 0
-                                      ? 175.h
-                                      : 260
-                                          .h
-                                          .sp // 16 pro max
-                                  : index == 0
-                                  ? 175.h
-                                  : 250.h, // 11 iphone,
+                          height: index == 0 ? 200.h : 300.h,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemCount: category.categoryFields.length,
                             itemBuilder: (context, categoryIndex) {
                               final item =
                                   category.categoryFields[categoryIndex];
-
                               return GestureDetector(
                                 onTap: () {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder:
-                                          (context) => LongMeditationScreen(
+                                          (_) => LongMeditationScreen(
                                             colors: item.colors,
                                             longStepAsset: item.longStepAsset,
                                             title: item.title,
@@ -80,290 +58,134 @@ class SleepScreen extends StatelessWidget {
                                   );
                                 },
                                 child: Container(
-                                  margin: EdgeInsets.only(right: 10),
-                                  width:
-                                      MediaQuery.of(context).size.height < 896
-                                          ? index == 0
-                                              ? 190.w
-                                              : 267.w
-                                          /// Тест для СЕ
-                                          : MediaQuery.of(context).size.height >
-                                              896
-                                          ? index == 0
-                                              ? 175.w
-                                              : 287.w
-                                          // 16 pro max
-                                          : index == 0
-                                          ? 175.w
-                                          : 287.w, // 11 iphone
-                                  //  index == 0 ? 175 : 287,
+                                  margin: EdgeInsets.only(right: 10.w),
+                                  width: index == 0 ? 190.w : 280.w,
                                   decoration: BoxDecoration(
                                     color: item.colors?[0],
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(12.r),
                                   ),
                                   child: Column(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment:
-                                        categoryIndex == 0
-                                            ? CrossAxisAlignment.end
-                                            : CrossAxisAlignment.center,
+                                        CrossAxisAlignment.center,
                                     children: [
-                                      // PHOTO
                                       Image.asset(
                                         item.imagePath,
-                                        scale:
-                                            MediaQuery.of(context).size.height <
-                                                    896
-                                                ? index == 0
-                                                    ? categoryIndex == 0
-                                                        ? 1.1
-                                                        : 1
-                                                    : 1.6
-                                                /// Тест для СЕ
-                                                : MediaQuery.of(
-                                                      context,
-                                                    ).size.height >
-                                                    896
-                                                ? index == 0
-                                                    ? categoryIndex == 0
-                                                        ? 0.95
-                                                        : 0.9
-                                                    : 0.94 // 16 pro max
-                                                : index == 0
-                                                ? categoryIndex == 0
-                                                    ? 1.1
-                                                    : 1
-                                                : 1.24, // 11 iphone
+                                        scale: categoryIndex == 0 ? 1.0 : 1.2,
                                       ),
                                       Container(
-                                        height:
-                                            MediaQuery.of(context).size.height <
-                                                    896
-                                                ? category
-                                                            .categoryFields[index]
-                                                            .id ==
-                                                        0
-                                                    ? 30
-                                                    : 65
-                                                /// Тест для СЕ
-                                                : MediaQuery.of(
-                                                      context,
-                                                    ).size.height >
-                                                    896
-                                                ? category
-                                                            .categoryFields[index]
-                                                            .id ==
-                                                        0
-                                                    ? 35
-                                                    : 75
-                                                        .h // 16 pro max
-                                                : category
-                                                        .categoryFields[index]
-                                                        .id ==
-                                                    0
-                                                ? 40.h
-                                                : 90.h, // 11 iphone
+                                        height: index == 0 ? 38.h : 90.h,
                                         width: double.infinity,
                                         decoration: BoxDecoration(
                                           color: item.colors?[1],
                                           borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(10),
-                                            bottomRight: Radius.circular(10),
+                                            bottomLeft: Radius.circular(12.r),
+                                            bottomRight: Radius.circular(12.r),
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.only(
-                                            top: 3,
-                                            left: 12,
-
-                                            bottom: 3,
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 12.w,
+                                            vertical: 6.h,
                                           ),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
-
                                             children: [
                                               Text(
                                                 item.title,
                                                 style: TextStyle(
-                                                  color:
-                                                      category
-                                                                  .categoryFields[categoryIndex]
-                                                                  .id ==
-                                                              0
-                                                          ? Colors.black
-                                                          : category
-                                                                  .categoryFields
-                                                                  .length >
-                                                              2
-                                                          ? category
-                                                                      .categoryFields[categoryIndex]
-                                                                      .id ==
-                                                                  1
-                                                              ? Colors.white
-                                                              : Colors.black
-                                                          : Colors.black,
-                                                  fontSize:
-                                                      MediaQuery.of(
-                                                                context,
-                                                              ).size.height <
-                                                              896
-                                                          ? category
-                                                                      .categoryFields[index]
-                                                                      .id ==
-                                                                  0
-                                                              ? 15.sp
-                                                              : 18.sp
-                                                          /// Тест для СЕ
-                                                          : MediaQuery.of(
-                                                                context,
-                                                              ).size.height >
-                                                              896
-                                                          ? category
-                                                                      .categoryFields[index]
-                                                                      .id ==
-                                                                  0
-                                                              ? 16.sp
-                                                              : 18
-                                                                  .sp // 16 pro max
-                                                          : category
-                                                                  .categoryFields[index]
-                                                                  .id ==
-                                                              0
-                                                          ? 16.sp
-                                                          : 20.sp, // 11 iphone
-
-                                                  fontFamily: 'Poppins',
-                                                  fontWeight:
-                                                      category
-                                                                  .categoryFields[index]
-                                                                  .id ==
-                                                              0
-                                                          ? FontWeight.w400
-                                                          : FontWeight.w600,
+                                                  fontSize: 16.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.black,
                                                 ),
                                               ),
-                                              category
-                                                          .categoryFields[index]
-                                                          .description !=
-                                                      ''
-                                                  ? Text(
+                                              if (item.description.isNotEmpty)
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                    top: 4.h,
+                                                  ),
+                                                  child: Text(
                                                     item.description,
                                                     style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                      .size
-                                                                      .height <
-                                                                  896
-                                                              ? 10.sp
-                                                              /// Тест для СЕ
-                                                              : MediaQuery.of(
-                                                                        context,
-                                                                      )
-                                                                      .size
-                                                                      .height >
-                                                                  896
-                                                              ? 12
-                                                                  .sp // 16 pro max
-                                                              : 9.sp, // 11 iphone
-                                                      fontFamily: 'Poppins',
+                                                      fontSize: 10.sp,
                                                       fontWeight:
                                                           FontWeight.w300,
                                                     ),
-                                                  )
-                                                  : SizedBox(),
-                                              category
-                                                          .categoryFields[index]
-                                                          .description !=
-                                                      ''
-                                                  ? BlocBuilder<
-                                                    MeditationBloc,
-                                                    MeditationState
-                                                  >(
-                                                    builder: (context, state) {
-                                                      return Padding(
-                                                        padding:
-                                                            const EdgeInsets.only(
-                                                              right: 10.0,
+                                                  ),
+                                                ),
+                                              if (item.description.isNotEmpty)
+                                                BlocBuilder<
+                                                  MeditationBloc,
+                                                  MeditationState
+                                                >(
+                                                  builder: (context, state) {
+                                                    final progress =
+                                                        (state.steps[item.id] ??
+                                                            0) /
+                                                        item.steps!.length;
+                                                    return Padding(
+                                                      padding: EdgeInsets.only(
+                                                        top: 6.h,
+                                                      ),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            '${item.steps!.length} steps',
+                                                            style: TextStyle(
+                                                              fontSize: 10.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
                                                             ),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: <Widget>[
-                                                            Text(
-                                                              '${item.steps!.length} steps',
-                                                              style: TextStyle(
-                                                                fontSize:
-                                                                    MediaQuery.of(
-                                                                              context,
-                                                                            ).size.height <
-                                                                            896
-                                                                        ? 10.sp
-                                                                        /// Тест для СЕ
-                                                                        : MediaQuery.of(
-                                                                              context,
-                                                                            ).size.height >
-                                                                            896
-                                                                        ? 10
-                                                                            .sp // 16 pro max
-                                                                        : 10.sp, // 11 iphone
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              width:
-                                                                  double
-                                                                      .infinity,
-                                                              height: 8,
-                                                              decoration:
-                                                                  BoxDecoration(
+                                                          ),
+                                                          Container(
+                                                            height: 8.h,
+                                                            width:
+                                                                double.infinity,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                                  color:
+                                                                      Colors
+                                                                          .white,
+                                                                  borderRadius:
+                                                                      BorderRadius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                ),
+                                                            child: Stack(
+                                                              children: [
+                                                                AnimatedContainer(
+                                                                  duration:
+                                                                      Duration(
+                                                                        milliseconds:
+                                                                            300,
+                                                                      ),
+                                                                  width:
+                                                                      290.w *
+                                                                      progress,
+                                                                  decoration: BoxDecoration(
                                                                     color: Color(
-                                                                      0xffffffff,
+                                                                      0xff263238,
                                                                     ),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
-                                                                          12,
+                                                                          12.r,
                                                                         ),
                                                                   ),
-                                                              child: Stack(
-                                                                children: [
-                                                                  AnimatedContainer(
-                                                                    duration: Duration(
-                                                                      milliseconds:
-                                                                          300,
-                                                                    ),
-                                                                    width:
-                                                                        ((state.steps[item.id] ??
-                                                                                0) /
-                                                                            item.steps!.length) *
-                                                                        290,
-                                                                    height: 8,
-                                                                    decoration: BoxDecoration(
-                                                                      color: Color(
-                                                                        0xff263238,
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                            12,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
+                                                                ),
+                                                              ],
                                                             ),
-                                                          ],
-                                                        ),
-                                                      );
-                                                    },
-                                                  )
-                                                  : const SizedBox(),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
                                             ],
                                           ),
                                         ),
@@ -375,7 +197,7 @@ class SleepScreen extends StatelessWidget {
                             },
                           ),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                     );
                   },

@@ -9,7 +9,7 @@ class MusicScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff8ecd6),
+      backgroundColor: const Color(0xfff8ecd6),
       body: Stack(
         children: [
           Positioned(left: 0, child: Image.asset('assets/img/lvec.png')),
@@ -17,35 +17,35 @@ class MusicScreen extends StatelessWidget {
           Align(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: EdgeInsets.symmetric(
+                horizontal: 16.w,
+              ), // Уменьшен горизонтальный padding
               child: ListView.builder(
                 itemCount: musiscCategory.length,
                 itemBuilder: (context, categoryIndex) {
                   final category = musiscCategory[categoryIndex];
                   return Padding(
-                    padding: const EdgeInsets.only(left: 4.0),
+                    padding: EdgeInsets.only(
+                      left: 4.w,
+                      bottom: 20.h,
+                    ), // Добавлены отступы между элементами
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           category.title,
                           style: TextStyle(
-                            fontSize:
-                                MediaQuery.of(context).size.height < 896
-                                    ? 30.sp
-                                    /// Тест для СЕ
-                                    : MediaQuery.of(context).size.height > 896
-                                    ? 30
-                                        .sp // 16 pro max
-                                    : 30.sp, // 11 iphone
+                            fontSize: 30.sp,
                             fontWeight: FontWeight.w500,
                             fontFamily: 'Poppins',
-                            color: Color(0xfffea386),
+                            color: const Color(0xfffea386),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(
+                          height: 10.h,
+                        ), // Отступ между заголовком и списком
                         ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: category.categoryFields.length,
                           itemBuilder: (context, index) {
@@ -56,7 +56,7 @@ class MusicScreen extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   PageRouteBuilder(
-                                    transitionDuration: Duration(
+                                    transitionDuration: const Duration(
                                       milliseconds: 300,
                                     ),
                                     pageBuilder:
@@ -79,7 +79,7 @@ class MusicScreen extends StatelessWidget {
                                     ) {
                                       return SlideTransition(
                                         position: Tween<Offset>(
-                                          begin: Offset(0.0, 1.0),
+                                          begin: const Offset(0.0, 1.0),
                                           end: Offset.zero,
                                         ).animate(animation),
                                         child: child,
@@ -88,66 +88,37 @@ class MusicScreen extends StatelessWidget {
                                   ),
                                 );
                               },
-
                               child: Container(
-                                margin: const EdgeInsets.only(bottom: 20),
+                                margin: EdgeInsets.only(bottom: 20.h),
                                 width: 397.w,
-                                height:
-                                    MediaQuery.of(context).size.width < 430
-                                        ? 330.h
-                                        : 290.h,
+                                height: 330.h,
                                 decoration: BoxDecoration(
-                                  color: Color(0xfffea386),
-                                  borderRadius: BorderRadius.circular(10),
+                                  color: const Color(0xfffea386),
+                                  borderRadius: BorderRadius.circular(10.r),
                                 ),
                                 child: Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    /// IMG
                                     Image.asset(
                                       item.imagePath,
                                       fit: BoxFit.cover,
-                                      height:
-                                          MediaQuery.of(context).size.height <
-                                                  896
-                                              ? 230.h
-                                              /// Тест для СЕ
-                                              : MediaQuery.of(
-                                                    context,
-                                                  ).size.height >
-                                                  896
-                                              ? 210
-                                                  .h // 16 pro max
-                                              : 250.h, // 11 iphone
+                                      height: 250.h,
                                     ),
-
-                                    /// BOT CONTAINER
                                     Container(
-                                      height:
-                                          MediaQuery.of(context).size.height <
-                                                  896
-                                              ? 90.h
-                                              /// Тест для СЕ
-                                              : MediaQuery.of(
-                                                    context,
-                                                  ).size.height >
-                                                  896
-                                              ? 70
-                                                  .h // 16 pro max
-                                              : 80.h, // 11 iphone,
+                                      height: 80.h,
                                       decoration: BoxDecoration(
-                                        color: Color(0xfffbc9aa),
+                                        color: const Color(0xfffbc9aa),
                                         borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10),
-                                          bottomRight: Radius.circular(10),
+                                          bottomLeft: Radius.circular(10.r),
+                                          bottomRight: Radius.circular(10.r),
                                         ),
                                       ),
                                       alignment: Alignment.bottomLeft,
                                       child: Padding(
-                                        padding: const EdgeInsets.only(
-                                          left: 10.0,
-                                          top: 5.0,
+                                        padding: EdgeInsets.only(
+                                          left: 10.w,
+                                          top: 5.h,
                                         ),
                                         child: Column(
                                           crossAxisAlignment:
@@ -156,43 +127,17 @@ class MusicScreen extends StatelessWidget {
                                             Text(
                                               item.title,
                                               style: TextStyle(
-                                                fontSize:
-                                                    MediaQuery.of(
-                                                              context,
-                                                            ).size.height <
-                                                            896
-                                                        ? 20.sp
-                                                        /// Тест для СЕ
-                                                        : MediaQuery.of(
-                                                              context,
-                                                            ).size.height >
-                                                            896
-                                                        ? 20
-                                                            .sp // 16 pro max
-                                                        : 20.sp, // 11 iphone
+                                                fontSize: 20.sp,
                                                 fontWeight: FontWeight.bold,
-                                                color: Color(0xff455a64),
+                                                color: const Color(0xff455a64),
                                                 fontFamily: 'Poppins',
                                               ),
                                             ),
                                             Text(
                                               item.description,
                                               style: TextStyle(
-                                                fontSize:
-                                                    MediaQuery.of(
-                                                              context,
-                                                            ).size.height <
-                                                            896
-                                                        ? 12.sp
-                                                        /// Тест для СЕ
-                                                        : MediaQuery.of(
-                                                              context,
-                                                            ).size.height >
-                                                            896
-                                                        ? 12
-                                                            .sp // 16 pro max
-                                                        : 13.sp, // 11 iphone
-                                                color: Color(0xff455a64),
+                                                fontSize: 12.sp,
+                                                color: const Color(0xff455a64),
                                                 fontFamily: 'Poppins',
                                               ),
                                             ),

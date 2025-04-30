@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/domain/auth/auth_service.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/profile/detail_profile_screen.dart';
+import 'package:mind_horizon/presentation/screens/LOGIN/login_screen.dart';
 import 'package:mind_horizon/presentation/screens/REGISTER/register_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -27,14 +28,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {});
   }
 
-  void _logout() async {
+  Future<void> _logout() async {
     await AuthService().logout();
     if (mounted) {
-      Navigator.of(context).pop();
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (context) => LoginScreen()));
     }
   }
 
-  void _deleteAccount() async {
+  Future<void> _deleteAccount() async {
     await AuthService().deleteUser().then((_) {
       if (mounted) {
         Navigator.pushAndRemoveUntil(
@@ -49,7 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff8ecd6),
+      backgroundColor: const Color(0xfff8ecd6),
       body: Stack(
         children: [
           Positioned(
@@ -60,66 +63,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Positioned(
             child: Container(
               width: double.infinity,
-              height:
-                  MediaQuery.of(context).size.height < 896
-                      ? 200.h
-                      : MediaQuery.of(context).size.height > 896
-                      ? 260.h
-                      : 240.h,
+              height: 240.h,
               decoration: BoxDecoration(
-                color: Color(0xfffbe7c3),
+                color: const Color(0xfffbe7c3),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.elliptical(300, 25),
-                  bottomRight: Radius.elliptical(300, 25),
+                  bottomLeft: Radius.elliptical(300.w, 25.h),
+                  bottomRight: Radius.elliptical(300.w, 25.h),
                 ),
               ),
             ),
           ),
           Positioned(
-            top:
-                MediaQuery.of(context).size.height < 896
-                    ? 30.sp
-                    : MediaQuery.of(context).size.height > 896
-                    ? 74.sp
-                    : 74.sp,
-            left: 25,
+            top: 74.sp,
+            left: 25.w,
             child: BuildText(
               text: 'MindHorizon',
-              fontSize: 20,
+              fontSize: 20.sp,
               fontWeight: FontWeight.w700,
-              color: Color(0xfffea386),
+              color: const Color(0xfffea386),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(
-              top:
-                  MediaQuery.of(context).size.height < 896
-                      ? 50.h
-                      : MediaQuery.of(context).size.height > 896
-                      ? 100.h
-                      : 100.h,
-            ),
+            padding: EdgeInsets.only(top: 100.h),
             child: SizedBox(
               width: double.infinity,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 15.0),
+                    padding: EdgeInsets.only(bottom: 15.h),
                     child: Container(
-                      width:
-                          MediaQuery.of(context).size.height < 896
-                              ? 50.w
-                              : MediaQuery.of(context).size.height > 896
-                              ? 120.w
-                              : 120.w,
-                      height:
-                          MediaQuery.of(context).size.height < 896
-                              ? 50.h
-                              : MediaQuery.of(context).size.height > 896
-                              ? 120.h
-                              : 120.h,
-                      decoration: BoxDecoration(
+                      width: 120.w,
+                      height: 120.h,
+                      decoration: const BoxDecoration(
                         color: Color(0xfffea386),
                         shape: BoxShape.circle,
                       ),
@@ -136,221 +112,108 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   BuildText(
                     text: user?.displayName ?? 'User',
-                    fontSize: 28,
+                    fontSize: 28.sp,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xfff19584),
+                    color: const Color(0xfff19584),
                   ),
                   BuildText(
                     text: user?.email ?? 'user@gmail.com',
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
-                    color: Color(0xfff19584),
+                    color: const Color(0xfff19584),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 48.0),
+                    padding: EdgeInsets.symmetric(horizontal: 48.w),
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(
-                            top: 32.0,
-                            bottom: 16.0,
-                          ),
-                          child: Container(
-                            width: double.infinity,
-                            height: 160,
-                            decoration: BoxDecoration(
-                              color: Color(0xfffbe7c3),
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(
-                                    0xff000000,
-                                  ).withValues(alpha: 0.05),
-                                  offset: Offset(10, 20),
-                                  blurRadius: 10,
-                                  spreadRadius: 1,
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0,
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  ...List.generate(
-                                    4,
-                                    (index) => GestureDetector(
-                                      onTap: () {
-                                        index <= 1
-                                            ? Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder:
-                                                    (context) =>
-                                                        DetailProfileScreen(
-                                                          index: index,
-                                                        ),
-                                              ),
-                                            )
-                                            : index == 2
-                                            ? showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return AlertDialog(
-                                                  title: Text('Exit'),
-                                                  content: Text(
-                                                    'Are you sure you want to sign out?',
-                                                  ),
-                                                  actions: <Widget>[
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        Navigator.of(
-                                                          context,
-                                                        ).pop();
-                                                      },
-                                                      child: Text('Close'),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        _logout();
-                                                      },
-                                                      child: Text('Yes'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            )
-                                            : showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return AlertDialog(
-                                                  title: Text('Delete'),
-                                                  content: Text(
-                                                    'Are you sure you want to delete Your account?',
-                                                  ),
-                                                  actions: <Widget>[
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        Navigator.of(
-                                                          context,
-                                                        ).pop();
-                                                      },
-                                                      child: Text('Close'),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        _deleteAccount();
-                                                      },
-                                                      child: Text('Yes'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                      },
-                                      child: Row(
-                                        children: <Widget>[
-                                          Icon(
-                                            index == 0
-                                                ? Icons.manage_accounts_outlined
-                                                : index == 1
-                                                ? Icons.notifications_outlined
-                                                : index == 2
-                                                ? Icons.exit_to_app
-                                                : Icons.delete_outline,
-                                            color: Color(0xfff19584),
-                                          ),
-                                          Text(
-                                            index == 0
-                                                ? '\tEdit profile information'
-                                                : index == 1
-                                                ? '\tNotifications'
-                                                : index == 2
-                                                ? '\tExit'
-                                                : '\tDelete Account',
-                                            style: TextStyle(
-                                              color: Color(0xfff19584),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                          padding: EdgeInsets.only(top: 32.h, bottom: 16.h),
+                          child: _buildMenuContainer([
+                            _buildMenuItem(
+                              Icons.manage_accounts_outlined,
+                              'Edit profile information',
+                              () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (_) => DetailProfileScreen(index: 0),
                                   ),
-                                ],
-                              ),
+                                );
+                              },
                             ),
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        Container(
-                          width: double.infinity,
-                          height: 160,
-                          decoration: BoxDecoration(
-                            color: Color(0xfffbe7c3),
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(
-                                  0xff000000,
-                                ).withValues(alpha: 0.05),
-                                offset: Offset(10, 20),
-                                blurRadius: 10,
-                                spreadRadius: 1,
-                              ),
-                            ],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16.0,
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: <Widget>[
-                                ...List.generate(
-                                  3,
-                                  (index) => GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder:
-                                              (context) => DetailProfileScreen(
-                                                index: index + 2,
-                                              ),
-                                        ),
-                                      );
-                                    },
-                                    child: Row(
-                                      children: <Widget>[
-                                        Icon(
-                                          index == 0
-                                              ? Icons.help_outline
-                                              : index == 1
-                                              ? Icons.mark_email_read_outlined
-                                              : Icons.lock_clock_outlined,
-                                          color: Color(0xfff19584),
-                                        ),
-                                        Text(
-                                          index == 0
-                                              ? '\tHelp & Support'
-                                              : index == 1
-                                              ? '\tContact us'
-                                              : '\tPrivacy policy',
-                                          style: TextStyle(
-                                            color: Color(0xfff19584),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                            _buildMenuItem(
+                              Icons.notifications_outlined,
+                              'Notifications',
+                              () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (_) => DetailProfileScreen(index: 1),
                                   ),
-                                ),
-                              ],
+                                );
+                              },
                             ),
-                          ),
+                            _buildMenuItem(Icons.exit_to_app, 'Exit', () {
+                              _showDialog(
+                                'Exit',
+                                'Are you sure you want to sign out?',
+                                _logout,
+                              );
+                            }),
+                            _buildMenuItem(
+                              Icons.delete_outline,
+                              'Delete Account',
+                              () {
+                                _showDialog(
+                                  'Delete',
+                                  'Are you sure you want to delete your account?',
+                                  _deleteAccount,
+                                );
+                              },
+                            ),
+                          ]),
                         ),
+                        SizedBox(height: 5.h),
+                        _buildMenuContainer([
+                          _buildMenuItem(
+                            Icons.help_outline,
+                            'Help & Support',
+                            () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => DetailProfileScreen(index: 2),
+                                ),
+                              );
+                            },
+                          ),
+                          _buildMenuItem(
+                            Icons.mark_email_read_outlined,
+                            'Contact us',
+                            () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => DetailProfileScreen(index: 3),
+                                ),
+                              );
+                            },
+                          ),
+                          _buildMenuItem(
+                            Icons.lock_clock_outlined,
+                            'Privacy policy',
+                            () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => DetailProfileScreen(index: 4),
+                                ),
+                              );
+                            },
+                          ),
+                        ]),
                       ],
                     ),
                   ),
@@ -360,6 +223,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildMenuContainer(List<Widget> children) {
+    return Container(
+      width: double.infinity,
+      height: 160.h,
+      decoration: BoxDecoration(
+        color: const Color(0xfffbe7c3),
+        borderRadius: BorderRadius.circular(10.w),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xff000000).withOpacity(0.05),
+            offset: Offset(10.w, 20.h),
+            blurRadius: 10.r,
+            spreadRadius: 1.w,
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: children,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMenuItem(IconData icon, String text, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: <Widget>[
+          Icon(icon, color: const Color(0xfff19584)),
+          SizedBox(width: 8.w),
+          Text(text, style: TextStyle(color: const Color(0xfff19584))),
+        ],
+      ),
+    );
+  }
+
+  void _showDialog(String title, String content, VoidCallback onYes) {
+    showDialog(
+      context: context,
+      builder:
+          (_) => AlertDialog(
+            title: Text(title),
+            content: Text(content),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text('Close'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  onYes();
+                },
+                child: const Text('Yes'),
+              ),
+            ],
+          ),
     );
   }
 }

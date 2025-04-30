@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void _loginWithCredential() async {
+  Future<void> _loginWithCredential() async {
     try {
       AuthService authService = AuthService();
 
@@ -33,11 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (!mounted) return;
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-          builder:
-              (context) =>
-                  CustomBottomNavBar(), // Замени на экран, на который надо перейти
-        ),
+        MaterialPageRoute(builder: (context) => CustomBottomNavBar()),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -51,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void _loginWithGoogle() async {
+  Future<void> _loginWithGoogle() async {
     try {
       final userCredential = await AuthService().registerGoogle();
       if (userCredential != null && mounted) {
@@ -78,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -89,245 +86,150 @@ class _LoginScreenState extends State<LoginScreen> {
               top: 0,
               child: Image.asset(
                 'assets/img/reglogtop.png',
-                scale:
-                    screenHeight < 896
-                        ? 1.3
-                        /// Тест для СЕ
-                        : screenHeight > 896
-                        ? 1
-                        // 16 pro max
-                        : 1,
+                scale: screenHeight < 896 ? 1.3 : 1,
               ),
-            ), // 11 iphone
+            ),
             Positioned(
               right: 0,
               bottom: 0,
               child: Image.asset(
                 'assets/img/reglogbot.png',
-                scale:
-                    screenHeight < 896
-                        ? 1.2
-                        /// Тест для СЕ
-                        : screenHeight > 896
-                        ? 1
-                        // 16 pro max
-                        : 1,
+                scale: screenHeight < 896 ? 1.2 : 1,
               ),
             ),
-            SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 40.0, right: 40.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    BuildRegText(
-                      text: 'Sign In',
-                      fontSize:
-                          screenHeight < 896
-                              ? 24
-                              /// Тест для СЕ
-                              : screenHeight > 896
-                              ? 30
-                              // 16 pro max
-                              : 30,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Alegreya',
-                      color: Color(0xff455a64),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top:
-                            screenHeight < 896
-                                ? 40.0.h
-                                /// Тест для СЕ
-                                : screenHeight > 896
-                                ? 58.0.h
-                                // 16 pro max
-                                : 58.0.h,
-                      ),
-                      child: SizedBox(
-                        width:
-                            screenHeight < 896
-                                ? 250
-                                /// Тест для СЕ
-                                : screenHeight > 896
-                                ? 300
-                                // 16 pro max
-                                : 300,
-                        child: BuildRegText(
-                          text:
-                              'Sign in now to acces your excercises and saved music.',
-                          fontSize:
-                              screenHeight < 896
-                                  ? 20
-                                  /// Тест для СЕ
-                                  : screenHeight > 896
-                                  ? 24
-                                  // 16 pro max
-                                  : 24,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'AlegreyaSans',
+            SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: MediaQuery.of(context).size.height,
+                ),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 40.0.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        BuildRegText(
+                          text: 'Sign In',
+                          fontSize: 30.sp,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Alegreya',
                           color: Color(0xff455a64),
                         ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40.0),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.only(
-                                top:
-                                    screenHeight < 896
-                                        ? 30.0.h
-                                        /// Тест для СЕ
-                                        : screenHeight > 896
-                                        ? 30.0.h
-                                        // 16 pro max
-                                        : 30.0.h,
-                              ),
-                              child: TextFormField(
-                                controller: _emailController,
-                                decoration: const InputDecoration(
-                                  hintText: 'Email Address',
-                                  hintStyle: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AlegreyaSans',
-                                    color: Color(0xff455a64),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                top:
-                                    screenHeight < 896
-                                        ? 30.0.h
-                                        /// Тест для СЕ
-                                        : screenHeight > 896
-                                        ? 30.0.h
-                                        // 16 pro max
-                                        : 30.0.h,
-                              ),
-                              child: TextFormField(
-                                controller: _passwordController,
-                                decoration: const InputDecoration(
-                                  hintText: 'Password',
-                                  hintStyle: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'AlegreyaSans',
-                                    color: Color(0xff455a64),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top:
-                            screenHeight < 896
-                                ? 50.0.h
-                                /// Тест для СЕ
-                                : screenHeight > 896
-                                ? 43.0.h
-                                // 16 pro max
-                                : 43.0.h,
-                        bottom:
-                            screenHeight < 896
-                                ? 34.0.h
-                                /// Тест для СЕ
-                                : screenHeight > 896
-                                ? 43.0.h
-                                // 16 pro max
-                                : 43.0.h,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          GestureDetector(
-                            onTap:
-                                () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ForgotPassword(),
-                                  ),
-                                ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 40.h),
+                          child: SizedBox(
+                            width: screenWidth < 896 ? 250.w : 300.w,
                             child: BuildRegText(
-                              text: 'Forgot Password?',
-                              fontSize: 20,
+                              text:
+                                  'Sign in now to access your exercises and saved music.',
+                              fontSize: 24.sp,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'AlegreyaSans',
                               color: Color(0xff455a64),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        LogAndGerBtn(
-                          textBtn: 'Login',
-                          onTap: _loginWithCredential,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                            top:
-                                screenHeight < 896
-                                    ? 50.0.h
-                                    /// Тест для СЕ
-                                    : screenHeight > 896
-                                    ? 50.0.h
-                                    // 16 pro max
-                                    : 50.0.h,
-                            bottom:
-                                screenHeight < 896
-                                    ? 30.0.h
-                                    /// Тест для СЕ
-                                    : screenHeight > 896
-                                    ? 45.0.h
-                                    // 16 pro max
-                                    : 45.0.h,
-                          ),
-                          child: GestureDetector(
-                            onTap: _loginWithGoogle,
-                            child: FaIcon(
-                              FontAwesomeIcons.google,
-                              size:
-                                  screenHeight < 896
-                                      ? 40.0.h
-                                      /// Тест для СЕ
-                                      : screenHeight > 896
-                                      ? 45.0.h
-                                      // 16 pro max
-                                      : 45.0.h,
-                              color: Colors.brown,
+                          padding: EdgeInsets.only(top: 40.h),
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(top: 30.h),
+                                  child: TextFormField(
+                                    controller: _emailController,
+                                    decoration: const InputDecoration(
+                                      hintText: 'Email Address',
+                                      hintStyle: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'AlegreyaSans',
+                                        color: Color(0xff455a64),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 30.h),
+                                  child: TextFormField(
+                                    controller: _passwordController,
+                                    decoration: const InputDecoration(
+                                      hintText: 'Password',
+                                      hintStyle: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'AlegreyaSans',
+                                        color: Color(0xff455a64),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                        UnderButtonText(
-                          firstText: 'Already have an account?',
-                          secondText: 'Sign In',
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => RegisterScreen(),
+                        Padding(
+                          padding: EdgeInsets.only(top: 50.h, bottom: 34.h),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              GestureDetector(
+                                onTap:
+                                    () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ForgotPassword(),
+                                      ),
+                                    ),
+                                child: BuildRegText(
+                                  text: 'Forgot Password?',
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'AlegreyaSans',
+                                  color: Color(0xff455a64),
+                                ),
                               ),
-                            );
-                          },
+                            ],
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            LogAndGerBtn(
+                              textBtn: 'Login',
+                              onTap: _loginWithCredential,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 50.h, bottom: 45.h),
+                              child: GestureDetector(
+                                onTap: _loginWithGoogle,
+                                child: FaIcon(
+                                  FontAwesomeIcons.google,
+                                  size: 45.sp,
+                                  color: Colors.brown,
+                                ),
+                              ),
+                            ),
+                            UnderButtonText(
+                              firstText: 'Already have an account?',
+                              secondText: 'Sign In',
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => RegisterScreen(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),

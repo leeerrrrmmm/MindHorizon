@@ -21,7 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
 
-  void _registerWithCredential() async {
+  Future<void> _registerWithCredential() async {
     try {
       AuthService authService = AuthService();
 
@@ -44,7 +44,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
-  void _registerWithGoogle() async {
+  Future<void> _registerWithGoogle() async {
     try {
       AuthService authService = AuthService();
       final user = authService.getCurrentUser();
@@ -86,8 +86,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
@@ -96,86 +94,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
           children: [
             Positioned(
               top: 0,
-              child: Image.asset(
-                'assets/img/reglogtop.png',
-                scale:
-                    screenHeight < 896
-                        ? 1.3
-                        /// Тест для СЕ
-                        : screenHeight > 896
-                        ? 1
-                        // 16 pro max
-                        : 1,
-              ),
-            ), // 11 iphone
+              child: Image.asset('assets/img/reglogtop.png', scale: 1.0),
+            ),
             Positioned(
               right: 0,
               bottom: 0,
-              child: Image.asset(
-                'assets/img/reglogbot.png',
-                scale:
-                    screenHeight < 896
-                        ? 1.2
-                        /// Тест для СЕ
-                        : screenHeight > 896
-                        ? 1
-                        // 16 pro max
-                        : 1,
-              ),
+              child: Image.asset('assets/img/reglogbot.png', scale: 1.0),
             ),
             SizedBox(
               width: double.infinity,
               child: Padding(
-                padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+                padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     BuildRegText(
                       text: 'Sign Up',
-                      fontSize:
-                          screenHeight < 896
-                              ? 24
-                              /// Тест для СЕ
-                              : screenHeight > 896
-                              ? 30
-                              // 16 pro max
-                              : 30,
+                      fontSize: 30.sp,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Alegreya',
                       color: Color(0xff455a64),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(
-                        top:
-                            screenHeight < 896
-                                ? 40.0.h
-                                /// Тест для СЕ
-                                : screenHeight > 896
-                                ? 58.0.h
-                                // 16 pro max
-                                : 58.0.h,
-                      ),
+                      padding: EdgeInsets.only(top: 40.h),
                       child: SizedBox(
-                        width:
-                            screenHeight < 896
-                                ? 250
-                                /// Тест для СЕ
-                                : screenHeight > 896
-                                ? 300
-                                // 16 pro max
-                                : 300,
+                        width: 300.w,
                         child: BuildRegText(
                           text:
                               'Sign up for free and start meditating, and explore Medic.',
-                          fontSize:
-                              screenHeight < 896
-                                  ? 20
-                                  /// Тест для СЕ
-                                  : screenHeight > 896
-                                  ? 24
-                                  // 16 pro max
-                                  : 24,
+                          fontSize: 24.sp,
                           fontWeight: FontWeight.w400,
                           fontFamily: 'AlegreyaSans',
                           color: Color(0xff455a64),
@@ -183,7 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 40.0),
+                      padding: EdgeInsets.only(top: 40.h),
                       child: Form(
                         key: _formKey,
                         child: Column(
@@ -201,16 +149,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(
-                                top:
-                                    screenHeight < 896
-                                        ? 30.0.h
-                                        /// Тест для СЕ
-                                        : screenHeight > 896
-                                        ? 30.0.h
-                                        // 16 pro max
-                                        : 30.0.h,
-                              ),
+                              padding: EdgeInsets.only(top: 30.h),
                               child: TextFormField(
                                 controller: _emailController,
                                 decoration: const InputDecoration(
@@ -225,24 +164,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(
-                                top:
-                                    screenHeight < 896
-                                        ? 30.0.h
-                                        /// Тест для СЕ
-                                        : screenHeight > 896
-                                        ? 30.0.h
-                                        // 16 pro max
-                                        : 30.0.h,
-                                bottom:
-                                    screenHeight < 896
-                                        ? 40.0.h
-                                        /// Тест для СЕ
-                                        : screenHeight > 896
-                                        ? 50.0.h
-                                        // 16 pro max
-                                        : 50.0.h,
-                              ),
+                              padding: EdgeInsets.only(top: 30.h, bottom: 50.h),
                               child: TextFormField(
                                 controller: _passwordController,
                                 decoration: const InputDecoration(
@@ -267,36 +189,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onTap: _registerWithCredential,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                            top:
-                                screenHeight < 896
-                                    ? 50.0.h
-                                    /// Тест для СЕ
-                                    : screenHeight > 896
-                                    ? 50.0.h
-                                    // 16 pro max
-                                    : 50.0.h,
-                            bottom:
-                                screenHeight < 896
-                                    ? 30.0.h
-                                    /// Тест для СЕ
-                                    : screenHeight > 896
-                                    ? 45.0.h
-                                    // 16 pro max
-                                    : 45.0.h,
-                          ),
+                          padding: EdgeInsets.only(top: 50.h, bottom: 45.h),
                           child: GestureDetector(
                             onTap: _registerWithGoogle,
                             child: FaIcon(
                               FontAwesomeIcons.google,
-                              size:
-                                  screenHeight < 896
-                                      ? 40.0.h
-                                      /// Тест для СЕ
-                                      : screenHeight > 896
-                                      ? 45.0.h
-                                      // 16 pro max
-                                      : 45.0.h,
+                              size: 45.sp,
                               color: Colors.brown,
                             ),
                           ),
