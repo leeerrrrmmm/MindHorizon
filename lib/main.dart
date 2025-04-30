@@ -35,3 +35,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//TODO register,login,bottonNav,mainScreen,slepScreen,meditaion,music,profile, DETAILSCREEN весь сделан,эти екраны не трогать
+//TODO ОСТАЛЬНЫЕ ЕКРАНЫ НАД КОТОРЫМИ НУЖНО СДЕЛАТЬ АДАПТАЦИЮ закончить

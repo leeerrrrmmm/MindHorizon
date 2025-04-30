@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/build_text.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PrivacyAndPolicyScreen extends StatefulWidget {
   const PrivacyAndPolicyScreen({super.key});
@@ -26,32 +27,35 @@ class _PrivacyAndPolicyScreenState extends State<PrivacyAndPolicyScreen> {
           SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.04,
+                horizontal: 16.w, // используем ScreenUtil для адаптации ширины
               ),
               child: Column(
                 children: <Widget>[
                   /// Верхний заголовок и кнопка закрытия
                   Padding(
                     padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.02,
+                      top: 20.h, // используем ScreenUtil для адаптации высоты
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         BuildText(
                           text: 'MindHorizon',
-                          fontSize: 20,
+                          fontSize:
+                              20.sp, // используем ScreenUtil для адаптации шрифта
                           fontWeight: FontWeight.w700,
                           color: Color(0xfffea386),
                         ),
                         GestureDetector(
                           onTap: () => Navigator.pop(context),
                           child: CircleAvatar(
-                            radius: 22,
+                            radius:
+                                22.r, // используем ScreenUtil для адаптации радиуса
                             backgroundColor: Color(0xfffea386),
                             child: Icon(
                               Icons.close,
-                              size: 30,
+                              size:
+                                  30.sp, // используем ScreenUtil для адаптации размера иконки
                               color: Colors.white,
                             ),
                           ),
@@ -59,21 +63,24 @@ class _PrivacyAndPolicyScreenState extends State<PrivacyAndPolicyScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 10),
-
+                  SizedBox(
+                    height: 10.h,
+                  ), // используем ScreenUtil для адаптации отступов
                   /// Контейнер с текстом и прокруткой
                   Expanded(
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: 20,
-                        ), // Отступ для прокрутки
+                        padding: EdgeInsets.only(
+                          bottom:
+                              20.h, // используем ScreenUtil для адаптации отступа
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             BuildText(
                               text: 'Privacy policy',
-                              fontSize: 24,
+                              fontSize:
+                                  24.sp, // используем ScreenUtil для адаптации шрифта
                               fontWeight: FontWeight.w700,
                               color: Color(0xfffea386),
                             ),
@@ -145,11 +152,14 @@ class _PrivacyAndPolicyScreenState extends State<PrivacyAndPolicyScreen> {
 
   Widget _buildSectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
+      padding: EdgeInsets.only(
+        top: 16.h,
+        bottom: 8.h,
+      ), // используем ScreenUtil для адаптации отступов
       child: Text(
         title,
         style: TextStyle(
-          fontSize: 18,
+          fontSize: 18.sp, // используем ScreenUtil для адаптации шрифта
           fontWeight: FontWeight.bold,
           color: Color(0xfffea386),
         ),
@@ -160,7 +170,10 @@ class _PrivacyAndPolicyScreenState extends State<PrivacyAndPolicyScreen> {
   Widget _buildSectionText(String text) {
     return Text(
       text,
-      style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 193, 89, 57)),
+      style: TextStyle(
+        fontSize: 14.sp,
+        color: Color.fromARGB(255, 193, 89, 57),
+      ),
     );
   }
 }

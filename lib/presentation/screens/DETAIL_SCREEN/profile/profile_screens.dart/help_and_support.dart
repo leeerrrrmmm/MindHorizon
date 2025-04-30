@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 
 class HelpAndSupport extends StatelessWidget {
@@ -19,31 +20,31 @@ class HelpAndSupport extends StatelessWidget {
           SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.04,
+                horizontal: 16.w, // Используем адаптивные размеры
               ),
               child: Column(
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.02,
+                      top: 20.h, // Адаптивный отступ сверху
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         BuildText(
                           text: 'MindHorizon',
-                          fontSize: 20,
+                          fontSize: 20.sp, // Адаптивный размер шрифта
                           fontWeight: FontWeight.w700,
-                          color: Color(0xfffea386),
+                          color: const Color(0xfffea386),
                         ),
                         GestureDetector(
                           onTap: () => Navigator.pop(context),
                           child: CircleAvatar(
-                            radius: 22,
-                            backgroundColor: Color(0xfffea386),
+                            radius: 22.r, // Адаптивный радиус
+                            backgroundColor: const Color(0xfffea386),
                             child: Icon(
                               Icons.close,
-                              size: 30,
+                              size: 30.sp, // Адаптивный размер иконки
                               color: Colors.white,
                             ),
                           ),
@@ -51,19 +52,21 @@ class HelpAndSupport extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 10.h), // Адаптивный размер отступа
                   Expanded(
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
+                        padding: EdgeInsets.only(
+                          bottom: 20.h,
+                        ), // Адаптивный отступ снизу
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             BuildText(
                               text: 'Help & Support',
-                              fontSize: 24,
+                              fontSize: 24.sp, // Адаптивный размер шрифта
                               fontWeight: FontWeight.w700,
-                              color: Color(0xfffea386),
+                              color: const Color(0xfffea386),
                             ),
                             _buildSectionTitle('Welcome to Help & Support!'),
                             _buildSectionText(
@@ -123,13 +126,13 @@ class HelpAndSupport extends StatelessWidget {
 
   Widget _buildSectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
+      padding: EdgeInsets.only(top: 16.h, bottom: 8.h), // Адаптивные отступы
       child: Text(
         title,
-        style: const TextStyle(
-          fontSize: 18,
+        style: TextStyle(
+          fontSize: 18.sp, // Адаптивный размер шрифта
           fontWeight: FontWeight.bold,
-          color: Color(0xfffea386),
+          color: const Color(0xfffea386),
         ),
       ),
     );
@@ -137,12 +140,12 @@ class HelpAndSupport extends StatelessWidget {
 
   Widget _buildSectionText(String text) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
+      padding: EdgeInsets.only(bottom: 8.h), // Адаптивный отступ снизу
       child: Text(
         text,
-        style: const TextStyle(
-          fontSize: 14,
-          color: Color.fromARGB(255, 193, 89, 57),
+        style: TextStyle(
+          fontSize: 14.sp, // Адаптивный размер шрифта
+          color: const Color.fromARGB(255, 193, 89, 57),
         ),
       ),
     );

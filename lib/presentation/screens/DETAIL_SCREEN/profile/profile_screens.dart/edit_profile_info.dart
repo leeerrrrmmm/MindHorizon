@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/components/custom_button.dart';
 import 'package:mind_horizon/data/domain/auth/auth_service.dart';
@@ -17,15 +18,14 @@ class _EditProfileInfoState extends State<EditProfileInfo> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _maleController = TextEditingController();
 
-  void _editProfile(String name, String email, String male) async {
+  void _editProfile(String name, String email) async {
     if (!_formKey.currentState!.validate()) {
       return;
     }
 
     try {
-      await AuthService().editProfile(name, email, male);
+      await AuthService().editProfile(name, email);
 
       if (mounted) {
         await Navigator.pushReplacement(
@@ -56,26 +56,30 @@ class _EditProfileInfoState extends State<EditProfileInfo> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.07,
-              left: MediaQuery.of(context).size.width * 0.04,
-              right: MediaQuery.of(context).size.width * 0.04,
+              top: 66.h, // Адаптивное значение для отступа сверху
+              left: 16.w, // Адаптивный отступ слева
+              right: 16.w, // Адаптивный отступ справа
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 BuildText(
                   text: 'MindHorizon',
-                  fontSize: 20,
+                  fontSize: 20.sp, // Использование адаптивного шрифта
                   fontWeight: FontWeight.w700,
                   color: Color(0xfffea386),
                 ),
                 GestureDetector(
                   onTap: () => Navigator.pop(context),
                   child: CircleAvatar(
-                    radius: 22,
+                    radius: 22.r, // Радиус с адаптивным значением
                     backgroundColor: Color(0xfffea386),
                     child: Center(
-                      child: Icon(Icons.close, size: 30, color: Colors.white),
+                      child: Icon(
+                        Icons.close,
+                        size: 30.sp,
+                        color: Colors.white,
+                      ), // Адаптивный размер иконки
                     ),
                   ),
                 ),
@@ -89,16 +93,16 @@ class _EditProfileInfoState extends State<EditProfileInfo> {
               children: <Widget>[
                 BuildText(
                   text: 'Edit Profile',
-                  fontSize: 24,
+                  fontSize: 24.sp, // Адаптивный размер шрифта
                   fontWeight: FontWeight.w600,
                   color: Color(0xfffea386),
                 ),
 
                 Padding(
                   padding: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.1,
-                    right: MediaQuery.of(context).size.width * 0.1,
-                    top: 10.0,
+                    left: 32.w, // Адаптивный отступ слева
+                    right: 32.w, // Адаптивный отступ справа
+                    top: 10.h, // Адаптивный отступ сверху
                   ),
                   child: Form(
                     key: _formKey,
@@ -121,30 +125,32 @@ class _EditProfileInfoState extends State<EditProfileInfo> {
                             labelText: 'Full name',
                             labelStyle: TextStyle(
                               color: Color(0xfffea386),
-                              fontSize: 14,
+                              fontSize: 14.sp, // Адаптивный размер шрифта
                               fontWeight: FontWeight.w400,
                             ),
                             filled: true,
                             fillColor: Color(0xfffbe7c3),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(
+                                10.r,
+                              ), // Адаптивный радиус
                               borderSide: BorderSide(color: Color(0xfffea386)),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10.r),
                               borderSide: BorderSide(color: Color(0xfffea386)),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10.r),
                               borderSide: BorderSide(
                                 color: Color(0xfffea386),
-                                width: 2,
+                                width: 2.w, // Адаптивная ширина границы
                               ),
                             ),
                             hintText: user?.displayName ?? 'User',
                             hintStyle: TextStyle(
                               color: Color(0xfffea386),
-                              fontSize: 18,
+                              fontSize: 18.sp, // Адаптивный размер шрифта
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -152,7 +158,9 @@ class _EditProfileInfoState extends State<EditProfileInfo> {
 
                         // EMAIL
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 14.0),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 14.h,
+                          ), // Адаптивный вертикальный отступ
                           child: TextFormField(
                             controller: _emailController,
                             validator: (val) {
@@ -171,88 +179,36 @@ class _EditProfileInfoState extends State<EditProfileInfo> {
                               labelText: 'Email',
                               labelStyle: TextStyle(
                                 color: Color(0xfffea386),
-                                fontSize: 14,
+                                fontSize: 14.sp, // Адаптивный размер шрифта
                                 fontWeight: FontWeight.w400,
                               ),
                               filled: true,
                               fillColor: Color(0xfffbe7c3),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(
+                                  10.r,
+                                ), // Адаптивный радиус
                                 borderSide: BorderSide(
                                   color: Color(0xfffea386),
                                 ),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(10.r),
                                 borderSide: BorderSide(
                                   color: Color(0xfffea386),
                                 ),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(10.r),
                                 borderSide: BorderSide(
                                   color: Color(0xfffea386),
-                                  width: 2,
+                                  width: 2.w, // Адаптивная ширина границы
                                 ),
                               ),
                               hintText: user?.email ?? 'user@gmail.com',
                               hintStyle: TextStyle(
                                 color: Color(0xfffea386),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        // MALE / FEMALE
-                        Padding(
-                          padding: EdgeInsets.only(
-                            right: MediaQuery.of(context).size.width * 0.4,
-                          ),
-                          child: TextFormField(
-                            controller: _emailController,
-                            validator: (val) {
-                              if (val == null || val.isEmpty) {
-                                return 'Enter male';
-                              }
-                              if (val != 'Male' || val != 'Female') {
-                                return 'This field must be containerd ${"Male"} or ${"Female"}';
-                              }
-                              return null;
-                            },
-                            decoration: InputDecoration(
-                              labelText: 'Male',
-                              labelStyle: TextStyle(
-                                color: Color(0xfffea386),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              ),
-                              filled: true,
-                              fillColor: Color(0xfffbe7c3),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: Color(0xfffea386),
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: Color(0xfffea386),
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: Color(0xfffea386),
-                                  width: 2,
-                                ),
-                              ),
-                              hintText: user?.email ?? 'user@gmail.com',
-                              hintStyle: TextStyle(
-                                color: Color(0xfffea386),
-                                fontSize: 18,
+                                fontSize: 18.sp, // Адаптивный размер шрифта
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -260,19 +216,20 @@ class _EditProfileInfoState extends State<EditProfileInfo> {
                         ),
                         // Confirm BUTTON
                         Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
+                          padding: EdgeInsets.only(
+                            top: 10.h,
+                          ), // Адаптивный отступ сверху
                           child: CustomButton(
                             textBtn: 'SUBMIT',
                             onTap:
                                 () => _editProfile(
                                   _nameController.text,
                                   _emailController.text,
-                                  _maleController.text,
                                 ),
                             color: Color(0xfffea386),
-                            fontSize: 18,
+                            fontSize: 18.sp, // Адаптивный размер шрифта
                             fontWeight: FontWeight.w600,
-                            height: MediaQuery.of(context).size.height * 0.06,
+                            height: 50.h, // Адаптивная высота кнопки
                           ),
                         ),
                       ],

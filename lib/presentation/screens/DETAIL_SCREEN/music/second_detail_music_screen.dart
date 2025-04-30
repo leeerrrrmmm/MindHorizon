@@ -116,8 +116,6 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: const Color(0xfff8ecd6),
       body: SafeArea(
@@ -133,61 +131,57 @@ class _DetailMusicScreenState extends State<DetailMusicScreen> {
               child: Image.asset('assets/img/botFlow.png'),
             ),
             Positioned(
-              top: screenHeight < 896 ? 200.h : 270.h,
-              right: screenHeight < 896 ? 70.h : 60.h,
-              child: Image.asset(
-                'assets/img/o.png',
-                scale: screenHeight < 896 ? 1.2 : 1,
-              ),
+              top: 270.h,
+              right: 64.w,
+              child: Image.asset('assets/img/o.png', scale: 1.2.h),
             ),
             Positioned(
-              top: screenHeight < 896 ? 200.h : 270.h,
-              right: screenHeight < 896 ? 70.h : 60.h,
-              child: Image.asset(
-                'assets/img/oo.png',
-                scale: screenHeight < 896 ? 1.2 : 1,
-              ),
+              top: 270.h,
+              right: 64.w,
+              child: Image.asset('assets/img/oo.png', scale: 1.2.h),
             ),
             Positioned(
-              top: screenHeight < 896 ? 200.h : 270.h,
-              right: screenHeight < 896 ? 70.h : 60.h,
-              child: Image.asset(
-                'assets/img/ooo.png',
-                scale: screenHeight < 896 ? 1.2 : 1,
-              ),
+              top: 270.h,
+              right: 64.w,
+              child: Image.asset('assets/img/ooo.png', scale: 1.2.h),
             ),
             Positioned(
-              top: screenHeight < 896 ? 200.h : 270.h,
-              right: screenHeight < 896 ? 70.h : 60.h,
-              child: Image.asset(
-                'assets/img/oooo.png',
-                scale: screenHeight < 896 ? 1.2 : 1,
-              ),
+              top: 270.h,
+              right: 64.w,
+              child: Image.asset('assets/img/oooo.png', scale: 1.2.h),
             ),
             Positioned(
-              top: screenHeight < 896 ? 30.h : 66.h,
-              left: 40.0,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.keyboard_arrow_left_sharp,
-                  size: 40,
-                  color: const Color(0xfffea386),
+              top: 60.h,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.keyboard_arrow_left_sharp,
+                    size: 40,
+                    color: const Color(0xfffea386),
+                  ),
                 ),
               ),
             ),
             Positioned(
-              top: screenHeight < 896 ? 50.h : 80.h,
-              left: screenHeight < 896 ? 14.w : 150.w,
-              child: const Text(
-                'MindHorizon',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w700,
-                  fontSize: 20,
-                  color: Color(0xfffea386),
+              top: 70.h,
+              right: 0,
+              left: 0,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: const Text(
+                  'MindHorizon',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20,
+                    color: Color(0xfffea386),
+                  ),
                 ),
               ),
             ),

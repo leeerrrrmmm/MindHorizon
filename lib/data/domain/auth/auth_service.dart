@@ -225,7 +225,7 @@ class AuthService {
   }
 
   // Обновление профиля
-  Future<void> editProfile(String name, String email, String male) async {
+  Future<void> editProfile(String name, String email) async {
     User? user = _auth.currentUser;
     if (user != null) {
       try {
@@ -239,7 +239,6 @@ class AuthService {
         await _firebaseFirestore.collection('Users').doc(user.uid).update({
           'displayName': name,
           'email': email,
-          'male': male,
         });
       } catch (e) {
         throw Exception('Ошибка обновления профиля: $e');

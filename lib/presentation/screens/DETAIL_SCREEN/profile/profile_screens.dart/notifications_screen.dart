@@ -1,10 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vibration/vibration.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
@@ -16,6 +14,7 @@ class NotificationsScreen extends StatefulWidget {
 class _NotificationsScreenState extends State<NotificationsScreen> {
   bool isGeneralNotificationEnabled = true;
   bool isVibrateEnabled = true;
+
   // Получаем настройки уведомлений пользователя из Firebase
   Future<void> getUserNotificationSettings() async {
     User? user = FirebaseAuth.instance.currentUser;
@@ -75,26 +74,30 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.07,
-              left: MediaQuery.of(context).size.width * 0.04,
-              right: MediaQuery.of(context).size.width * 0.04,
+              top: 50.h, // адаптировано с помощью ScreenUtil
+              left: 20.w, // адаптировано с помощью ScreenUtil
+              right: 20.w, // адаптировано с помощью ScreenUtil
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 BuildText(
                   text: 'MindHorizon',
-                  fontSize: 20,
+                  fontSize: 20.sp, // адаптировано с помощью ScreenUtil
                   fontWeight: FontWeight.w700,
                   color: Color(0xfffea386),
                 ),
                 GestureDetector(
                   onTap: () => Navigator.pop(context),
                   child: CircleAvatar(
-                    radius: 22,
+                    radius: 22.r, // адаптировано с помощью ScreenUtil
                     backgroundColor: Color(0xfffea386),
                     child: Center(
-                      child: Icon(Icons.close, size: 30, color: Colors.white),
+                      child: Icon(
+                        Icons.close,
+                        size: 30.sp,
+                        color: Colors.white,
+                      ), // адаптировано с помощью ScreenUtil
                     ),
                   ),
                 ),
@@ -108,27 +111,31 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               children: <Widget>[
                 BuildText(
                   text: 'Notifications',
-                  fontSize: 24,
+                  fontSize: 24.sp, // адаптировано с помощью ScreenUtil
                   fontWeight: FontWeight.w600,
                   color: Color(0xfffea386),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 49.0,
-                    right: 49.0,
-                    top: 10.0,
+                  padding: EdgeInsets.only(
+                    left: 49.w, // адаптировано с помощью ScreenUtil
+                    right: 49.w, // адаптировано с помощью ScreenUtil
+                    top: 10.h, // адаптировано с помощью ScreenUtil
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // GENERAL NOTIFICATION
                       Container(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(
+                          8.w,
+                        ), // адаптировано с помощью ScreenUtil
                         width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.065,
+                        height: 65.h, // адаптировано с помощью ScreenUtil
                         decoration: BoxDecoration(
                           color: Color(0xfffbe7c3),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(
+                            10.r,
+                          ), // адаптировано с помощью ScreenUtil
                           border: Border.all(color: Color(0xfffea386)),
                         ),
                         child: Row(
@@ -136,7 +143,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           children: <Widget>[
                             BuildText(
                               text: 'General Notification',
-                              fontSize: 16,
+                              fontSize:
+                                  16.sp, // адаптировано с помощью ScreenUtil
                               fontWeight: FontWeight.w400,
                               color: Color(0xfffea386),
                             ),
@@ -163,14 +171,20 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       ),
                       // VIBRATE
                       Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
+                        padding: EdgeInsets.only(
+                          top: 10.h,
+                        ), // адаптировано с помощью ScreenUtil
                         child: Container(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(
+                            8.w,
+                          ), // адаптировано с помощью ScreenUtil
                           width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.065,
+                          height: 65.h, // адаптировано с помощью ScreenUtil
                           decoration: BoxDecoration(
                             color: Color(0xfffbe7c3),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(
+                              10.r,
+                            ), // адаптировано с помощью ScreenUtil
                             border: Border.all(color: Color(0xfffea386)),
                           ),
                           child: Row(
@@ -178,7 +192,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                             children: <Widget>[
                               BuildText(
                                 text: 'Vibrate',
-                                fontSize: 16,
+                                fontSize:
+                                    16.sp, // адаптировано с помощью ScreenUtil
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xfffea386),
                               ),
@@ -202,21 +217,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                             ],
                           ),
                         ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          if (isVibrateEnabled) {
-                            if (await Vibration.hasVibrator()) {
-                              Vibration.vibrate(
-                                duration: 1000,
-                                amplitude: 128,
-                              ); // amplitude от 1 до 255
-                            } else {
-                              log("Вибрация недоступна на этом устройстве");
-                            }
-                          }
-                        },
-                        child: Text('Click me'),
                       ),
                     ],
                   ),
