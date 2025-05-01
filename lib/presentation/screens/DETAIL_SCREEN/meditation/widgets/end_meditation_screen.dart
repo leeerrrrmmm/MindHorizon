@@ -12,14 +12,7 @@ class EndMeditationScreen extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-            top:
-                MediaQuery.of(context).size.height < 896
-                    ? 40.h
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? 60
-                        .h // 16 pro max
-                    : 60, // 11 iphone54, 60,
+            top: 70.h,
             left: 20,
             child: BuildText(
               text: 'MindHorizon',
@@ -29,14 +22,7 @@ class EndMeditationScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            top:
-                MediaQuery.of(context).size.height < 896
-                    ? 26.h
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? 54
-                        .h // 16 pro max
-                    : 54.h, // 11 iphone
+            top: 60.h,
             right: 20,
             child: GestureDetector(
               onTap: () {
@@ -55,28 +41,13 @@ class EndMeditationScreen extends StatelessWidget {
             child: Image.asset('assets/img/rvec.png', color: colors?[8]),
           ),
           Padding(
-            padding: EdgeInsets.only(
-              top:
-                  MediaQuery.of(context).size.height < 896
-                      ? 90
-                      /// Тест для СЕ
-                      : MediaQuery.of(context).size.height > 896
-                      ? 120 // 16 pro max
-                      : 120,
-            ), // 11 iphone),
+            padding: EdgeInsets.only(top: 130.h),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: colors?[2],
               ),
-              height:
-                  MediaQuery.of(context).size.height < 896
-                      ? 700.h
-                      /// Тест для СЕ
-                      : MediaQuery.of(context).size.height > 896
-                      ? 700
-                          .h // 16 pro max
-                      : 740.h, // 11 iphone 746,
+              height: 710.h,
               width: double.infinity,
               child: Stack(
                 children: [
@@ -104,13 +75,7 @@ class EndMeditationScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 40.0),
                             child: BuildText(
                               text: 'Very good!',
-                              fontSize:
-                                  MediaQuery.of(context).size.height < 896
-                                      ? 30
-                                      /// Тест для СЕ
-                                      : MediaQuery.of(context).size.height > 896
-                                      ? 36 // 16 pro max
-                                      : 36, // 11 iphone
+                              fontSize: 32.sp,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
                             ),
@@ -122,14 +87,7 @@ class EndMeditationScreen extends StatelessWidget {
                             ),
                             child: BuildText(
                               text: 'Deep immersion in meditation',
-                              fontSize:
-                                  MediaQuery.of(context).size.height < 896
-                                      ? 18.sp
-                                      /// Тест для СЕ
-                                      : MediaQuery.of(context).size.height > 896
-                                      ? 20
-                                          .sp // 16 pro max
-                                      : 20.sp, // 11 iphone54,,
+                              fontSize: 19.sp,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
                             ),
@@ -140,14 +98,7 @@ class EndMeditationScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 40.0),
                         child: Container(
                           width: double.infinity,
-                          height:
-                              MediaQuery.of(context).size.height < 896
-                                  ? 350.h
-                                  /// Тест для СЕ
-                                  : MediaQuery.of(context).size.height > 896
-                                  ? 386
-                                      .h // 16 pro max
-                                  : 380.h, // 11 iphone54,386,
+                          height: 350.h,
                           decoration: BoxDecoration(
                             color: colors?[7],
                             borderRadius: BorderRadius.circular(8),

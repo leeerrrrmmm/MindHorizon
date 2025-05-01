@@ -4,10 +4,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/data_source/data_source.dart';
 import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
+import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/widgets/long_meditation_screen.dart';
 
-class SleepScreen extends StatelessWidget {
+class SleepScreen extends StatefulWidget {
   const SleepScreen({super.key});
+
+  @override
+  State<SleepScreen> createState() => _SleepScreenState();
+}
+
+class _SleepScreenState extends State<SleepScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MeditationBloc>().add(LoadStepsFromStorage());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +33,9 @@ class SleepScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: BlocBuilder<MeditationBloc, MeditationState>(
               builder: (context, state) {
+                if (state.isLoading) {
+                  return Center(child: CircularProgressIndicator.adaptive());
+                }
                 return ListView.builder(
                   itemCount: sleepCategory.length,
                   itemBuilder: (context, index) {
@@ -30,7 +45,7 @@ class SleepScreen extends StatelessWidget {
                       children: [
                         BuildText(
                           text: category.title,
-                          fontSize: 28.sp,
+                          fontSize: 30.sp,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xfffea386),
                         ),
@@ -43,19 +58,47 @@ class SleepScreen extends StatelessWidget {
                             itemBuilder: (context, categoryIndex) {
                               final item =
                                   category.categoryFields[categoryIndex];
+                              int currentStep =
+                                  state.steps[item.id] ??
+                                  (item.curStepListened ?? 0);
                               return GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder:
-                                          (_) => LongMeditationScreen(
-                                            colors: item.colors,
-                                            longStepAsset: item.longStepAsset,
-                                            title: item.title,
-                                          ),
-                                    ),
-                                  );
+                                  if (category.title == 'Meditation') {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder:
+                                            (context) => BlocProvider.value(
+                                              value:
+                                                  context
+                                                      .read<MeditationBloc>(),
+                                              child: MeditationDetailScreen(
+                                                curListenedEl: currentStep,
+                                                secItemId: item.id,
+                                                stepCounter: item.steps!.length,
+                                                steps: item.steps,
+                                                colors: item.colors,
+                                                curStepMusic:
+                                                    item
+                                                        .steps![categoryIndex]
+                                                        .stepAsset,
+                                              ),
+                                            ),
+                                      ),
+                                    );
+                                  } else {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder:
+                                            (_) => LongMeditationScreen(
+                                              colors: item.colors,
+                                              longStepAsset: item.longStepAsset,
+                                              title: item.title,
+                                            ),
+                                      ),
+                                    );
+                                  }
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(right: 10.w),
@@ -70,10 +113,7 @@ class SleepScreen extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      Image.asset(
-                                        item.imagePath,
-                                        scale: categoryIndex == 0 ? 1.0 : 1.2,
-                                      ),
+                                      Image.asset(item.imagePath),
                                       Container(
                                         height: index == 0 ? 38.h : 90.h,
                                         width: double.infinity,
@@ -93,13 +133,16 @@ class SleepScreen extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                item.title,
-                                                style: TextStyle(
-                                                  fontSize: 16.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.black,
-                                                ),
+                                              BuildText(
+                                                text: item.title,
+                                                fontSize: 17.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color:
+                                                    categoryIndex == 0
+                                                        ? Colors.black
+                                                        : categoryIndex == 1
+                                                        ? Colors.white
+                                                        : Colors.black,
                                               ),
                                               if (item.description.isNotEmpty)
                                                 Padding(

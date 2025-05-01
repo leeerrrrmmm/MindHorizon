@@ -355,17 +355,14 @@ final List<CategoryModel> sleepCategory = [
         imagePath: 'assets/img/sleep.png',
         steps: [
           // StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
-          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/sleep.mp3'),
-          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/sleeep.mp3'),
-          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/sleeeep.mp3'),
-          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/sleeeeep.mp3'),
-          StepsModel(id: 5, title: 'Step 6', stepAsset: 'sound/sleeeeeep.mp3'),
-          StepsModel(id: 6, title: 'Step 7', stepAsset: 'sound/sleeeeeeep.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/medslepp.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/medsleppp.mp3'),
+          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/medslepppp.mp3'),
           StepsModel(
-            id: 7,
-            title: 'Step 8',
-            stepAsset: 'sound/sleeeeeeeep.mp3',
+            id: 4,
+            title: 'Step 5',
+            stepAsset: 'sound/medsleppppp.mp3',
           ),
         ],
         colors: [
@@ -401,11 +398,9 @@ final List<CategoryModel> sleepCategory = [
         description: 'Fall asleep faster and easier',
         imagePath: 'assets/img/sleepp.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/cosmo.mp3'),
-          StepsModel(id: 4, title: 'Step 5', stepAsset: 'sound/cosmo.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/medsleep.mp3'),
+          StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/medsleeep.mp3'),
+          StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/medsleeeep.mp3'),
         ],
         colors: [
           // fCOlor
@@ -449,7 +444,7 @@ final List<CategoryModel> meditationCategory = [
         imagePath: 'assets/img/sleep.png',
         steps: [
           // StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
           StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/sleep.mp3'),
           StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/sleeep.mp3'),
           StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/sleeeep.mp3'),
@@ -495,7 +490,7 @@ final List<CategoryModel> meditationCategory = [
         description: 'Fall asleep faster and easier',
         imagePath: 'assets/img/sleepp.png',
         steps: [
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slepp.mp3'),
           StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/sleppp.mp3'),
           StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/slepppp.mp3'),
           StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/sleppppp.mp3'),

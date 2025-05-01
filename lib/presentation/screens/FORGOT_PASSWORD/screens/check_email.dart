@@ -84,43 +84,17 @@ class _CheckEmailState extends State<CheckEmail> {
             SizedBox(
               width: double.infinity,
               child: Padding(
-                padding: EdgeInsets.only(
-                  left:
-                      MediaQuery.of(context).size.height < 896
-                          ? 20.w
-                          /// Тест для СЕ
-                          : MediaQuery.of(context).size.height > 896
-                          ? 40
-                              .w // 16 pro max
-                          : 40.w, // 11 iphone
-                  right:
-                      MediaQuery.of(context).size.height < 896
-                          ? 20.w
-                          /// Тест для СЕ
-                          : MediaQuery.of(context).size.height > 896
-                          ? 40
-                              .w // 16 pro max
-                          : 40.w, // 11 iphone
-                  top:
-                      MediaQuery.of(context).size.height < 896
-                          ? 100.h
-                          /// Тест для СЕ
-                          : MediaQuery.of(context).size.height > 896
-                          ? 200
-                              .h // 16 pro max
-                          : 200.h,
-                ), // 11 iphone
+                padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 100.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BuildRegText(
                       text: 'Check email',
-                      fontSize: 30,
+                      fontSize: 30.sp,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Alegreya',
                       color: Color(0xff455a64),
                     ),
-
                     Padding(
                       padding: const EdgeInsets.only(top: 27.0),
                       child: SizedBox(
@@ -153,16 +127,16 @@ class _CheckEmailState extends State<CheckEmail> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: List.generate(5, (index) {
                           return SizedBox(
-                            width: 65,
-                            height: 65,
+                            width: 65.w,
+                            height: 65.h,
                             child: TextField(
                               controller: _controllers[index],
                               focusNode: _focusNodes[index],
                               keyboardType: TextInputType.number,
                               textAlign: TextAlign.center,
                               maxLength: 1,
-                              style: const TextStyle(
-                                fontSize: 24,
+                              style: TextStyle(
+                                fontSize: 24.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                               decoration: InputDecoration(
@@ -216,15 +190,7 @@ class _CheckEmailState extends State<CheckEmail> {
                             children: <Widget>[
                               BuildRegText(
                                 text: "Haven't got the email yet?",
-                                fontSize:
-                                    MediaQuery.of(context).size.height < 896
-                                        ? 20.sp
-                                        /// Тест для СЕ
-                                        : MediaQuery.of(context).size.height >
-                                            896
-                                        ? 20
-                                            .sp // 16 pro max
-                                        : 18.sp, // 11 iphone,
+                                fontSize: 20.sp,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'AlegreyaSans',
                                 color: Color(0xff5b6c72),
@@ -236,10 +202,9 @@ class _CheckEmailState extends State<CheckEmail> {
                                     email: widget.emailController,
                                   );
                                 },
-
                                 child: BuildRegText(
                                   text: "Resent code",
-                                  fontSize: 20,
+                                  fontSize: 20.sp,
                                   fontWeight: FontWeight.w700,
                                   fontFamily: 'AlegreyaSans',
                                   color: Color(0xff5b6c72),

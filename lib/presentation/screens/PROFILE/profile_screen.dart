@@ -5,7 +5,7 @@ import 'package:mind_horizon/components/build_text.dart';
 import 'package:mind_horizon/data/domain/auth/auth_service.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/profile/detail_profile_screen.dart';
 import 'package:mind_horizon/presentation/screens/LOGIN/login_screen.dart';
-import 'package:mind_horizon/presentation/screens/REGISTER/register_screen.dart';
+import 'package:mind_horizon/presentation/screens/ONBOARDING/onboarding.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -29,21 +29,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<void> _logout() async {
-    await AuthService().logout();
-    if (mounted) {
-      Navigator.of(
-        context,
-      ).pushReplacement(MaterialPageRoute(builder: (context) => LoginScreen()));
-    }
+    await AuthService().logout(context).then((_) {
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => LoginScreen()),
+        );
+      }
+    });
   }
 
   Future<void> _deleteAccount() async {
-    await AuthService().deleteUser().then((_) {
+    await AuthService().deleteAccount(context).then((_) {
       if (mounted) {
-        Navigator.pushAndRemoveUntil(
+        Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => RegisterScreen()),
-          (route) => false,
+          MaterialPageRoute(builder: (context) => Onboarding()),
         );
       }
     });
@@ -74,11 +75,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           Positioned(
-            top: 74.sp,
-            left: 25.w,
+            top: 70.sp,
+            left: 24.w,
             child: BuildText(
               text: 'MindHorizon',
-              fontSize: 20.sp,
+              fontSize: 19.sp,
               fontWeight: FontWeight.w700,
               color: const Color(0xfffea386),
             ),
@@ -235,7 +236,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         borderRadius: BorderRadius.circular(10.w),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xff000000).withOpacity(0.05),
+            color: const Color(0xff000000).withValues(alpha: 0.05),
             offset: Offset(10.w, 20.h),
             blurRadius: 10.r,
             spreadRadius: 1.w,

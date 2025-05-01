@@ -5,8 +5,19 @@ import 'package:mind_horizon/data/data_source/data_source.dart';
 import 'package:mind_horizon/presentation/bloc/bloc/steps_bloc.dart';
 import 'package:mind_horizon/presentation/screens/DETAIL_SCREEN/meditation/meditation_detail_screen.dart';
 
-class MeditationScreen extends StatelessWidget {
+class MeditationScreen extends StatefulWidget {
   const MeditationScreen({super.key});
+
+  @override
+  State<MeditationScreen> createState() => _MeditationScreenState();
+}
+
+class _MeditationScreenState extends State<MeditationScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MeditationBloc>().add(LoadStepsFromStorage());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +32,9 @@ class MeditationScreen extends StatelessWidget {
               alignment: Alignment.center,
               child: BlocBuilder<MeditationBloc, MeditationState>(
                 builder: (context, state) {
+                  if (state.isLoading) {
+                    return Center(child: CircularProgressIndicator.adaptive());
+                  }
                   return SingleChildScrollView(
                     child: Column(
                       children: [
@@ -46,7 +60,7 @@ class MeditationScreen extends StatelessWidget {
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xfffea386),
-                                        fontSize: 26.sp,
+                                        fontSize: 30.sp,
                                       ),
                                     ),
                                   ),

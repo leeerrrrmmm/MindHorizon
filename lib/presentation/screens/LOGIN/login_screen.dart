@@ -8,6 +8,7 @@ import 'package:mind_horizon/presentation/screens/BOTTOM/custom_bottom_nav_bar.d
 import 'package:mind_horizon/presentation/screens/FORGOT_PASSWORD/screens/forgot_password.dart';
 import 'package:mind_horizon/presentation/screens/REGISTER/register_screen.dart';
 import 'package:mind_horizon/presentation/screens/REGISTER/widgets/build_reg_text.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool obscureText = true;
 
   Future<void> _loginWithCredential() async {
     try {
@@ -30,6 +32,8 @@ class _LoginScreenState extends State<LoginScreen> {
         _passwordController.text,
       );
 
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove('exit_type');
       if (!mounted) return;
       Navigator.pushReplacement(
         context,
@@ -50,6 +54,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _loginWithGoogle() async {
     try {
       final userCredential = await AuthService().registerGoogle();
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove('exit_type');
       if (userCredential != null && mounted) {
         await Navigator.pushReplacement(
           context,
@@ -73,29 +79,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
         child: Stack(
           children: [
-            Positioned(
-              top: 0,
-              child: Image.asset(
-                'assets/img/reglogtop.png',
-                scale: screenHeight < 896 ? 1.3 : 1,
-              ),
-            ),
+            Positioned(top: 0, child: Image.asset('assets/img/reglogtop.png')),
             Positioned(
               right: 0,
               bottom: 0,
-              child: Image.asset(
-                'assets/img/reglogbot.png',
-                scale: screenHeight < 896 ? 1.2 : 1,
-              ),
+              child: Image.asset('assets/img/reglogbot.png'),
             ),
             SingleChildScrollView(
               physics: BouncingScrollPhysics(),
@@ -121,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Padding(
                           padding: EdgeInsets.only(top: 40.h),
                           child: SizedBox(
-                            width: screenWidth < 896 ? 250.w : 300.w,
+                            width: 270.w,
                             child: BuildRegText(
                               text:
                                   'Sign in now to access your exercises and saved music.',
@@ -156,14 +150,27 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Padding(
                                   padding: EdgeInsets.only(top: 30.h),
                                   child: TextFormField(
+                                    obscureText: obscureText,
                                     controller: _passwordController,
-                                    decoration: const InputDecoration(
+                                    decoration: InputDecoration(
                                       hintText: 'Password',
                                       hintStyle: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'AlegreyaSans',
                                         color: Color(0xff455a64),
+                                      ),
+                                      suffixIcon: IconButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            obscureText = !obscureText;
+                                          });
+                                        },
+                                        icon: Icon(
+                                          obscureText
+                                              ? Icons.visibility_off_outlined
+                                              : Icons.visibility_outlined,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -217,7 +224,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               firstText: 'Already have an account?',
                               secondText: 'Sign In',
                               onTap: () {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => RegisterScreen(),

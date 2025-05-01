@@ -2,7 +2,9 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -13,6 +15,10 @@ class AuthService {
 
   User? getCurrentUser() {
     return _auth.currentUser;
+  }
+
+  String getCurUserUid() {
+    return _auth.currentUser!.uid;
   }
 
   // Регистрация Email/Пароль
@@ -181,32 +187,34 @@ class AuthService {
     return {'vibration': false, 'sendNotification': false};
   }
 
-  // Удаление пользователя
-  Future<void> deleteUser() async {
-    User? user = _auth.currentUser;
-    if (user != null) {
-      await _firebaseFirestore.collection('Users').doc(user.uid).delete();
-      await user.delete();
-    }
+  // выход
+  Future<void> logout(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('exit_type', 'logout');
+    await FirebaseAuth.instance.signOut();
   }
 
-  Future<void> logout() async {
-    try {
-      // Получаем текущего пользователя
-      User? user = _auth.currentUser;
+  // удаление
+  Future<void> deleteAccount(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('exit_type', 'delete');
 
-      // Проверяем, использовался ли Google при входе
-      for (final info in user?.providerData ?? []) {
-        if (info.providerId == 'google.com') {
-          // Если вход через Google — нужно выйти и из Google аккаунта
-          await GoogleSignIn().signOut();
-        }
+    final aUser = FirebaseAuth.instance.currentUser;
+
+    if (aUser != null) {
+      try {
+        await _firebaseFirestore.collection('Users').doc(aUser.uid).delete();
+        log('Пользователь удален из бд');
+      } catch (e) {
+        throw Exception('Ошибка удаление пользователя из бд: $e');
       }
 
-      // Основной выход из Firebase
-      await _auth.signOut();
-    } catch (e) {
-      log("Ошибка при выходе: $e");
+      try {
+        await aUser.delete();
+        log('Пользователь удален из FirebaseAuth');
+      } catch (e) {
+        log('Ошибка при удалении из FirebaseAuth: $e');
+      }
     }
   }
 
@@ -224,21 +232,26 @@ class AuthService {
     }
   }
 
-  // Обновление профиля
+  // обновление профиля
   Future<void> editProfile(String name, String email) async {
     User? user = _auth.currentUser;
     if (user != null) {
       try {
-        // Проверка email перед его обновлением
-        await user.verifyBeforeUpdateEmail(email);
+        // Проверка, совпадает ли введенная почта с почтой текущего пользователя
+        if (user.email != email) {
+          throw Exception(
+            'Введите корректную почту (она должна совпадать с текущей)',
+          );
+        }
 
-        // После того как email прошел проверку, обновляем имя
-        await user.updateDisplayName(name);
+        // Если почта совпадает, обновляем имя
+        if (user.displayName != name) {
+          await user.updateDisplayName(name);
+        }
 
-        // Обновление данных в Firestore
+        // Обновляем данные в Firestore
         await _firebaseFirestore.collection('Users').doc(user.uid).update({
           'displayName': name,
-          'email': email,
         });
       } catch (e) {
         throw Exception('Ошибка обновления профиля: $e');

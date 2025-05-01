@@ -20,6 +20,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
+  bool obscureText = true;
 
   Future<void> _registerWithCredential() async {
     try {
@@ -166,14 +167,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Padding(
                               padding: EdgeInsets.only(top: 30.h, bottom: 50.h),
                               child: TextFormField(
+                                obscureText: obscureText,
                                 controller: _passwordController,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
                                   hintText: 'Password',
                                   hintStyle: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'AlegreyaSans',
                                     color: Color(0xff455a64),
+                                  ),
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        obscureText = !obscureText;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      obscureText
+                                          ? Icons.visibility_off_outlined
+                                          : Icons.visibility_outlined,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -203,7 +217,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           firstText: 'Already have an account?',
                           secondText: 'Sign In',
                           onTap: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => LoginScreen(),

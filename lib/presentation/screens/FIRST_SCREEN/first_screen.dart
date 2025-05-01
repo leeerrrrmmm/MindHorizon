@@ -10,49 +10,30 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children: [
           Container(
-            height:
-                MediaQuery.of(context).size.height < 896
-                    ? screenHeight / 2.1
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? screenHeight /
-                        2 // 16 pro max
-                    : screenHeight / 2, // 11 iphone36,
+            height: 0.5.sh, // половина высоты экрана
             width: double.infinity,
             decoration: BoxDecoration(
-              color: Color(0xfffbe7c3),
+              color: const Color(0xfffbe7c3),
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(250),
-                bottomRight: Radius.circular(250),
+                bottomLeft: Radius.circular(250.r),
+                bottomRight: Radius.circular(250.r),
               ),
             ),
             child: Stack(
               children: [
                 Positioned(
-                  top:
-                      MediaQuery.of(context).size.height < 896
-                          ? 40
-                          /// Тест для СЕ
-                          : MediaQuery.of(context).size.height > 896
-                          ? 130 // 16 pro max
-                          : 130, // 11 iphone 130,
-                  right: -60,
+                  top: 100.h,
+                  right: -60.w,
                   child: Transform.rotate(
                     angle: -16.3 * (math.pi / 160),
                     child: Image.asset(
                       'assets/gif/der.gif',
                       scale:
-                          MediaQuery.of(context).size.height < 896
-                              ? 1.3
-                              /// Тест для СЕ
-                              : MediaQuery.of(context).size.height > 896
-                              ? 1 // 16 pro max
-                              : 1, // 11 iphone
+                          1.0, // масштаб можно тоже адаптировать при необходимости
                     ),
                   ),
                 ),
@@ -62,31 +43,17 @@ class FirstScreen extends StatelessWidget {
           34.hBox,
           BuildText(
             text: 'MindHorizon',
-            fontSize:
-                MediaQuery.of(context).size.height < 896
-                    ? 28.sp
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? 35
-                        .sp // 16 pro max
-                    : 33.sp, // 11 iphone 35,
+            fontSize: 33.sp,
             fontWeight: FontWeight.w600,
           ),
           SizedBox(
-            height: 60,
-            width: 280,
+            height: 60.h,
+            width: 280.w,
             child: Text(
               textAlign: TextAlign.center,
               'Relieve stress, sleep better, and find true happiness',
               style: TextStyle(
-                fontSize:
-                    MediaQuery.of(context).size.height < 896
-                        ? 17.sp
-                        /// Тест для СЕ
-                        : MediaQuery.of(context).size.height > 896
-                        ? 18
-                            .sp // 16 pro max
-                        : 18.sp, // 11 iphone20,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
                 fontFamily: 'Poppins',
               ),
@@ -101,21 +68,21 @@ class FirstScreen extends StatelessWidget {
               Text(
                 'Already have an account?',
                 style: TextStyle(
-                  color: Color(0xfffea386),
-                  fontSize: 14,
+                  color: const Color(0xfffea386),
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w300,
                   fontFamily: 'Poppins',
                 ),
               ),
               GestureDetector(
                 onTap: () {
-                  // НАВИГАЦИЯ НА СТРАНИЦУ ЛОГИНА
+                  // Навигация на страницу логина
                 },
                 child: Text(
-                  'LogIn',
+                  ' LogIn',
                   style: TextStyle(
-                    color: Color(0xfffea386),
-                    fontSize: 14,
+                    color: const Color(0xfffea386),
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w700,
                     fontFamily: 'Poppins',
                   ),
@@ -123,35 +90,30 @@ class FirstScreen extends StatelessWidget {
               ),
             ],
           ),
-          MediaQuery.of(context).size.height < 896
-              ? 25.h.hBox
-              /// Тест для СЕ
-              : MediaQuery.of(context).size.height > 896
-              ? 100.h.hBox
-              // 16 pro max
-              : 90.h.hBox, // 11 iphone20,
+          90.hBox,
+
           /// КНОПКА
           GestureDetector(
             onTap:
                 () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Onboarding()),
+                  MaterialPageRoute(builder: (context) => const Onboarding()),
                 ),
             child: Container(
-              width: 216,
-              height: 63,
+              width: 216.w,
+              height: 63.h,
               decoration: BoxDecoration(
-                color: Color(0xfffbe7c3),
-                borderRadius: BorderRadius.circular(25),
+                color: const Color(0xfffbe7c3),
+                borderRadius: BorderRadius.circular(25.r),
               ),
               child: Center(
                 child: Text(
                   'Next',
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.w400,
                     fontFamily: 'Poppins',
-                    color: Color(0xfffea386),
+                    color: const Color(0xfffea386),
                   ),
                 ),
               ),

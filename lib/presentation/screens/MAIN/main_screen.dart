@@ -36,7 +36,6 @@ class MainScreen extends StatelessWidget {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(height: 20.h),
                               Padding(
                                 padding: const EdgeInsets.only(left: 12.0),
                                 child: BuildText(

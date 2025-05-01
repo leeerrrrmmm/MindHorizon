@@ -59,15 +59,13 @@ class _SetNewPassState extends State<SetNewPass> {
               width: double.infinity,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 40.0,
+                  horizontal: 40.0.w,
                   vertical:
                       MediaQuery.of(context).size.height < 896
                           ? 160.h
-                          /// Тест для СЕ
                           : MediaQuery.of(context).size.height > 896
-                          ? 200
-                              .h // 16 pro max
-                          : 200.h, // 11 iphone ,
+                          ? 200.h
+                          : 200.h,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

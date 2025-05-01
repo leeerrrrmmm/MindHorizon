@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Third extends StatefulWidget {
   final PageController pageController;
@@ -50,36 +51,13 @@ class _ThirdState extends State<Third> {
       body: Stack(
         children: [
           Positioned(
-            top:
-                MediaQuery.of(context).size.height < 896
-                    ? -60
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? -10 // 16 pro max
-                    : -10,
             left: 0,
-            child: Image.asset(
-              'assets/img/flowers.png',
-              scale:
-                  MediaQuery.of(context).size.height < 896
-                      ? 1.2
-                      /// Тест для СЕ
-                      : MediaQuery.of(context).size.height > 896
-                      ? 1 // 16 pro max
-                      : 1,
-              color: Colors.white,
-            ),
+            child: Image.asset('assets/img/flowers.png', color: Colors.white),
           ),
           Positioned(
-            top:
-                MediaQuery.of(context).size.height < 896
-                    ? 70
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? 105 // 16 pro max
-                    : 105,
-            left: 30,
-            right: 0,
+            top: 120.h,
+            left: 0.w,
+            right: 0.w,
             child: Center(
               child: Text(
                 _isRunning
@@ -89,13 +67,7 @@ class _ThirdState extends State<Third> {
                         : "Let's measure your inhale"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize:
-                      MediaQuery.of(context).size.height < 896
-                          ? 20
-                          /// Тест для СЕ
-                          : MediaQuery.of(context).size.height > 896
-                          ? 24 // 16 pro max
-                          : 24,
+                  fontSize: 22.sp,
                   color: Color(0xfff19584),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w600,
@@ -104,61 +76,24 @@ class _ThirdState extends State<Third> {
             ),
           ),
           if (!(_timer?.isActive ?? false) && _elapsedTime.inSeconds > 0)
-            Positioned(
-              top:
-                  MediaQuery.of(context).size.height < 896
-                      ? 110
-                      /// Тест для СЕ
-                      : MediaQuery.of(context).size.height > 896
-                      ? 230 // 16 pro max
-                      : 230, // 11 iphone,
-              child: Image.asset(
-                'assets/gif/done.gif',
-                scale:
-                    MediaQuery.of(context).size.height < 896
-                        ? 1.1
-                        /// Тест для СЕ
-                        : MediaQuery.of(context).size.height > 896
-                        ? 1 // 16 pro max
-                        : 1, // 11 iphone
-              ),
-            ),
+            Positioned(top: 180.h, child: Image.asset('assets/gif/done.gif')),
           Positioned(
-            top:
-                MediaQuery.of(context).size.height < 896
-                    ? 170
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? 270 // 16 pro max
-                    : 250, // 11 iphone
-            left:
-                MediaQuery.of(context).size.height < 896
-                    ? 0
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? -30 // 16 pro max
-                    : -30,
-            child: Image.asset(
-              'assets/gif/cloud.gif',
-              scale:
-                  MediaQuery.of(context).size.height < 896
-                      ? 1.3
-                      /// Тест для СЕ
-                      : MediaQuery.of(context).size.height > 896
-                      ? 1 // 16 pro max
-                      : 1,
-              color: Colors.white,
-            ),
+            top: 240.h,
+            left: 0.w,
+            right: 0.w,
+            bottom: 240.h,
+            child: Image.asset('assets/gif/cloud.gif', color: Colors.white),
           ),
           if (_elapsedTime.inSeconds >= 0)
             Positioned(
               top: MediaQuery.of(context).size.height / 2,
-              left: MediaQuery.of(context).size.width / 2 - 50,
+              left: 0.w,
+              right: 0.w,
               child: Center(
                 child: Text(
                   formatTime(_elapsedTime),
                   style: TextStyle(
-                    fontSize: 36,
+                    fontSize: 36.sp,
                     fontWeight: FontWeight.bold,
                     color: Color(0xfffea386),
                   ),
@@ -166,23 +101,10 @@ class _ThirdState extends State<Third> {
               ),
             ),
           Positioned(
-            left:
-                _isRunning
-                    ? MediaQuery.of(context).size.width / 3.2
-                    :
-                    /// Тест для СЕ
-                    MediaQuery.of(context).size.height > 896
-                    ? MediaQuery.of(context).size.width /
-                        2.8 // 16 pro max
-                    : MediaQuery.of(context).size.width / 3.2,
-            top:
-                MediaQuery.of(context).size.height < 896
-                    ? MediaQuery.of(context).size.height / 1.3
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? MediaQuery.of(context).size.height /
-                        1.22 // 16 pro max
-                    : MediaQuery.of(context).size.height / 1.22,
+            left: 0.w,
+            right: 0.w,
+
+            bottom: 120.h,
             child: Text(
               _isRunning
                   ? "Press 'Stop'\nwhen you reach your limit"
@@ -191,27 +113,17 @@ class _ThirdState extends State<Third> {
                   : "Press 'Start'\nwhen you're ready ",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w300,
                 color: Color(0xfff19584),
               ),
             ),
           ),
+          //BUTTON
           Positioned(
-            bottom:
-                MediaQuery.of(context).size.height < 896
-                    ? 20
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? 44 // 16 pro max
-                    : 44, // 11 iphone
-            right:
-                MediaQuery.of(context).size.height < 896
-                    ? 80
-                    /// Тест для СЕ
-                    : MediaQuery.of(context).size.height > 896
-                    ? 113 // 16 pro max
-                    : 113, // 11 iphone
+            bottom: 30.h,
+            right: 0.w,
+            left: 0.w,
             child: GestureDetector(
               onTap: () {
                 if (_isRunning) {
@@ -225,32 +137,28 @@ class _ThirdState extends State<Third> {
                   startTimer();
                 }
               },
-              child: Container(
-                width: 216,
-                height: 66,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Center(
-                  child: Text(
-                    _isRunning
-                        ? 'Stop'
-                        : (_elapsedTime.inSeconds > 0
-                            ? 'Great! Move forward'
-                            : 'Start'),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize:
-                          MediaQuery.of(context).size.height < 896
-                              ? 22
-                              /// Тест для СЕ
-                              : MediaQuery.of(context).size.height > 896
-                              ? 24 // 16 pro max
-                              : 20, // 11 iphone
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Poppins',
-                      color: Color(0xfffea386),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                child: Container(
+                  height: 66.h,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Center(
+                    child: Text(
+                      _isRunning
+                          ? 'Stop'
+                          : (_elapsedTime.inSeconds > 0
+                              ? 'Great! Move forward'
+                              : 'Start'),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 22.sp,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Poppins',
+                        color: Color(0xfffea386),
+                      ),
                     ),
                   ),
                 ),
