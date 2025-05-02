@@ -90,6 +90,7 @@ class AuthService {
         idToken: gAuth.idToken,
       );
 
+      // Вход в Firebase
       final UserCredential userCredential = await _auth.signInWithCredential(
         credential,
       );
@@ -99,14 +100,17 @@ class AuthService {
         throw Exception('Ошибка авторизации. Пользователь = null.');
       }
 
-      final userDoc =
-          await _firebaseFirestore.collection('Users').doc(user.uid).get();
+      final userRef = _firebaseFirestore.collection('Users').doc(user.uid);
+
+      // Используем транзакцию или проверку внутри try-catch для надёжности
+      final userDoc = await userRef.get();
 
       if (!userDoc.exists) {
-        await _firebaseFirestore.collection('Users').doc(user.uid).set({
+        // Создаём нового пользователя
+        await userRef.set({
           'uid': user.uid,
           'email': user.email ?? '',
-          'displayName': user.displayName ?? 'Без имени',
+          'displayName': user.displayName ?? 'user',
           'photoUrl': user.photoURL ?? '',
           'phoneNumber': user.phoneNumber ?? '',
           'createdAt': FieldValue.serverTimestamp(),
@@ -116,7 +120,8 @@ class AuthService {
 
       return userCredential;
     } catch (e) {
-      throw Exception('Ошибка Google-регистрации: $e');
+      log('Ошибка при регистрации через Google: $e');
+      rethrow; // Пробрасываем ошибку дальше, если нужно
     }
   }
 

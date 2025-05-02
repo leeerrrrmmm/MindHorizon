@@ -30,11 +30,7 @@ class FirstScreen extends StatelessWidget {
                   right: -60.w,
                   child: Transform.rotate(
                     angle: -16.3 * (math.pi / 160),
-                    child: Image.asset(
-                      'assets/gif/der.gif',
-                      scale:
-                          1.0, // масштаб можно тоже адаптировать при необходимости
-                    ),
+                    child: Image.asset('assets/gif/der.gif', scale: 1.0),
                   ),
                 ),
               ],
@@ -76,7 +72,10 @@ class FirstScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  // Навигация на страницу логина
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => Onboarding()),
+                  );
                 },
                 child: Text(
                   ' LogIn',

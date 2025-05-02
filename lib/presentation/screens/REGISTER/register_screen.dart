@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -48,40 +50,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Future<void> _registerWithGoogle() async {
     try {
       AuthService authService = AuthService();
-      final user = authService.getCurrentUser();
+      authService
+          .registerGoogle()
+          .then((userCredential) {
+            final user = userCredential?.user;
+            if (user != null) {
+              if (!mounted) return;
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => CustomBottomNavBar()),
+              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text("Успешная регистрация")));
+            } else {
+              if (!mounted) return;
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text("Пользователь не найден")));
+            }
+          })
+          .catchError((e) {
+            String errorMessage = "Ошибка регистрации: $e";
+            if (e.toString().contains('network')) {
+              errorMessage = "Проверьте подключение к интернету.";
+            }
+            if (!mounted) return;
 
-      await authService.registerGoogle();
-
-      if (!mounted) return;
-      if (user != null) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => CustomBottomNavBar()),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Align(alignment: Alignment.center, child: Text("Success")),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Align(
-              alignment: Alignment.center,
-              child: Text("Ошибка авторизации"),
-            ),
-          ),
-        );
-      }
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(errorMessage)));
+          });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Align(
-            alignment: Alignment.center,
-            child: Text("Ошибка авторизации"),
-          ),
-        ),
-      );
+      log('Register error: $e');
     }
   }
 

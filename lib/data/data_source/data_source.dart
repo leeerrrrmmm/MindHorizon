@@ -354,8 +354,7 @@ final List<CategoryModel> sleepCategory = [
         description: 'Relax and fall asleep',
         imagePath: 'assets/img/sleep.png',
         steps: [
-          // StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/medslep.mp3'),
           StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/medslepp.mp3'),
           StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/medsleppp.mp3'),
           StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/medslepppp.mp3'),
@@ -444,7 +443,7 @@ final List<CategoryModel> meditationCategory = [
         imagePath: 'assets/img/sleep.png',
         steps: [
           // StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
-          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/clap.mp3'),
+          StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
           StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/sleep.mp3'),
           StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/sleeep.mp3'),
           StepsModel(id: 3, title: 'Step 4', stepAsset: 'sound/sleeeep.mp3'),

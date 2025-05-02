@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mind_horizon/presentation/screens/BOTTOM/custom_bottom_nav_bar.dart';
+import 'package:mind_horizon/presentation/screens/FIRST_SCREEN/first_screen.dart';
 import 'package:mind_horizon/presentation/screens/LOGIN/login_screen.dart';
 import 'package:mind_horizon/presentation/screens/ONBOARDING/onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -75,7 +76,7 @@ class AuthGate extends StatelessWidget {
               } else if (exitType == 'delete') {
                 return const Onboarding();
               } else {
-                return const Onboarding();
+                return const FirstScreen();
               }
             }
           },

@@ -127,7 +127,7 @@ class _SleepScreenState extends State<SleepScreen> {
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(
                                             horizontal: 12.w,
-                                            vertical: 6.h,
+                                            vertical: 4.h,
                                           ),
                                           child: Column(
                                             crossAxisAlignment:
