@@ -442,7 +442,6 @@ final List<CategoryModel> meditationCategory = [
         description: 'Relax and fall asleep',
         imagePath: 'assets/img/sleep.png',
         steps: [
-          // StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
           StepsModel(id: 0, title: 'Step 1', stepAsset: 'sound/slep.mp3'),
           StepsModel(id: 1, title: 'Step 2', stepAsset: 'sound/sleep.mp3'),
           StepsModel(id: 2, title: 'Step 3', stepAsset: 'sound/sleeep.mp3'),
