@@ -138,6 +138,7 @@ final List<CategoryModel> musiscCategory = [
             title: 'By the fire',
             musicAsset: 'sound/fire.mp3',
           ),
+          // for solo music
           SoundsModel(id: 2, title: 'Fresh wind', musicAsset: 'sound/wind.mp3'),
           SoundsModel(
             id: 3,
