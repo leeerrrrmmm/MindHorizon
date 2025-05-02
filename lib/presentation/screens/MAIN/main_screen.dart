@@ -187,7 +187,7 @@ class MainScreen extends StatelessWidget {
                                                   children: [
                                                     Image.asset(
                                                       secondItem.imagePath,
-                                                      scale: 1,
+                                                      scale: 1.09,
                                                     ),
                                                     Container(
                                                       padding:
@@ -215,7 +215,7 @@ class MainScreen extends StatelessWidget {
                                                       height: 38,
                                                       child: BuildText(
                                                         text: secondItem.title,
-                                                        fontSize: 18.sp,
+                                                        fontSize: 17.sp,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         color:
