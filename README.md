@@ -1,16 +1,22 @@
-# mind_horizon
+# Mind Horizon
 
-A new Flutter project.
+Mind Horizon is a meditation app built with Flutter.
 
-## Getting Started
+It offers users a calming and personalized experience for relaxation and mindfulness.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Google sign-in authentication  
+- Firebase Realtime Database integration for user data  
+- Multiple categories of meditation music and sounds to choose from  
+- Push notifications to remind users and notify upon completion of sessions  
+- Verification and tracking of completed listening sessions  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This project demonstrates how to combine Flutter with Firebase services to create a rich meditation app focused on user engagement and personalized content.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+If you’re new to Flutter, here are some useful resources to get started:  
+- [Flutter Codelab](https://docs.flutter.dev/get-started/codelab)  
+- [Flutter Cookbook](https://docs.flutter.dev/cookbook)  
+- [Official Flutter Documentation](https://docs.flutter.dev/)
